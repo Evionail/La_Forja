@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>La Forja de Héroes v5.0 (Profile Pic)</title>
+    <meta name="theme-color" content="#1c1917">
+    
+    <!-- 1. Cargar Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- 2. Cargar React y ReactDOM -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    
+    <!-- 3. Cargar Babel para traducir JSX en el navegador -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <!-- 4. Estilos extra -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Lato:wght@400;700&display=swap');
+        
+        body { font-family: 'Lato', sans-serif; overscroll-behavior-y: none; }
+        h1, h2, h3, .font-serif { font-family: 'Cinzel', serif; }
+        
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        input[type=number]::-webkit-inner-spin-button, 
+        input[type=number]::-webkit-outer-spin-button { 
+            -webkit-appearance: none; 
+            margin: 0; 
+        }
+
+        @media print {
+            @page { margin: 0; size: A4; }
+            body { -webkit-print-color-adjust: exact; background: white; }
+            nav, button, .mobile-only, .no-print { display: none !important; }
+            .desktop-only { display: block !important; }
+            .print-shadow-none { box-shadow: none !important; }
+            .print-m-0 { margin: 0 !important; }
+            .sheet-container { width: 210mm !important; height: 297mm !important; overflow: hidden !important; border: none !important; transform: none !important; }
+        }
+    </style>
+</head>
+<body class="bg-stone-900 text-stone-900 selection:bg-red-200 h-screen overflow-hidden">
+
+    <div id="root" class="h-full"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect, useRef } = React;
+
+        // --- ICONOS SVG ---
+        const Icon = ({ path, size = 18, className = "" }) => (
+            <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+                {path}
+            </svg>
+        );
+
+        const Icons = {
+            Save: (p) => <Icon {...p} path={<><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></>} />,
+            Move: (p) => <Icon {...p} path={<><polyline points="5 9 2 12 5 15"/><polyline points="9 5 12 2 15 5"/><polyline points="15 19 12 22 9 19"/><polyline points="19 15 22 12 19 9"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="12" y1="2" x2="12" y2="22"/></>} />,
+            Plus: (p) => <Icon {...p} path={<><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></>} />,
+            Trash2: (p) => <Icon {...p} path={<><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></>} />,
+            Sword: (p) => <Icon {...p} path={<><polyline points="14.5 17.5 3 6 3 3 6 3 17.5 14.5"/><line x1="13" y1="19" x2="19" y2="13"/><line x1="16" y1="16" x2="20" y2="20"/><line x1="19" y1="21" x2="21" y2="19"/></>} />,
+            Download: (p) => <Icon {...p} path={<><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></>} />,
+            X: (p) => <Icon {...p} path={<><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></>} />,
+            Maximize: (p) => <Icon {...p} path={<><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></>} />,
+            Minimize: (p) => <Icon {...p} path={<><path d="M8 3v3a2 2 0 0 1-2 2H3"/><path d="M21 8h-3a2 2 0 0 1-2-2V3"/><path d="M3 16h3a2 2 0 0 1 2 2v3"/><path d="M16 21v-3a2 2 0 0 1 2-2h3"/></>} />,
+            Book: (p) => <Icon {...p} path={<><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></>} />,
+            Up: (p) => <Icon {...p} path={<><polyline points="18 15 12 9 6 15"/></>} />,
+            Down: (p) => <Icon {...p} path={<><polyline points="6 9 12 15 18 9"/></>} />,
+            Sparkles: (p) => <Icon {...p} path={<><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></>} />,
+            Campfire: (p) => <Icon {...p} path={<><path d="M12 22a9 9 0 0 0 9-9c0-4.97-9-13-9-13S3 8.03 3 13a9 9 0 0 0 9 9Z"/><path d="m15 14-3 3-3-3"/><path d="M12 22v-6"/></>} />,
+            Shield: (p) => <Icon {...p} path={<><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></>} />,
+            Zap: (p) => <Icon {...p} path={<><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></>} />,
+            Backpack: (p) => <Icon {...p} path={<><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></>} />,
+            Smartphone: (p) => <Icon {...p} path={<><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></>} />,
+            Monitor: (p) => <Icon {...p} path={<><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></>} />,
+            Skull: (p) => <Icon {...p} path={<><path d="M12 4c-3.3 0-6 2.7-6 6 0 1.5.6 3 1.5 4.1.3.4.5.9.5 1.4v1.5c0 .6.4 1 1 1h6c.6 0 1-.4 1-1v-1.5c0-.5.2-1 .5-1.4.9-1.1 1.5-2.6 1.5-4.1 0-3.3-2.7-6-6-6z" fill="currentColor"/><path d="M10 14h4" stroke="white" strokeWidth="2"/><path d="M10 11h.01M14 11h.01" stroke="white" strokeWidth="3"/></>} />,
+            Heart: (p) => <Icon {...p} path={<><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></>} />,
+            Camera: (p) => <Icon {...p} path={<><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></>} />
+        };
+
+        // --- DATOS Y UTILS GLOBALES ---
+        const BACKGROUNDS_SRD = [
+            { name: "Acólito", skills: ["insight", "religion"], feature: "Refugio del Fiel", desc: "Como acólito, inspiras respeto a aquellos que comparten tu fe, y puedes realizar ceremonias religiosas. Recibes curación gratuita en templos de tu fe." },
+            { name: "Criminal", skills: ["deception", "stealth"], feature: "Contacto Criminal", desc: "Tienes un contacto de confianza que actúa como tu enlace con una red de otros criminales." },
+            { name: "Héroe del Pueblo", skills: ["animal_handling", "survival"], feature: "Hospitalidad Rústica", desc: "Encajas entre la gente común con facilidad. Puedes encontrar lugar para esconderte o descansar entre plebeyos." },
+            { name: "Noble", skills: ["history", "persuasion"], feature: "Posición de Privilegio", desc: "Eres bienvenido en la alta sociedad. La gente común hace todo lo posible para acomodarte." },
+            { name: "Sabio", skills: ["arcana", "history"], feature: "Investigador", desc: "Si no sabes una información, a menudo sabes dónde y de quién puedes obtenerla (bibliotecas, universidades)." },
+            { name: "Soldado", skills: ["athletics", "intimidation"], feature: "Rango Militar", desc: "Tienes un rango militar. Los soldados de tu antigua organización reconocen tu autoridad." },
+        ];
+
+        const calculateModifier = (score) => Math.floor((score - 10) / 2);
+        const calculateProficiency = (level) => Math.ceil(level / 4) + 1;
+
+        const ATTRIBUTES = [
+            { id: 'str', label: 'Fuerza', short: 'FUE' }, { id: 'dex', label: 'Destreza', short: 'DES' },
+            { id: 'con', label: 'Constitución', short: 'CON' }, { id: 'int', label: 'Inteligencia', short: 'INT' },
+            { id: 'wis', label: 'Sabiduría', short: 'SAB' }, { id: 'cha', label: 'Carisma', short: 'CAR' },
+        ];
+
+        const SKILLS_LIST = [
+            { id: 'acrobatics', label: 'Acrobacias', attr: 'dex' }, { id: 'animal_handling', label: 'Trato con Animales', attr: 'wis' },
+            { id: 'arcana', label: 'Arcana', attr: 'int' }, { id: 'athletics', label: 'Atletismo', attr: 'str' },
+            { id: 'deception', label: 'Engaño', attr: 'cha' }, { id: 'history', label: 'Historia', attr: 'int' },
+            { id: 'insight', label: 'Perspicacia', attr: 'wis' }, { id: 'intimidation', label: 'Intimidación', attr: 'cha' },
+            { id: 'investigation', label: 'Investigación', attr: 'int' }, { id: 'medicine', label: 'Medicina', attr: 'wis' },
+            { id: 'nature', label: 'Naturaleza', attr: 'int' }, { id: 'perception', label: 'Percepción', attr: 'wis' },
+            { id: 'performance', label: 'Interpretación', attr: 'cha' }, { id: 'persuasion', label: 'Persuasión', attr: 'cha' },
+            { id: 'religion', label: 'Religión', attr: 'int' }, { id: 'sleight_of_hand', label: 'Juego de Manos', attr: 'dex' },
+            { id: 'stealth', label: 'Sigilo', attr: 'dex' }, { id: 'survival', label: 'Supervivencia', attr: 'wis' },
+        ];
+
+        const DEFAULT_BG = ""; 
+        const GRID_SIZE = 10; 
+        
+        // --- COMPONENTE DESKTOP WIDGET ---
+        const WidgetWrapper = ({ id, children, title, layout, mode, dragging, onMouseDown, isColliding }) => {
+            const pos = layout[id] || { x: 0, y: 0 };
+            const currentlyColliding = dragging?.id === id && isColliding;
+            return (
+                <div 
+                    id={`widget-${id}`}
+                    onMouseDown={(e) => onMouseDown(e, id)}
+                    style={{ left: pos.x, top: pos.y, position: 'absolute', cursor: mode === 'layout' ? 'grab' : 'default', transform: dragging?.id === id ? 'scale(1.02)' : 'scale(1)', zIndex: dragging?.id === id ? 100 : 10 }}
+                    className={`bg-white border-2 rounded shadow-sm p-2 w-fit ${mode === 'layout' ? 'hover:shadow-lg' : ''} ${currentlyColliding ? 'border-red-500 ring-2 ring-red-500 bg-red-50' : 'border-stone-800'} ${mode === 'layout' && !currentlyColliding ? 'ring-1 ring-blue-400' : ''} transition-colors duration-100 select-none`}
+                >
+                    {mode === 'layout' && <div className="absolute -top-3 -left-1 bg-blue-500 text-white text-[10px] px-2 py-0.5 rounded-full pointer-events-none whitespace-nowrap z-50">{title}</div>}
+                    {children}
+                </div>
+            );
+        };
+
+        // --- SHELL MÓVIL (CONTENIDO COMÚN) ---
+        const MobileShell = ({ 
+            char, setChar, activeTab, setActiveTab, 
+            setShowRestModal, setShowAttackForm, setShowSpellForm, 
+            castSpell, pb, setShowBgModal, setForceMobile, isSimulator,
+            toggleDeathSave, getSkillInfo, getSaveBonus, toggleProficiency, updateStat, toggleSaveProficiency,
+            decreaseDice, increaseDice, setShowAvatarModal
+        }) => {
+            return (
+                <div className="flex flex-col h-full bg-stone-900 text-stone-100 overflow-hidden relative">
+                    {/* Header Pegajoso Editable */}
+                    <div className="bg-stone-800 p-4 shadow-md z-20 flex justify-between items-center border-b border-stone-700">
+                        <div className="flex items-center gap-3 w-full">
+                            <div className="w-12 h-12 rounded-full bg-stone-200 border-2 border-red-700 overflow-hidden flex-shrink-0 cursor-pointer relative group" onClick={() => setShowAvatarModal(true)}>
+                                {char.profileImage ? (
+                                    <img src={char.profileImage} className="w-full h-full object-cover"/>
+                                ) : (
+                                    <div className="w-full h-full flex items-center justify-center text-stone-800 font-bold text-xl">{char.name[0]}</div>
+                                )}
+                                <div className="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <Icons.Camera size={16} className="text-white"/>
+                                </div>
+                            </div>
+                            <div className="flex-1">
+                                <div className="flex justify-between items-start">
+                                    <input className="font-serif font-bold text-lg leading-none bg-transparent border-b border-stone-600 focus:border-stone-400 w-full mb-1 text-white mr-2" value={char.name} onChange={e => setChar({...char, name: e.target.value})} />
+                                    {isSimulator && (
+                                        <button onClick={() => setForceMobile(false)} className="text-stone-500 hover:text-white" title="Volver a Automático/Escritorio">
+                                            <Icons.Monitor size={16} />
+                                        </button>
+                                    )}
+                                </div>
+                                <div className="flex gap-2 text-xs text-stone-400">
+                                    <input className="bg-transparent border-b border-stone-700 w-16" placeholder="Raza" value={char.race} onChange={e => setChar({...char, race: e.target.value})} />
+                                    <input className="bg-transparent border-b border-stone-700 w-16" placeholder="Clase" value={char.class} onChange={e => setChar({...char, class: e.target.value})} />
+                                    <span className="flex items-center gap-1">Nvl <input type="number" className="bg-transparent border-b border-stone-700 w-6 text-center" value={char.level} onChange={e => setChar({...char, level: parseInt(e.target.value) || 1})} /></span>
+                                </div>
+                                <div className="flex items-center gap-2 mt-1">
+                                    <input className="bg-transparent border-b border-stone-700 w-full text-xs text-stone-400" placeholder="Trasfondo" value={char.background} onChange={e => setChar({...char, background: e.target.value})} />
+                                    <button onClick={() => setShowBgModal(true)} className="text-stone-400 hover:text-blue-400"><Icons.Book size={14}/></button>
+                                </div>
+                            </div>
+                        </div>
+                        <button onClick={() => setShowRestModal(true)} className="ml-2 bg-stone-700 p-2 rounded-full hover:bg-stone-600 border border-stone-600 text-orange-400 flex-shrink-0">
+                            <Icons.Campfire size={20} />
+                        </button>
+                    </div>
+
+                    {/* Barra de Estado Rápida */}
+                    <div className="bg-stone-900 py-2 px-2 flex justify-around border-b border-stone-800 shadow-sm sticky top-0 z-10">
+                        <div className="flex flex-col items-center">
+                            <span className="text-[9px] text-stone-500 font-bold uppercase">HP</span>
+                            <div className="flex items-end gap-0.5">
+                                <input type="number" className={`text-lg font-bold bg-transparent w-8 text-center ${char.hp.current < char.hp.max/2 ? 'text-red-500' : 'text-green-500'}`} value={char.hp.current} onChange={e => setChar({...char, hp: {...char.hp, current: parseInt(e.target.value)||0}})} />
+                                <span className="text-[10px] text-stone-500 mb-1">/</span>
+                                <input type="number" className="text-[10px] text-stone-500 mb-1 w-5 bg-transparent" value={char.hp.max} onChange={e => setChar({...char, hp: {...char.hp, max: parseInt(e.target.value)||0}})} />
+                            </div>
+                        </div>
+                        <div className="w-px bg-stone-700 h-8"></div>
+                        <div className="flex flex-col items-center"><span className="text-[9px] text-stone-500 font-bold uppercase">CA</span><input type="number" className="text-lg font-bold font-serif bg-transparent w-7 text-center text-white" value={char.ac} onChange={e => setChar({...char, ac: parseInt(e.target.value)||10})} /></div>
+                        <div className="w-px bg-stone-700 h-8"></div>
+                        <div className="flex flex-col items-center"><span className="text-[9px] text-stone-500 font-bold uppercase">INI</span><span className="text-lg font-bold text-white">{calculateModifier(char.stats.dex) >= 0 ? `+${calculateModifier(char.stats.dex)}` : calculateModifier(char.stats.dex)}</span></div>
+                        <div className="w-px bg-stone-700 h-8"></div>
+                        <div className="flex flex-col items-center"><span className="text-[9px] text-stone-500 font-bold uppercase">VEL</span><input type="number" className="text-lg font-bold bg-transparent w-7 text-center text-white" value={char.speed} onChange={e => setChar({...char, speed: parseInt(e.target.value)||30})} /></div>
+                        <div className="w-px bg-stone-700 h-8"></div>
+                        <div className="flex flex-col items-center"><span className="text-[9px] text-stone-500 font-bold uppercase">BON</span><span className="text-lg font-bold text-white">+{pb}</span></div>
+                    </div>
+
+                    {/* Contenido Scrollable */}
+                    <div className="flex-1 overflow-y-auto bg-stone-100 text-stone-900 pb-20">
+                        {activeTab === 'main' && (
+                            <div className="p-4 space-y-6">
+                                <div className="grid grid-cols-3 gap-3">
+                                    {ATTRIBUTES.map(attr => (
+                                        <div key={attr.id} className="bg-white rounded-lg shadow p-2 text-center border border-stone-200">
+                                            <div className="text-[10px] font-bold text-stone-500 uppercase">{attr.short}</div>
+                                            <div className="text-2xl font-bold text-stone-800">{calculateModifier(char.stats[attr.id]) >= 0 ? `+${calculateModifier(char.stats[attr.id])}` : calculateModifier(char.stats[attr.id])}</div>
+                                            <input type="number" className="text-xs text-stone-500 bg-stone-50 rounded-full w-full text-center mt-1 py-1" value={char.stats[attr.id]} onChange={e => updateStat(attr.id, e.target.value)} />
+                                        </div>
+                                    ))}
+                                </div>
+                                
+                                {/* NUEVO: Dados de Golpe y Muerte (Vitality) */}
+                                <div className="bg-white rounded-lg shadow border border-stone-200 p-3 flex justify-between gap-4">
+                                    {/* Hit Dice */}
+                                    <div className="flex-1 text-center border-r border-stone-200 pr-2">
+                                        <div className="text-[10px] font-bold text-stone-500 uppercase mb-1">Dados de Golpe</div>
+                                        <div className="flex items-center justify-center gap-2 mb-1">
+                                            <input className="w-10 text-center font-bold border-b border-stone-300 text-sm" placeholder="1d10" value={char.hp.hitDice} onChange={e => setChar(p => ({...p, hp: {...p.hp, hitDice: e.target.value}}))} />
+                                            <span className="text-xs text-stone-400">Total:</span>
+                                            <input type="number" className="w-6 text-center font-bold border-b border-stone-300 text-sm" value={char.hp.hitDiceMax} onChange={e => setChar(p => ({...p, hp: {...p.hp, hitDiceMax: parseInt(e.target.value)||1}}))} />
+                                        </div>
+                                        <div className="flex items-center justify-center gap-2">
+                                            <button onClick={decreaseDice} className="w-6 h-6 bg-stone-200 rounded text-stone-600 font-bold flex items-center justify-center hover:bg-stone-300">-</button>
+                                            <span className="text-sm font-bold">{char.hp.hitDiceMax - char.hp.hitDiceUsed}</span>
+                                            <button onClick={increaseDice} className="w-6 h-6 bg-stone-200 rounded text-stone-600 font-bold flex items-center justify-center hover:bg-stone-300">+</button>
+                                        </div>
+                                        <div className="text-[9px] text-stone-400 mt-1">Disponibles</div>
+                                    </div>
+                                    {/* Death Saves */}
+                                    <div className="flex-1 text-center pl-2">
+                                        <div className="text-[10px] font-bold text-stone-500 uppercase mb-1">Salv. Muerte</div>
+                                        <div className="flex items-center justify-between text-xs mb-1">
+                                            <span className="text-green-600 font-bold text-[10px] uppercase">Éxito</span>
+                                            <div className="flex gap-1">
+                                                {[0,1,2].map(i => (
+                                                    <div key={i} onClick={() => toggleDeathSave('successes', i)} className="cursor-pointer">
+                                                        {i < (char.hp.deathSaves?.successes || 0) 
+                                                            ? <div className="text-green-600"><Icons.Heart size={14}/></div> 
+                                                            : <div className="w-3.5 h-3.5 rounded-full border border-green-600 opacity-30"></div>}
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                        <div className="flex items-center justify-between text-xs">
+                                            <span className="text-red-600 font-bold text-[10px] uppercase">Fallo</span>
+                                            <div className="flex gap-1">
+                                                {[0,1,2].map(i => (
+                                                    <div key={i} onClick={() => toggleDeathSave('failures', i)} className="cursor-pointer">
+                                                        {i < (char.hp.deathSaves?.failures || 0) 
+                                                            ? <div className="text-red-600"><Icons.Skull size={14}/></div> 
+                                                            : <div className="w-3.5 h-3.5 rounded-full border border-red-600 opacity-30"></div>}
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="bg-white rounded-lg shadow border border-stone-200 p-4">
+                                    <h3 className="font-serif font-bold border-b border-stone-200 mb-3 pb-1">Habilidades</h3>
+                                    <div className="grid grid-cols-1 gap-2">
+                                        <div className="mb-2">
+                                            <h4 className="text-xs font-bold text-stone-500 uppercase mb-1">Salvaciones</h4>
+                                            {ATTRIBUTES.map(attr => (
+                                                <div key={attr.id} className="flex justify-between items-center text-sm border-b border-stone-100 pb-1 last:border-0">
+                                                    <div className="flex items-center gap-2 flex-1" onClick={() => toggleSaveProficiency(attr.id)}>
+                                                        <div className={`w-3 h-3 rounded-full border border-stone-800 flex-shrink-0 ${char.savingThrows.includes(attr.id) ? 'bg-stone-800' : 'bg-transparent'}`}></div>
+                                                        <span className={`${char.savingThrows.includes(attr.id) ? 'font-bold text-stone-900' : 'text-stone-600'}`}>
+                                                            {attr.short}
+                                                        </span>
+                                                    </div>
+                                                    <span className="font-mono font-bold bg-stone-100 px-2 rounded ml-2">
+                                                        {getSaveBonus(attr.id) >= 0 ? `+${getSaveBonus(attr.id)}` : getSaveBonus(attr.id)}
+                                                    </span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                        <h4 className="text-xs font-bold text-stone-500 uppercase mb-1 mt-2">Skills</h4>
+                                        {SKILLS_LIST.map(skill => {
+                                            const { total, breakdown } = getSkillInfo(skill.id);
+                                            return (
+                                                <div key={skill.id} className="flex justify-between items-center text-sm border-b border-stone-100 pb-1 last:border-0">
+                                                    <div className="flex items-center gap-2 flex-1 overflow-hidden" onClick={() => toggleProficiency(skill.id)}>
+                                                        <div className={`w-3 h-3 rounded-full border border-stone-800 flex-shrink-0 ${char.proficiencies.includes(skill.id) ? 'bg-red-600' : 'bg-transparent'}`}></div>
+                                                        <div className="flex flex-col overflow-hidden">
+                                                            <span className={`truncate ${char.proficiencies.includes(skill.id) ? 'font-bold text-stone-900' : 'text-stone-600'}`}>
+                                                                {skill.label}
+                                                            </span>
+                                                            <span className="text-[9px] text-stone-400 truncate">{breakdown}</span>
+                                                        </div>
+                                                    </div>
+                                                    <span className="font-mono font-bold bg-stone-100 px-2 rounded ml-2">
+                                                        {total >= 0 ? `+${total}` : total}
+                                                    </span>
+                                                </div>
+                                            );
+                                        })}
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+
+                        {/* ... otros tabs (combat, spells, inventory) ... */}
+                         {activeTab === 'combat' && (
+                            <div className="p-4 space-y-4">
+                                <div className="bg-white rounded-lg shadow border border-stone-200 p-4">
+                                    <div className="flex justify-between items-center mb-4">
+                                        <h3 className="font-serif font-bold">Ataques</h3>
+                                        <button onClick={() => setShowAttackForm(true)} className="text-red-600"><Icons.Plus/></button>
+                                    </div>
+                                    {char.attacks.map(atk => (
+                                        <div key={atk.id} className="border border-stone-200 rounded-lg p-3 mb-2 bg-stone-50 flex justify-between items-center">
+                                            <div>
+                                                <div className="font-bold">{atk.name}</div>
+                                                <div className="text-xs text-stone-500">{atk.type}</div>
+                                            </div>
+                                            <div className="flex items-center gap-3">
+                                                <div className="text-right">
+                                                    <div className="font-bold text-red-700 bg-red-100 px-2 rounded mb-1">{atk.bonus}</div>
+                                                    <div className="text-xs font-mono">{atk.damage}</div>
+                                                </div>
+                                                <button onClick={() => setChar(p => ({...p, attacks: p.attacks.filter(x => x.id !== atk.id)}))} className="text-red-500 p-2"><Icons.Trash2 size={16}/></button>
+                                            </div>
+                                        </div>
+                                    ))}
+                                    {char.attacks.length === 0 && <div className="text-center text-stone-400 italic py-4">Sin ataques</div>}
+                                </div>
+                            </div>
+                        )}
+                        {activeTab === 'spells' && (
+                            <div className="p-4 space-y-4">
+                                <div className="grid grid-cols-2 gap-2 mb-4">
+                                    <div className="bg-indigo-900 text-white p-2 rounded text-center">
+                                        <div className="text-2xl font-bold">DC {8 + pb + calculateModifier(char.stats.int)}</div>
+                                        <div className="text-[8px] uppercase">Salvación</div>
+                                    </div>
+                                    <div className="bg-indigo-800 text-white p-2 rounded text-center">
+                                        <div className="text-2xl font-bold">+{pb + calculateModifier(char.stats.int)}</div>
+                                        <div className="text-[8px] uppercase">Ataque</div>
+                                    </div>
+                                </div>
+                                <div className="flex gap-2 overflow-x-auto pb-2 no-scrollbar snap-x snap-mandatory">
+                                    {[1,2,3,4,5,6,7,8,9].map(lvl => (
+                                        <div key={lvl} className="flex-shrink-0 bg-white border rounded p-2 w-24 text-center snap-center">
+                                            <div className="text-xs font-bold mb-1 flex items-center justify-center gap-1">
+                                                Nvl {lvl} <span className="text-stone-400 text-[10px]">#</span>
+                                                <input 
+                                                    type="number" 
+                                                    className="w-5 bg-stone-100 rounded text-center" 
+                                                    value={char.spellSlots[lvl]?.total || 0}
+                                                    onChange={e => setChar(p => ({...p, spellSlots: {...p.spellSlots, [lvl]: {...p.spellSlots[lvl], total: parseInt(e.target.value)||0}}}))}
+                                                />
+                                            </div>
+                                            <div className="flex justify-center gap-1 flex-wrap">
+                                                {Array.from({length: char.spellSlots[lvl]?.total || 0}).map((_, i) => (
+                                                    <div key={i} 
+                                                        onClick={() => setChar(p => ({...p, spellSlots: {...p.spellSlots, [lvl]: { ...p.spellSlots[lvl], used: i < char.spellSlots[lvl].used ? p.spellSlots[lvl].used - 1 : p.spellSlots[lvl].used + 1 }}}))}
+                                                        className={`w-3 h-3 rounded-full border border-indigo-900 ${i < char.spellSlots[lvl].used ? 'bg-indigo-900' : 'bg-white'}`}
+                                                    />
+                                                ))}
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                                <div className="bg-white rounded-lg shadow border border-stone-200 p-3">
+                                    <div className="flex justify-between mb-3"><h3 className="font-serif font-bold">Hechizos</h3><button onClick={() => setShowSpellForm(true)} className="text-indigo-600"><Icons.Plus/></button></div>
+                                    {char.spells.map(spell => (
+                                        <div key={spell.id} className="border-b border-stone-100 py-2 last:border-0 flex justify-between items-start">
+                                            <div className="flex-1">
+                                                <div className="flex justify-between items-start">
+                                                    <div className="font-bold text-sm">{spell.name} <span className="text-xs font-normal text-stone-500 ml-1">{spell.isCantrip ? '(Truco)' : `(N${spell.level})`}</span></div>
+                                                    {!spell.isCantrip && <button onClick={() => castSpell(spell)} className="text-[10px] bg-indigo-100 text-indigo-800 px-2 py-1 rounded font-bold mr-2">LANZAR</button>}
+                                                </div>
+                                                <div className="text-xs text-stone-500 mt-1 flex gap-2"><span>⏱ {spell.time}</span><span>📏 {spell.range}</span></div>
+                                                <p className="text-xs text-stone-700 mt-1 italic line-clamp-2">{spell.desc}</p>
+                                            </div>
+                                            <button onClick={() => setChar(p => ({...p, spells: p.spells.filter(x => x.id !== spell.id)}))} className="text-red-500 p-1"><Icons.Trash2 size={16}/></button>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+                        {activeTab === 'inventory' && (
+                            <div className="p-4 space-y-4">
+                                <div className="grid grid-cols-5 gap-2 bg-white p-3 rounded-lg shadow border border-stone-200">
+                                    {['cp', 'sp', 'ep', 'gp', 'pp'].map(curr => (<div key={curr} className="text-center"><div className="text-[10px] font-bold uppercase text-stone-500">{curr}</div><input type="number" className="w-full text-center font-bold border-b border-stone-300" value={char.money[curr]} onChange={e => setChar(p => ({...p, money: {...p.money, [curr]: parseInt(e.target.value)||0}}))} /></div>))}
+                                </div>
+                                <div className="bg-white p-3 rounded-lg shadow border border-stone-200">
+                                    <h3 className="font-serif font-bold mb-2">Mochila</h3>
+                                    <textarea value={char.inventory} onChange={e => setChar({...char, inventory: e.target.value})} className="w-full h-32 text-sm bg-stone-50 border p-2 rounded mb-4" placeholder="Lista de equipo..." />
+                                    <h3 className="font-serif font-bold mb-2 pt-2 border-t">Notas y Rasgos</h3>
+                                    {char.backgroundFeature && <div className="mb-2 p-2 bg-stone-50 border rounded text-xs text-stone-700 italic">{char.backgroundFeature}</div>}
+                                    <textarea value={char.notes} onChange={e => setChar({...char, notes: e.target.value})} className="w-full h-32 text-sm bg-stone-50 border p-2 rounded" placeholder="Notas de aventura..." />
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                    {/* Navegación Inferior */}
+                    <div className="bg-stone-900 text-stone-400 flex justify-around py-3 border-t border-stone-800 fixed bottom-0 w-full z-50">
+                        <button onClick={() => setActiveTab('main')} className={`flex flex-col items-center ${activeTab === 'main' ? 'text-white' : ''}`}><Icons.Shield size={20}/><span className="text-[10px] mt-1">Stats</span></button>
+                        <button onClick={() => setActiveTab('combat')} className={`flex flex-col items-center ${activeTab === 'combat' ? 'text-red-500' : ''}`}><Icons.Sword size={20}/><span className="text-[10px] mt-1">Acciones</span></button>
+                        <button onClick={() => setActiveTab('spells')} className={`flex flex-col items-center ${activeTab === 'spells' ? 'text-indigo-400' : ''}`}><Icons.Zap size={20}/><span className="text-[10px] mt-1">Hechizos</span></button>
+                        <button onClick={() => setActiveTab('inventory')} className={`flex flex-col items-center ${activeTab === 'inventory' ? 'text-amber-400' : ''}`}><Icons.Backpack size={20}/><span className="text-[10px] mt-1">Mochila</span></button>
+                    </div>
+                </div>
+            );
+        };
+
+        function App() {
+            const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+            const [forceMobile, setForceMobile] = useState(false);
+            const [activeTab, setActiveTab] = useState('main'); 
+            const [showRestModal, setShowRestModal] = useState(false);
+            const [showAvatarModal, setShowAvatarModal] = useState(false); // New State
+            const [previewImage, setPreviewImage] = useState(null); // New State
+
+            useEffect(() => {
+                const handleResize = () => setIsMobile(window.innerWidth < 768);
+                window.addEventListener('resize', handleResize);
+                return () => window.removeEventListener('resize', handleResize);
+            }, []);
+
+            const [mode, setMode] = useState('play');
+            const [pageSize, setPageSize] = useState('a4'); 
+            
+            const [char, setChar] = useState(() => {
+                const saved = localStorage.getItem('dnd_char_v3');
+                const defaults = {
+                    name: 'Nuevo Héroe', class: 'Guerrero', race: 'Humano', background: '', backgroundFeature: '', level: 1, backgroundUrl: DEFAULT_BG,
+                    profileImage: null, // New Field
+                    stats: { str: 10, dex: 10, con: 10, int: 10, wis: 10, cha: 10 },
+                    proficiencies: [], savingThrows: [],
+                    hp: { current: 10, max: 10, temp: 0, hitDice: '1d10', hitDiceMax: 1, hitDiceUsed: 0, deathSaves: { successes: 0, failures: 0 } },
+                    ac: 10, speed: 30, initiativeBonus: 0,
+                    attacks: [], spells: [], inventory: '', notes: '',
+                    money: { cp: 0, sp: 0, ep: 0, gp: 0, pp: 0 },
+                    inspiration: 0, languages: '',
+                    spellSlots: { 1: {total:0, used:0}, 2: {total:0, used:0}, 3: {total:0, used:0}, 4: {total:0, used:0}, 5: {total:0, used:0}, 6: {total:0, used:0}, 7: {total:0, used:0}, 8: {total:0, used:0}, 9: {total:0, used:0} }
+                };
+                if (!saved) return defaults;
+                const loaded = JSON.parse(saved);
+                return { 
+                    ...defaults, ...loaded, 
+                    money: { ...defaults.money, ...(loaded.money || {}) },
+                    spellSlots: { ...defaults.spellSlots, ...(loaded.spellSlots || {}) },
+                    inspiration: loaded.inspiration || 0,
+                    hp: { ...defaults.hp, ...(loaded.hp || {}) },
+                    profileImage: loaded.profileImage || null // Load profile image
+                };
+            });
+
+            // ... (Layout & Effects same as before) ...
+            const defaultLayout = {
+                header: { x: 20, y: 20 }, inspiration: { x: 620, y: 20 }, stats: { x: 20, y: 130 }, skills: { x: 130, y: 130 }, combat: { x: 400, y: 130 },
+                attacks: { x: 400, y: 350 }, spells: { x: 400, y: 600 }, spellSlots: { x: 20, y: 600 }, money: { x: 200, y: 600 }, languages: { x: 20, y: 760 }, inventory: { x: 400, y: 860 }, bgControls: { x: 20, y: 920 }
+            };
+
+            const [layout, setLayout] = useState(() => {
+                const savedLayout = localStorage.getItem('dnd_layout_v3');
+                if (savedLayout) { try { return { ...defaultLayout, ...JSON.parse(savedLayout) }; } catch (e) { return defaultLayout; } }
+                return defaultLayout;
+            });
+
+            useEffect(() => { localStorage.setItem('dnd_char_v3', JSON.stringify(char)); }, [char]);
+            useEffect(() => { localStorage.setItem('dnd_layout_v3', JSON.stringify(layout)); }, [layout]);
+
+            const pb = calculateProficiency(char.level);
+            
+            // ... (Handlers same as before) ...
+            const updateStat = (id, val) => setChar(p => ({ ...p, stats: { ...p.stats, [id]: parseInt(val) || 10 } }));
+            const toggleProficiency = (id) => setChar(p => ({ ...p, proficiencies: p.proficiencies.includes(id) ? p.proficiencies.filter(x => x !== id) : [...p.proficiencies, id] }));
+            const toggleSaveProficiency = (id) => setChar(p => ({ ...p, savingThrows: p.savingThrows.includes(id) ? p.savingThrows.filter(x => x !== id) : [...p.savingThrows, id] }));
+            const toggleDeathSave = (type, index) => { setChar(p => { const current = p.hp.deathSaves?.[type] || 0; const newVal = (index + 1) === current ? index : index + 1; return { ...p, hp: { ...p.hp, deathSaves: { ...(p.hp.deathSaves||{successes:0, failures:0}), [type]: newVal } } }; }); };
+            
+            const getSkillInfo = (skillId) => { const skill = SKILLS_LIST.find(s => s.id === skillId); const attrMod = calculateModifier(char.stats[skill.attr]); const isProficient = char.proficiencies.includes(skillId); const total = attrMod + (isProficient ? pb : 0); let profSource = null; if (isProficient) { const currentBg = BACKGROUNDS_SRD.find(bg => bg.name === char.background); if (currentBg && currentBg.skills.includes(skillId)) profSource = char.background; else profSource = "Competencia"; } const breakdown = `(${attrMod >= 0 ? '+' : ''}${attrMod} ${skill.attr.toUpperCase()}${isProficient ? ` +${pb} ${profSource}` : ''})`; return { total, breakdown }; };
+            const getSaveBonus = (statId) => calculateModifier(char.stats[statId]) + (char.savingThrows.includes(statId) ? pb : 0);
+            
+            const decreaseDice = () => setChar(p => ({...p, hp: {...p.hp, hitDiceUsed: Math.min(p.hp.hitDiceMax, p.hp.hitDiceUsed + 1)}}));
+            const increaseDice = () => setChar(p => ({...p, hp: {...p.hp, hitDiceUsed: Math.max(0, p.hp.hitDiceUsed - 1)}}));
+
+            // --- IMAGE UPLOAD LOGIC ---
+            const handleImageUpload = (e) => {
+                const file = e.target.files[0];
+                if (!file) return;
+
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    const img = new Image();
+                    img.onload = () => {
+                        const canvas = document.createElement('canvas');
+                        const ctx = canvas.getContext('2d');
+                        // Resize to 300x300 square for profile
+                        const size = 300;
+                        canvas.width = size;
+                        canvas.height = size;
+                        
+                        // Calculate center crop
+                        const minDim = Math.min(img.width, img.height);
+                        const sx = (img.width - minDim) / 2;
+                        const sy = (img.height - minDim) / 2;
+                        
+                        ctx.drawImage(img, sx, sy, minDim, minDim, 0, 0, size, size);
+                        
+                        const dataUrl = canvas.toDataURL('image/jpeg', 0.8);
+                        setPreviewImage(dataUrl);
+                    }
+                    img.src = event.target.result;
+                }
+                reader.readAsDataURL(file);
+            };
+
+            const saveAvatar = () => {
+                if (previewImage) {
+                    setChar({...char, profileImage: previewImage});
+                    setShowAvatarModal(false);
+                    setPreviewImage(null);
+                }
+            };
+
+
+            // ... (Drag same as before) ...
+            const [dragging, setDragging] = useState(null); const [isColliding, setIsColliding] = useState(false); const sheetRef = useRef(null); const checkCollision = (r1, r2) => !(r2.left >= r1.right || r2.right <= r1.left || r2.top >= r1.bottom || r2.bottom <= r1.top); const snapToGrid = (val) => Math.round(val / GRID_SIZE) * GRID_SIZE;
+            const handleMouseDown = (e, id) => { if (mode !== 'layout' || isMobile) return; e.preventDefault(); const widget = layout[id]; if (!widget) return; const sheetRect = sheetRef.current.getBoundingClientRect(); setDragging({ id, startX: e.clientX, startY: e.clientY, originalPos: { ...widget }, offsetX: e.clientX - (sheetRect.left + widget.x), offsetY: e.clientY - (sheetRect.top + widget.y) }); setIsColliding(false); };
+            useEffect(() => { const handleMouseMove = (e) => { if (!dragging || !sheetRef.current) return; const sheetRect = sheetRef.current.getBoundingClientRect(); const rawX = (e.clientX - sheetRect.left) - dragging.offsetX; const rawY = (e.clientY - sheetRect.top) - dragging.offsetY; const snappedX = snapToGrid(rawX); const snappedY = snapToGrid(rawY); const currentEl = document.getElementById(`widget-${dragging.id}`); if (!currentEl) return; const currentRect = { left: snappedX, top: snappedY, right: snappedX + currentEl.offsetWidth, bottom: snappedY + currentEl.offsetHeight }; let collisionFound = false; Object.keys(layout).forEach(key => { if (key === dragging.id) return; const otherEl = document.getElementById(`widget-${key}`); if (!otherEl) return; const otherPos = layout[key]; const otherRect = { left: otherPos.x, top: otherPos.y, right: otherPos.x + otherEl.offsetWidth, bottom: otherPos.y + otherEl.offsetHeight }; if (checkCollision(currentRect, otherRect)) collisionFound = true; }); setIsColliding(collisionFound); setLayout(prev => ({ ...prev, [dragging.id]: { x: snappedX, y: snappedY } })); }; const handleMouseUp = () => { if (dragging && isColliding) setLayout(prev => ({ ...prev, [dragging.id]: dragging.originalPos })); setDragging(null); setIsColliding(false); }; if (dragging) { window.addEventListener('mousemove', handleMouseMove); window.addEventListener('mouseup', handleMouseUp); } return () => { window.removeEventListener('mousemove', handleMouseMove); window.removeEventListener('mouseup', handleMouseUp); }; }, [dragging, isColliding, layout]);
+            
+            // ... (Rest logic same as before) ...
+            const handleShortRest = () => { setShowRestModal(false); }; const handleLongRest = () => { setChar(prev => { const newSlots = { ...prev.spellSlots }; Object.keys(newSlots).forEach(k => newSlots[k] = { ...newSlots[k], used: 0 }); return { ...prev, hp: { ...prev.hp, current: prev.hp.max }, spellSlots: newSlots, hp: { ...prev.hp, current: prev.hp.max, hitDiceUsed: Math.max(0, prev.hp.hitDiceUsed - Math.ceil(prev.hp.hitDiceMax / 2)) } }; }); setShowRestModal(false); };
+            
+            // ... (Cast Spell same as before) ...
+            const castSpell = (spell) => { if (spell.isCantrip) return; const base = parseInt(spell.level); const avail = []; for(let l=base; l<=9; l++) if(char.spellSlots[l] && char.spellSlots[l].used < char.spellSlots[l].total) avail.push(l); if(avail.length===0) return alert("Sin espacios disponibles."); if(avail.length===1 && avail[0]===base) spendSlot(base); else setCastModalData({ spell, availableLevels: avail }); }; const spendSlot = (lvl) => setChar(p => ({...p, spellSlots: {...p.spellSlots, [lvl]: {...p.spellSlots[lvl], used: p.spellSlots[lvl].used + 1}}}));
+            const selectBackground = (bg) => { const featureText = `[${bg.feature}]: ${bg.desc}`; const newNotes = char.notes.includes(bg.feature) ? char.notes : (char.notes ? char.notes + "\n\n" + featureText : featureText); const newProfs = [...char.proficiencies]; bg.skills.forEach(skill => { if (!newProfs.includes(skill)) newProfs.push(skill); }); setChar({ ...char, background: bg.name, backgroundFeature: featureText, notes: newNotes, proficiencies: newProfs }); setShowBgModal(false); };
+            
+            // ... (Modals) ...
+            const [showSpellForm, setShowSpellForm] = useState(false); const [showAttackForm, setShowAttackForm] = useState(false); const [showBgModal, setShowBgModal] = useState(false); const [castModalData, setCastModalData] = useState(null);
+
+            const modals = (
+                <>
+                {showAvatarModal && (
+                    <div className="absolute inset-0 bg-black/80 z-[70] flex items-center justify-center p-4">
+                        <div className="bg-white p-6 rounded-lg w-full max-w-sm text-center">
+                             <h2 className="text-xl font-bold mb-4">Foto de Perfil</h2>
+                             <div className="mb-4 relative w-48 h-48 mx-auto bg-stone-200 rounded-full overflow-hidden border-4 border-stone-800 shadow-inner">
+                                 {previewImage ? (
+                                    <img src={previewImage} className="w-full h-full object-cover" />
+                                 ) : (
+                                    <div className="w-full h-full flex items-center justify-center text-stone-400">Sin imagen</div>
+                                 )}
+                                 {/* Sombra de círculo overlay para confirmar */}
+                                 <div className="absolute inset-0 rounded-full shadow-[inset_0_0_20px_rgba(0,0,0,0.5)] pointer-events-none"></div>
+                             </div>
+                             
+                             <input type="file" accept="image/*" onChange={handleImageUpload} className="mb-4 text-sm w-full" />
+                             
+                             <div className="flex gap-2">
+                                <button onClick={() => { setShowAvatarModal(false); setPreviewImage(null); }} className="w-1/2 py-2 text-stone-500 border border-stone-300 rounded">Cancelar</button>
+                                <button onClick={saveAvatar} className="w-1/2 py-2 bg-blue-600 text-white rounded font-bold disabled:opacity-50" disabled={!previewImage}>Guardar</button>
+                             </div>
+                        </div>
+                    </div>
+                )}
+                {/* ... other modals (Rest, Attack, Spell, BG, Cast) ... */}
+                {showRestModal && (
+                    <div className="fixed inset-0 bg-black/80 z-[60] flex items-center justify-center p-4">
+                        <div className="bg-stone-900 text-white p-6 rounded-lg w-full max-w-sm border border-stone-700">
+                            <div className="flex justify-center mb-4 text-orange-500"><Icons.Campfire size={48}/></div>
+                            <h2 className="text-2xl font-serif font-bold text-center mb-2">Hoguera</h2>
+                            <div className="space-y-3 mt-4">
+                                <button onClick={handleShortRest} className="w-full py-3 bg-stone-700 rounded-lg font-bold hover:bg-stone-600 flex items-center justify-center gap-2"><span>Descanso Corto</span></button>
+                                <button onClick={handleLongRest} className="w-full py-3 bg-red-800 rounded-lg font-bold hover:bg-red-700 flex items-center justify-center gap-2 border border-red-900"><span>Descanso Largo</span></button>
+                                <button onClick={() => setShowRestModal(false)} className="w-full py-2 text-stone-500 mt-2">Cancelar</button>
+                            </div>
+                        </div>
+                    </div>
+                )}
+                {showAttackForm && (
+                    <div className="fixed inset-0 bg-black/90 z-[70] flex items-center justify-center p-4">
+                        <div className="bg-white p-6 rounded-lg w-full max-w-sm text-stone-900">
+                            <h2 className="text-xl font-bold mb-4">Nuevo Ataque</h2>
+                            <form onSubmit={(e) => {
+                                e.preventDefault(); const fd = new FormData(e.target);
+                                setChar(p => ({...p, attacks: [...p.attacks, { id: Date.now(), name: fd.get('name'), bonus: fd.get('bonus'), damage: fd.get('damage'), type: fd.get('type') }]}));
+                                setShowAttackForm(false);
+                            }} className="space-y-3">
+                                <input name="name" required placeholder="Ej: Gran Hacha" className="w-full border p-3 rounded" />
+                                <div className="flex gap-2"><input name="bonus" placeholder="Ej: +5" className="w-1/2 border p-3 rounded" /><input name="damage" placeholder="Ej: 1d12 + 3" className="w-1/2 border p-3 rounded" /></div>
+                                <input name="type" placeholder="Ej: Cortante" className="w-full border p-3 rounded" />
+                                <div className="flex gap-2 mt-4"><button type="button" onClick={() => setShowAttackForm(false)} className="w-1/2 py-2 text-stone-500">Cancelar</button><button type="submit" className="w-1/2 py-2 bg-red-700 text-white rounded font-bold">Guardar</button></div>
+                            </form>
+                        </div>
+                    </div>
+                )}
+                {showSpellForm && (
+                    <div className="fixed inset-0 bg-black/90 z-[70] flex items-center justify-center p-4">
+                        <div className="bg-white p-6 rounded-lg w-full max-w-sm max-h-[90vh] overflow-y-auto text-stone-900">
+                            <h2 className="text-xl font-bold mb-4 text-indigo-900">Nuevo Hechizo</h2>
+                            <form onSubmit={(e) => {
+                                e.preventDefault(); const fd = new FormData(e.target);
+                                setChar(p => ({...p, spells: [...p.spells, { id: Date.now(), name: fd.get('name'), level: fd.get('isCantrip') ? 0 : fd.get('level'), isCantrip: fd.get('isCantrip') === 'on', time: fd.get('time'), range: fd.get('range'), desc: fd.get('desc') }]}));
+                                setShowSpellForm(false);
+                            }} className="space-y-3">
+                                <div className="flex items-center gap-2 mb-2 bg-indigo-50 p-2 rounded">
+                                    <input type="checkbox" name="isCantrip" id="isCantrip" className="w-5 h-5" />
+                                    <label htmlFor="isCantrip" className="font-bold text-indigo-900">Es un Truco</label>
+                                </div>
+                                <input name="name" required placeholder="Ej: Bola de Fuego" className="w-full border p-3 rounded" />
+                                <input name="level" type="number" placeholder="Nivel" className="w-full border p-3 rounded" />
+                                <div className="flex gap-2"><input name="time" placeholder="Ej: 1 acción" className="w-1/2 border p-3 rounded" /><input name="range" placeholder="Ej: 150 pies" className="w-1/2 border p-3 rounded" /></div>
+                                <textarea name="desc" placeholder="Ej: Una brillante racha parpadea..." className="w-full border p-3 rounded h-32"></textarea>
+                                <div className="flex gap-2 mt-4"><button type="button" onClick={() => setShowSpellForm(false)} className="w-1/2 py-2 text-stone-500">Cancelar</button><button type="submit" className="w-1/2 py-2 bg-indigo-700 text-white rounded font-bold">Guardar</button></div>
+                            </form>
+                        </div>
+                    </div>
+                )}
+                {showBgModal && (
+                    <div className="fixed inset-0 bg-black/50 z-[60] flex items-center justify-center backdrop-blur-sm p-4">
+                        <div className="bg-white rounded-lg shadow-xl w-full max-w-2xl max-h-[80vh] overflow-hidden flex flex-col text-stone-900">
+                            <div className="p-4 border-b flex justify-between items-center bg-stone-100">
+                                <h2 className="text-xl font-bold font-serif">Elige un Trasfondo (SRD)</h2>
+                                <button onClick={() => setShowBgModal(false)}><Icons.X size={20}/></button>
+                            </div>
+                            <div className="overflow-y-auto p-4 space-y-4">
+                                {BACKGROUNDS_SRD.map(bg => (
+                                    <div key={bg.name} className="border rounded p-3 hover:bg-stone-50 transition-colors cursor-pointer group" onClick={() => selectBackground(bg)}>
+                                        <div className="flex justify-between items-start"><h3 className="font-bold text-lg text-indigo-800">{bg.name}</h3><span className="text-xs bg-indigo-100 text-indigo-800 px-2 py-1 rounded opacity-0 group-hover:opacity-100">Seleccionar</span></div>
+                                        <p className="text-xs font-bold mt-1 text-stone-700">Rasgo: {bg.feature}</p>
+                                        <p className="text-sm text-stone-600 mt-1 line-clamp-2">{bg.desc}</p>
+                                        <p className="text-xs text-stone-500 mt-1 italic">Competencias: {bg.skills.join(', ')}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                )}
+                {castModalData && (
+                    <div className="fixed inset-0 bg-black/90 z-[70] flex items-center justify-center p-4">
+                        <div className="bg-white p-6 rounded-lg w-full max-w-sm text-stone-900">
+                            <h2 className="text-lg font-bold mb-4">Lanzar "{castModalData.spell.name}"</h2>
+                            <div className="space-y-2 mb-4">
+                                {castModalData.availableLevels.map(lvl => (
+                                    <button key={lvl} onClick={() => { spendSlot(lvl); setCastModalData(null); }} className="w-full text-left p-3 border rounded hover:bg-indigo-50 flex justify-between items-center text-stone-900">
+                                        <span className="font-bold">Nivel {lvl}</span>
+                                        <span className="text-xs bg-indigo-100 text-indigo-800 px-2 py-1 rounded">Quedan {char.spellSlots[lvl].total - char.spellSlots[lvl].used}</span>
+                                    </button>
+                                ))}
+                            </div>
+                            <button onClick={() => setCastModalData(null)} className="w-full py-2 text-stone-500">Cancelar</button>
+                        </div>
+                    </div>
+                )}
+                </>
+            );
+
+            if (isMobile || forceMobile) {
+                return (
+                    <div className={forceMobile ? "fixed inset-0 bg-stone-950 flex items-center justify-center z-50 p-4" : "h-full"}>
+                         {forceMobile ? (
+                             <div className="relative w-full max-w-[400px] h-full max-h-[850px] aspect-[9/19.5] bg-black rounded-[2.5rem] border-[8px] border-stone-800 shadow-2xl overflow-hidden ring-1 ring-stone-700" style={{ transform: 'translateZ(0)' }}> 
+                                <MobileShell 
+                                    char={char} setChar={setChar} activeTab={activeTab} setActiveTab={setActiveTab} 
+                                    setShowRestModal={setShowRestModal} setShowAttackForm={setShowAttackForm} setShowSpellForm={setShowSpellForm}
+                                    castSpell={castSpell} pb={pb} setShowBgModal={setShowBgModal} setForceMobile={setForceMobile} isSimulator={true}
+                                    toggleDeathSave={toggleDeathSave} 
+                                    getSkillInfo={getSkillInfo} getSaveBonus={getSaveBonus} toggleProficiency={toggleProficiency} updateStat={updateStat} toggleSaveProficiency={toggleSaveProficiency}
+                                    decreaseDice={decreaseDice} increaseDice={increaseDice}
+                                    setShowAvatarModal={setShowAvatarModal} // Pass setter
+                                />
+                                {modals}
+                                <button onClick={() => setForceMobile(false)} className="absolute top-8 right-8 text-stone-500 hover:text-white flex items-center gap-2 bg-stone-800 px-4 py-2 rounded-full font-bold shadow-lg transform translate-x-full -mr-16 translate-y-0" style={{position:'absolute', top:'20px', right:'-200px'}}>
+                                    <Icons.X size={20} /> CERRAR SIMULADOR
+                                </button>
+                             </div>
+                         ) : (
+                            <>
+                                <MobileShell 
+                                    char={char} setChar={setChar} activeTab={activeTab} setActiveTab={setActiveTab} 
+                                    setShowRestModal={setShowRestModal} setShowAttackForm={setShowAttackForm} setShowSpellForm={setShowSpellForm}
+                                    castSpell={castSpell} pb={pb} setShowBgModal={setShowBgModal} setForceMobile={setForceMobile} isSimulator={false}
+                                    toggleDeathSave={toggleDeathSave}
+                                    getSkillInfo={getSkillInfo} getSaveBonus={getSaveBonus} toggleProficiency={toggleProficiency} updateStat={updateStat} toggleSaveProficiency={toggleSaveProficiency}
+                                    decreaseDice={decreaseDice} increaseDice={increaseDice}
+                                    setShowAvatarModal={setShowAvatarModal} // Pass setter
+                                />
+                                {modals}
+                            </>
+                         )}
+                    </div>
+                );
+            }
+
+            // --- RENDERIZADO DESKTOP (Hoja A4) ---
+            return (
+                <div className="min-h-screen bg-stone-900 text-stone-900 font-sans pb-20">
+                    <nav className="fixed top-0 w-full bg-stone-800 text-stone-100 p-3 shadow-lg z-50 flex flex-wrap gap-4 items-center justify-between border-b border-stone-700 desktop-only">
+                        <div className="flex items-center gap-2">
+                            <div className="bg-red-700 p-1.5 rounded-lg"><Icons.Sword size={18} /></div>
+                            <h1 className="text-lg font-bold tracking-wider font-serif">LA FORJA v5.0</h1>
+                        </div>
+                        <div className="flex gap-2">
+                            <button onClick={() => setForceMobile(true)} className="flex items-center gap-2 px-3 py-1.5 bg-stone-700 hover:bg-stone-600 rounded font-semibold text-xs" title="Forzar Vista Móvil">
+                                <Icons.Smartphone size={16}/> MÓVIL
+                            </button>
+                            <button onClick={() => setPageSize(pageSize === 'a4' ? 'wide' : 'a4')} className="flex items-center gap-2 px-3 py-1.5 bg-stone-700 hover:bg-stone-600 rounded font-semibold text-xs">
+                                {pageSize === 'a4' ? <Icons.Maximize size={16}/> : <Icons.Minimize size={16}/>} {pageSize === 'a4' ? 'A4' : 'PANORÁMICO'}
+                            </button>
+                            <button onClick={() => setMode(mode === 'play' ? 'layout' : 'play')} className={`flex items-center gap-2 px-3 py-1.5 rounded font-semibold transition-colors text-xs ${mode === 'layout' ? 'bg-blue-600 hover:bg-blue-700' : 'bg-stone-700 hover:bg-stone-600'}`}>
+                                {mode === 'layout' ? <Icons.Save size={16}/> : <Icons.Move size={16}/>} {mode === 'layout' ? 'GUARDAR' : 'MOVER'}
+                            </button>
+                            <button onClick={() => window.print()} className="flex items-center gap-2 px-3 py-1.5 bg-stone-700 hover:bg-stone-600 rounded font-semibold text-xs">
+                                <Icons.Download size={16} /> IMPRIMIR
+                            </button>
+                        </div>
+                    </nav>
+
+                    <div className="pt-20 flex justify-center overflow-auto px-4 w-full">
+                        <div 
+                            ref={sheetRef}
+                            className={`relative bg-white shadow-2xl overflow-hidden print-shadow-none print-m-0 sheet-container transition-all duration-300 ease-in-out`}
+                            style={{ 
+                                width: pageSize === 'a4' ? '210mm' : '95%', 
+                                minHeight: '297mm',
+                                height: pageSize === 'wide' ? 'auto' : '297mm',
+                                paddingBottom: pageSize === 'wide' ? '100px' : '0',
+                                backgroundColor: 'white',
+                                backgroundImage: mode === 'layout'
+                                    ? `linear-gradient(to right, rgba(0,0,0,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.05) 1px, transparent 1px)${char.backgroundUrl ? `, url(${char.backgroundUrl})` : ''}`
+                                    : (char.backgroundUrl ? `url(${char.backgroundUrl})` : 'none'),
+                                backgroundSize: mode === 'layout' 
+                                    ? `${GRID_SIZE}px ${GRID_SIZE}px${char.backgroundUrl ? ', cover' : ''}` 
+                                    : 'cover',
+                                backgroundPosition: 'center',
+                                backgroundRepeat: 'no-repeat'
+                            }}
+                        >
+                            <div className="absolute inset-0 bg-white/30 pointer-events-none"></div>
+
+                            {/* HEADER */}
+                            <WidgetWrapper id="header" title="Encabezado" layout={layout} mode={mode} dragging={dragging} onMouseDown={handleMouseDown} isColliding={isColliding}>
+                                <div className="flex gap-4 items-end w-[580px]">
+                                    <div className="flex-1">
+                                        <label className="text-[10px] font-bold text-stone-500 uppercase">Personaje</label>
+                                        <input value={char.name} onChange={(e) => setChar({...char, name: e.target.value})} className="w-full bg-transparent border-b-2 border-stone-800 text-xl font-serif font-bold focus:outline-none focus:border-red-700 px-1" />
+                                    </div>
+                                    <div className="w-20">
+                                        <label className="text-[10px] font-bold text-stone-500 uppercase">Nivel</label>
+                                        <input type="number" value={char.level} onChange={(e) => setChar({...char, level: parseInt(e.target.value) || 1})} className="w-full bg-transparent border-b-2 border-stone-800 text-xl font-bold text-center focus:outline-none" />
+                                    </div>
+                                    <div className="w-40 flex flex-col items-center">
+                                        <label className="text-[10px] font-bold text-stone-500 uppercase text-center w-full">Bon. Competencia</label>
+                                        <div className="text-xl font-bold font-serif text-stone-800 border-2 border-stone-800 rounded-full w-10 h-10 flex items-center justify-center bg-stone-100 mt-1">+{pb}</div>
+                                    </div>
+                                </div>
+                                <div className="flex gap-2 mt-2 w-[580px]">
+                                    <input placeholder="Clase" value={char.class} onChange={(e) => setChar({...char, class: e.target.value})} className="bg-transparent border-b border-stone-400 text-xs w-1/3 px-1" />
+                                    <input placeholder="Raza" value={char.race} onChange={(e) => setChar({...char, race: e.target.value})} className="bg-transparent border-b border-stone-400 text-xs w-1/3 px-1" />
+                                    <div className="w-1/3 relative flex items-center border-b border-stone-400">
+                                        <input placeholder="Trasfondo" value={char.background} onChange={(e) => setChar({...char, background: e.target.value})} className="bg-transparent text-xs w-full px-1 focus:outline-none" />
+                                        <button onClick={() => setShowBgModal(true)} className="text-stone-400 hover:text-blue-600 px-1"><Icons.Book size={12}/></button>
+                                    </div>
+                                </div>
+                            </WidgetWrapper>
+
+                            {/* INSPIRATION */}
+                            <WidgetWrapper id="inspiration" title="Inspiración" layout={layout} mode={mode} dragging={dragging} onMouseDown={handleMouseDown} isColliding={isColliding}>
+                                <div className="flex flex-col items-center w-20">
+                                    <label className="text-[10px] font-bold text-stone-500 uppercase mb-1">Inspiración</label>
+                                    <div className="relative">
+                                         <div className="absolute inset-0 flex items-center justify-center opacity-10 pointer-events-none">
+                                            <Icons.Sparkles size={24} />
+                                         </div>
+                                         <input 
+                                            type="number" 
+                                            value={char.inspiration} 
+                                            onChange={e => setChar({...char, inspiration: parseInt(e.target.value) || 0})}
+                                            className="w-12 h-12 text-center text-2xl font-bold border-2 border-stone-800 rounded-full bg-transparent focus:outline-none"
+                                         />
+                                    </div>
+                                </div>
+                            </WidgetWrapper>
+
+                            {/* STATS */}
+                            <WidgetWrapper id="stats" title="Atributos" layout={layout} mode={mode} dragging={dragging} onMouseDown={handleMouseDown} isColliding={isColliding}>
+                                <div className="flex flex-col gap-2 w-24">
+                                    {ATTRIBUTES.map(attr => {
+                                        const mod = calculateModifier(char.stats[attr.id]);
+                                        return (
+                                            <div key={attr.id} className="relative bg-stone-50 border border-stone-400 rounded p-1 text-center pb-2">
+                                                <label className="text-[9px] font-bold uppercase tracking-widest block mb-1">{attr.label}</label>
+                                                <input type="number" value={char.stats[attr.id]} onChange={(e) => updateStat(attr.id, e.target.value)} className="w-full text-center font-bold text-lg bg-transparent p-0 leading-none mb-1" />
+                                                <div className="absolute -bottom-2.5 inset-x-0 mx-auto w-7 h-5 bg-white border border-stone-400 rounded-full flex items-center justify-center text-[11px] font-bold shadow-sm">{mod >= 0 ? `+${mod}` : mod}</div>
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                            </WidgetWrapper>
+
+                            {/* SKILLS */}
+                            <WidgetWrapper id="skills" title="Habilidades" layout={layout} mode={mode} dragging={dragging} onMouseDown={handleMouseDown} isColliding={isColliding}>
+                                <div className="w-48 text-xs space-y-2">
+                                    <div>
+                                        <h3 className="font-bold border-b border-stone-300 mb-1">Salvaciones</h3>
+                                        {ATTRIBUTES.map(attr => (
+                                            <div key={attr.id} className="flex items-center gap-1.5 hover:bg-stone-50 rounded px-1 py-0.5">
+                                                <button onClick={() => toggleSaveProficiency(attr.id)} className={`w-3 h-3 rounded-full border border-stone-800 flex-shrink-0 ${char.savingThrows.includes(attr.id) ? 'bg-stone-800' : ''}`} />
+                                                <span className="w-6 text-right font-mono font-bold text-xs">{getSaveBonus(attr.id) >= 0 ? `+${getSaveBonus(attr.id)}` : getSaveBonus(attr.id)}</span>
+                                                <span className="uppercase text-[10px] text-stone-500 font-bold ml-1">{attr.short}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                    <div>
+                                        <h3 className="font-bold border-b border-stone-300 mb-1">Habilidades</h3>
+                                        {SKILLS_LIST.map(skill => {
+                                            const { total, breakdown } = getSkillInfo(skill.id);
+                                            return (
+                                                <div key={skill.id} className="flex items-center gap-1.5 hover:bg-stone-50 rounded px-1 py-0.5 overflow-hidden">
+                                                    <button onClick={() => toggleProficiency(skill.id)} className={`w-3 h-3 rounded-full border border-stone-800 flex-shrink-0 ${char.proficiencies.includes(skill.id) ? 'bg-stone-800' : ''}`} />
+                                                    <span className="w-6 text-right font-mono font-bold text-xs flex-shrink-0">{total >= 0 ? `+${total}` : total}</span>
+                                                    <div className="flex flex-col leading-none overflow-hidden min-w-0">
+                                                        <span className="truncate font-semibold text-[10px]">{skill.label}</span>
+                                                        <span className="text-[8px] text-stone-400 truncate">{breakdown}</span>
+                                                    </div>
+                                                </div>
+                                            );
+                                        })}
+                                    </div>
+                                </div>
+                            </WidgetWrapper>
+
+                            {/* COMBAT */}
+                            <WidgetWrapper id="combat" title="Combate" layout={layout} mode={mode} dragging={dragging} onMouseDown={handleMouseDown} isColliding={isColliding}>
+                                <div className="flex gap-2 w-72 justify-between">
+                                    <div className="flex flex-col items-center">
+                                        <div className="border-2 border-stone-800 rounded-t-lg rounded-b-2xl w-14 h-16 flex items-center justify-center bg-white">
+                                            <input type="number" value={char.ac} onChange={e => setChar({...char, ac: parseInt(e.target.value)})} className="w-full text-center text-xl font-bold bg-transparent outline-none p-0" />
+                                        </div>
+                                        <label className="text-[9px] font-bold mt-1">CA</label>
+                                    </div>
+                                    <div className="flex flex-col items-center">
+                                        <div className="border-2 border-stone-400 rounded w-14 h-12 flex items-center justify-center bg-white">
+                                            <span className="text-lg font-bold">{calculateModifier(char.stats.dex) >= 0 ? `+${calculateModifier(char.stats.dex)}` : calculateModifier(char.stats.dex)}</span>
+                                        </div>
+                                        <label className="text-[9px] font-bold mt-1">INICIATIVA</label>
+                                    </div>
+                                    <div className="flex flex-col items-center">
+                                        <div className="border-2 border-stone-400 rounded w-14 h-12 flex items-center justify-center bg-white">
+                                            <input type="number" value={char.speed} onChange={e => setChar({...char, speed: parseInt(e.target.value)})} className="w-full text-center text-lg font-bold bg-transparent outline-none p-0" />
+                                        </div>
+                                        <label className="text-[9px] font-bold mt-1">VELOCIDAD</label>
+                                    </div>
+                                    <div className="flex flex-col items-center justify-center">
+                                        <div className="text-[9px] text-stone-500">Pasiva (Sab)</div>
+                                        <div className="font-bold text-lg border rounded-full w-9 h-9 flex items-center justify-center bg-stone-100">{10 + getSkillInfo('perception').total}</div>
+                                    </div>
+                                </div>
+                                <div className="mt-2 border border-stone-300 rounded p-1.5 bg-stone-50 w-72">
+                                    <div className="flex justify-between text-[10px] text-stone-500 mb-0.5">
+                                        <span>HP Máx</span>
+                                        <input type="number" value={char.hp.max} onChange={e => setChar({...char, hp: {...char.hp, max: parseInt(e.target.value)}})} className="w-10 text-right bg-transparent border-b border-stone-300 p-0" />
+                                    </div>
+                                    <input type="number" value={char.hp.current} onChange={e => setChar({...char, hp: {...char.hp, current: parseInt(e.target.value)}})} className="w-full text-2xl font-bold bg-transparent text-center py-1 p-0" placeholder="HP" />
+                                </div>
+                                {/* RESTORED VITALITY FOR DESKTOP */}
+                                <div className="mt-2 flex gap-2 w-72">
+                                    <div className="border border-stone-300 rounded p-1 bg-stone-50 flex-1 text-center">
+                                        <label className="text-[9px] font-bold text-stone-500 uppercase">Dados Golpe</label>
+                                        <div className="flex justify-center items-center gap-1">
+                                            <input className="w-8 text-center text-xs bg-transparent border-b border-stone-300" placeholder="1d10" value={char.hp.hitDice} onChange={e => setChar(p => ({...p, hp: {...p.hp, hitDice: e.target.value}}))} />
+                                            <span className="text-xs">/</span>
+                                            <input type="number" className="w-6 text-center text-xs bg-transparent border-b border-stone-300" value={char.hp.hitDiceMax} onChange={e => setChar(p => ({...p, hp: {...p.hp, hitDiceMax: parseInt(e.target.value)||1}}))} />
+                                        </div>
+                                        <div className="flex items-center justify-center gap-2 mt-1">
+                                            <button onClick={decreaseDice} className="w-5 h-5 bg-stone-200 rounded text-stone-600 font-bold flex items-center justify-center hover:bg-stone-300 text-xs">-</button>
+                                            <span className="text-xs font-bold">{char.hp.hitDiceMax - char.hp.hitDiceUsed}</span>
+                                            <button onClick={increaseDice} className="w-5 h-5 bg-stone-200 rounded text-stone-600 font-bold flex items-center justify-center hover:bg-stone-300 text-xs">+</button>
+                                        </div>
+                                    </div>
+                                    <div className="border border-stone-300 rounded p-1 bg-stone-50 flex-1">
+                                        <label className="block text-center text-[9px] font-bold text-stone-500">Salv. Muerte</label>
+                                        <div className="flex justify-between px-1 text-[9px] items-center">
+                                            <span>Éxito</span>
+                                            <div className="flex gap-0.5">
+                                                {[0,1,2].map(i => (
+                                                    <div key={i} onClick={() => toggleDeathSave('successes', i)} className="cursor-pointer">
+                                                        {i < (char.hp.deathSaves?.successes || 0) ? <Icons.Heart size={10} className="text-green-600"/> : <div className="w-2.5 h-2.5 rounded-full border border-green-600 opacity-30"></div>}
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                        <div className="flex justify-between px-1 text-[9px] items-center">
+                                            <span>Fallo</span>
+                                            <div className="flex gap-0.5">
+                                                {[0,1,2].map(i => (
+                                                    <div key={i} onClick={() => toggleDeathSave('failures', i)} className="cursor-pointer">
+                                                        {i < (char.hp.deathSaves?.failures || 0) ? <Icons.Skull size={10} className="text-red-600"/> : <div className="w-2.5 h-2.5 rounded-full border border-red-600 opacity-30"></div>}
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </WidgetWrapper>
+
+                            {/* ATTACKS */}
+                            <WidgetWrapper id="attacks" title="Ataques" layout={layout} mode={mode} dragging={dragging} onMouseDown={handleMouseDown} isColliding={isColliding}>
+                                <div className="w-72">
+                                    <div className="flex justify-between items-center mb-1 border-b border-stone-300 pb-0.5">
+                                        <h3 className="font-bold text-xs uppercase">Ataques</h3>
+                                        <button onClick={() => setShowAttackForm(true)} className="text-stone-500 hover:text-red-600"><Icons.Plus size={14} /></button>
+                                    </div>
+                                    <div className="space-y-1 max-h-40 overflow-auto">
+                                        {char.attacks.map(atk => (
+                                            <div key={atk.id} className="grid grid-cols-12 gap-1 text-[10px] items-center bg-stone-50 p-1 rounded group">
+                                                <span className="col-span-4 font-bold truncate">{atk.name}</span>
+                                                <span className="col-span-2 text-center bg-stone-200 rounded">{atk.bonus}</span>
+                                                <span className="col-span-4 truncate">{atk.damage} {atk.type}</span>
+                                                <button onClick={() => setChar(p => ({...p, attacks: p.attacks.filter(x => x.id !== atk.id)}))} className="col-span-2 opacity-0 group-hover:opacity-100 text-red-500 justify-self-end"><Icons.Trash2 size={10} /></button>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            </WidgetWrapper>
+
+                            {/* SPELLS */}
+                            <WidgetWrapper id="spells" title="Hechizos" layout={layout} mode={mode} dragging={dragging} onMouseDown={handleMouseDown} isColliding={isColliding}>
+                                <div className="w-72">
+                                    <div className="flex justify-between items-center mb-1 border-b border-stone-300 pb-0.5">
+                                        <h3 className="font-bold text-xs uppercase">Hechizos</h3>
+                                        <button onClick={() => setShowSpellForm(true)} className="text-stone-500 hover:text-blue-600"><Icons.Plus size={14} /></button>
+                                    </div>
+                                    <div className="max-h-56 overflow-y-auto space-y-1">
+                                        {char.spells.map((spell, idx) => (
+                                            <div key={spell.id} className="border border-stone-200 rounded p-1.5 bg-stone-50 hover:bg-stone-100 transition-colors group relative">
+                                                <div className="flex justify-between font-bold text-[10px] items-center">
+                                                     <span>{spell.name}</span>
+                                                     <div className="flex items-center gap-1">
+                                                        <span className={`px-1 rounded ${spell.isCantrip ? 'bg-blue-100 text-blue-800' : 'bg-stone-200'}`}>{spell.isCantrip ? 'T' : `N${spell.level}`}</span>
+                                                        {!spell.isCantrip && mode !== 'layout' && <button onClick={() => castSpell(spell)} className="bg-indigo-600 text-white px-1.5 py-0.5 rounded hover:bg-indigo-700">USAR</button>}
+                                                     </div>
+                                                </div>
+                                                <p className="text-[9px] mt-0.5 text-stone-700 italic border-t border-stone-200 pt-0.5 line-clamp-1">{spell.desc}</p>
+                                                <button onClick={() => setChar(p => ({...p, spells: p.spells.filter(x => x.id !== spell.id)}))} className="absolute top-0.5 right-0.5 opacity-0 group-hover:opacity-100 text-red-500"><Icons.Trash2 size={10} /></button>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            </WidgetWrapper>
+
+                            {/* SPELL SLOTS */}
+                            <WidgetWrapper id="spellSlots" title="Espacios" layout={layout} mode={mode} dragging={dragging} onMouseDown={handleMouseDown} isColliding={isColliding}>
+                                <div className="w-40">
+                                    <h3 className="font-bold text-[10px] uppercase mb-1 border-b border-stone-300">Espacios</h3>
+                                    <div className="space-y-1">
+                                        {[1,2,3,4,5,6,7,8,9].map(lvl => (
+                                            <div key={lvl} className="flex items-center justify-between bg-stone-50 p-0.5 rounded">
+                                                <div className="flex items-center gap-1">
+                                                    <span className="font-bold text-[10px] w-3 text-center">{lvl}</span>
+                                                    <input type="number" placeholder="Tot" value={char.spellSlots[lvl]?.total || ''} onChange={e => setChar(p => ({...p, spellSlots: {...p.spellSlots, [lvl]: {...p.spellSlots[lvl], total: parseInt(e.target.value)||0}}}))} className="w-6 text-[10px] text-center border-b border-stone-300 bg-transparent" />
+                                                </div>
+                                                <div className="flex flex-wrap gap-0.5 justify-end max-w-[80px]">
+                                                    {Array.from({length: char.spellSlots[lvl]?.total || 0}).map((_, i) => (
+                                                        <div key={i} onClick={() => setChar(p => ({...p, spellSlots: {...p.spellSlots, [lvl]: { ...p.spellSlots[lvl], used: i < char.spellSlots[lvl].used ? p.spellSlots[lvl].used - 1 : p.spellSlots[lvl].used + 1 }}}))} className={`w-2.5 h-2.5 border border-stone-800 rounded-sm cursor-pointer ${i < char.spellSlots[lvl].used ? 'bg-red-500' : 'bg-white'}`} />
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            </WidgetWrapper>
+
+                            {/* MONEY */}
+                            <WidgetWrapper id="money" title="Dinero" layout={layout} mode={mode} dragging={dragging} onMouseDown={handleMouseDown} isColliding={isColliding}>
+                                <div className="w-40 flex justify-between bg-stone-100 p-1 rounded-lg border border-stone-300">
+                                    {['cp', 'sp', 'ep', 'gp', 'pp'].map(curr => (
+                                        <div key={curr} className="flex flex-col items-center w-7">
+                                            <label className="text-[8px] font-bold uppercase mb-0.5">{curr}</label>
+                                            <input type="number" value={char.money[curr]} onChange={e => setChar(p => ({...p, money: {...p.money, [curr]: parseInt(e.target.value)||0}}))} className="w-full text-center text-[10px] bg-white border border-stone-300 rounded p-0.5" />
+                                        </div>
+                                    ))}
+                                </div>
+                            </WidgetWrapper>
+
+                            {/* LANGUAGES */}
+                            <WidgetWrapper id="languages" title="Idiomas" layout={layout} mode={mode} dragging={dragging} onMouseDown={handleMouseDown} isColliding={isColliding}>
+                                <div className="w-72">
+                                    <h3 className="font-bold text-[10px] uppercase mb-0.5">Idiomas / Otros</h3>
+                                    <textarea value={char.languages} onChange={e => setChar({...char, languages: e.target.value})} className="w-full h-16 text-[10px] bg-stone-50 border border-stone-300 rounded p-1 resize-none focus:outline-none" />
+                                </div>
+                            </WidgetWrapper>
+
+                            {/* INVENTORY */}
+                            <WidgetWrapper id="inventory" title="Inventario" layout={layout} mode={mode} dragging={dragging} onMouseDown={handleMouseDown} isColliding={isColliding}>
+                                <div className="w-72 flex flex-col gap-1">
+                                    <div>
+                                        <h3 className="font-bold text-[10px] uppercase mb-0.5">Equipo</h3>
+                                        <textarea value={char.inventory} onChange={e => setChar({...char, inventory: e.target.value})} className="w-full h-24 text-[10px] bg-stone-50 border border-stone-300 rounded p-1 resize-none focus:outline-none" placeholder="Equipo..." />
+                                    </div>
+                                    <div>
+                                        <h3 className="font-bold text-[10px] uppercase mb-0.5">Rasgos y Notas</h3>
+                                        <textarea value={char.notes} onChange={e => setChar({...char, notes: e.target.value})} className="w-full h-20 text-[10px] bg-stone-50 border border-stone-300 rounded p-1 resize-none focus:outline-none" placeholder="Notas..." />
+                                    </div>
+                                </div>
+                            </WidgetWrapper>
+
+                            {/* BG CONTROLS */}
+                            {mode === 'layout' && (
+                                <WidgetWrapper id="bgControls" title="Fondo" layout={layout} mode={mode} dragging={dragging} onMouseDown={handleMouseDown} isColliding={isColliding}>
+                                    <div className="w-56">
+                                        <label className="text-[10px] font-bold block mb-0.5">URL Imagen</label>
+                                        <input type="text" value={char.backgroundUrl} onChange={(e) => setChar({...char, backgroundUrl: e.target.value})} className="w-full text-[10px] border border-stone-300 p-0.5 rounded" />
+                                    </div>
+                                </WidgetWrapper>
+                            )}
+                        </div>
+                        {/* Modales Compartidos en modo Desktop */}
+                        {modals}
+                    </div>
+                </div>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
