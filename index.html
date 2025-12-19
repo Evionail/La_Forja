@@ -3,8 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>La Forja de Héroes v5.0 (Profile Pic)</title>
+    <title>La Forja de Héroes v5.4 (Installable)</title>
     <meta name="theme-color" content="#1c1917">
+    
+    <!-- Configuración para iOS (Apple) -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="La Forja">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22 style=%22background-color: %231c1917;%22><text y=%22.9em%22 font-size=%2290%22>⚔️</text></svg>">
+
+    <!-- Configuración para Android (Chrome) - Manifiesto Integrado -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚔️</text></svg>">
+    <link rel="manifest" href='data:application/manifest+json,{"name":"La Forja de Héroes","short_name":"La Forja","start_url":".","display":"standalone","background_color":"#1c1917","theme_color":"#1c1917","icons":[{"src":"data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚔️</text></svg>","sizes":"192x192","type":"image/svg+xml"}]}'>
     
     <!-- 1. Cargar Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -20,8 +30,9 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Lato:wght@400;700&display=swap');
         
-        body { font-family: 'Lato', sans-serif; overscroll-behavior-y: none; }
+        body { font-family: 'Lato', sans-serif; overscroll-behavior-y: none; user-select: none; -webkit-user-select: none; }
         h1, h2, h3, .font-serif { font-family: 'Cinzel', serif; }
+        input, textarea { user-select: text; -webkit-user-select: text; }
         
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
@@ -79,7 +90,8 @@
             Monitor: (p) => <Icon {...p} path={<><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></>} />,
             Skull: (p) => <Icon {...p} path={<><path d="M12 4c-3.3 0-6 2.7-6 6 0 1.5.6 3 1.5 4.1.3.4.5.9.5 1.4v1.5c0 .6.4 1 1 1h6c.6 0 1-.4 1-1v-1.5c0-.5.2-1 .5-1.4.9-1.1 1.5-2.6 1.5-4.1 0-3.3-2.7-6-6-6z" fill="currentColor"/><path d="M10 14h4" stroke="white" strokeWidth="2"/><path d="M10 11h.01M14 11h.01" stroke="white" strokeWidth="3"/></>} />,
             Heart: (p) => <Icon {...p} path={<><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></>} />,
-            Camera: (p) => <Icon {...p} path={<><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></>} />
+            Camera: (p) => <Icon {...p} path={<><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></>} />,
+            Upload: (p) => <Icon {...p} path={<><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></>} />
         };
 
         // --- DATOS Y UTILS GLOBALES ---
@@ -139,7 +151,7 @@
             setShowRestModal, setShowAttackForm, setShowSpellForm, 
             castSpell, pb, setShowBgModal, setForceMobile, isSimulator,
             toggleDeathSave, getSkillInfo, getSaveBonus, toggleProficiency, updateStat, toggleSaveProficiency,
-            decreaseDice, increaseDice, setShowAvatarModal
+            decreaseDice, increaseDice, setShowAvatarModal, setShowBgUploadModal
         }) => {
             return (
                 <div className="flex flex-col h-full bg-stone-900 text-stone-100 overflow-hidden relative">
@@ -215,9 +227,7 @@
                                     ))}
                                 </div>
                                 
-                                {/* NUEVO: Dados de Golpe y Muerte (Vitality) */}
                                 <div className="bg-white rounded-lg shadow border border-stone-200 p-3 flex justify-between gap-4">
-                                    {/* Hit Dice */}
                                     <div className="flex-1 text-center border-r border-stone-200 pr-2">
                                         <div className="text-[10px] font-bold text-stone-500 uppercase mb-1">Dados de Golpe</div>
                                         <div className="flex items-center justify-center gap-2 mb-1">
@@ -232,7 +242,6 @@
                                         </div>
                                         <div className="text-[9px] text-stone-400 mt-1">Disponibles</div>
                                     </div>
-                                    {/* Death Saves */}
                                     <div className="flex-1 text-center pl-2">
                                         <div className="text-[10px] font-bold text-stone-500 uppercase mb-1">Salv. Muerte</div>
                                         <div className="flex items-center justify-between text-xs mb-1">
@@ -240,9 +249,7 @@
                                             <div className="flex gap-1">
                                                 {[0,1,2].map(i => (
                                                     <div key={i} onClick={() => toggleDeathSave('successes', i)} className="cursor-pointer">
-                                                        {i < (char.hp.deathSaves?.successes || 0) 
-                                                            ? <div className="text-green-600"><Icons.Heart size={14}/></div> 
-                                                            : <div className="w-3.5 h-3.5 rounded-full border border-green-600 opacity-30"></div>}
+                                                        {i < (char.hp.deathSaves?.successes || 0) ? <div className="text-green-600"><Icons.Heart size={14}/></div> : <div className="w-3.5 h-3.5 rounded-full border border-green-600 opacity-30"></div>}
                                                     </div>
                                                 ))}
                                             </div>
@@ -252,9 +259,7 @@
                                             <div className="flex gap-1">
                                                 {[0,1,2].map(i => (
                                                     <div key={i} onClick={() => toggleDeathSave('failures', i)} className="cursor-pointer">
-                                                        {i < (char.hp.deathSaves?.failures || 0) 
-                                                            ? <div className="text-red-600"><Icons.Skull size={14}/></div> 
-                                                            : <div className="w-3.5 h-3.5 rounded-full border border-red-600 opacity-30"></div>}
+                                                        {i < (char.hp.deathSaves?.failures || 0) ? <div className="text-red-600"><Icons.Skull size={14}/></div> : <div className="w-3.5 h-3.5 rounded-full border border-red-600 opacity-30"></div>}
                                                     </div>
                                                 ))}
                                             </div>
@@ -271,13 +276,9 @@
                                                 <div key={attr.id} className="flex justify-between items-center text-sm border-b border-stone-100 pb-1 last:border-0">
                                                     <div className="flex items-center gap-2 flex-1" onClick={() => toggleSaveProficiency(attr.id)}>
                                                         <div className={`w-3 h-3 rounded-full border border-stone-800 flex-shrink-0 ${char.savingThrows.includes(attr.id) ? 'bg-stone-800' : 'bg-transparent'}`}></div>
-                                                        <span className={`${char.savingThrows.includes(attr.id) ? 'font-bold text-stone-900' : 'text-stone-600'}`}>
-                                                            {attr.short}
-                                                        </span>
+                                                        <span className={`${char.savingThrows.includes(attr.id) ? 'font-bold text-stone-900' : 'text-stone-600'}`}>{attr.short}</span>
                                                     </div>
-                                                    <span className="font-mono font-bold bg-stone-100 px-2 rounded ml-2">
-                                                        {getSaveBonus(attr.id) >= 0 ? `+${getSaveBonus(attr.id)}` : getSaveBonus(attr.id)}
-                                                    </span>
+                                                    <span className="font-mono font-bold bg-stone-100 px-2 rounded ml-2">{getSaveBonus(attr.id) >= 0 ? `+${getSaveBonus(attr.id)}` : getSaveBonus(attr.id)}</span>
                                                 </div>
                                             ))}
                                         </div>
@@ -289,15 +290,11 @@
                                                     <div className="flex items-center gap-2 flex-1 overflow-hidden" onClick={() => toggleProficiency(skill.id)}>
                                                         <div className={`w-3 h-3 rounded-full border border-stone-800 flex-shrink-0 ${char.proficiencies.includes(skill.id) ? 'bg-red-600' : 'bg-transparent'}`}></div>
                                                         <div className="flex flex-col overflow-hidden">
-                                                            <span className={`truncate ${char.proficiencies.includes(skill.id) ? 'font-bold text-stone-900' : 'text-stone-600'}`}>
-                                                                {skill.label}
-                                                            </span>
+                                                            <span className={`truncate ${char.proficiencies.includes(skill.id) ? 'font-bold text-stone-900' : 'text-stone-600'}`}>{skill.label}</span>
                                                             <span className="text-[9px] text-stone-400 truncate">{breakdown}</span>
                                                         </div>
                                                     </div>
-                                                    <span className="font-mono font-bold bg-stone-100 px-2 rounded ml-2">
-                                                        {total >= 0 ? `+${total}` : total}
-                                                    </span>
+                                                    <span className="font-mono font-bold bg-stone-100 px-2 rounded ml-2">{total >= 0 ? `+${total}` : total}</span>
                                                 </div>
                                             );
                                         })}
@@ -306,8 +303,7 @@
                             </div>
                         )}
 
-                        {/* ... otros tabs (combat, spells, inventory) ... */}
-                         {activeTab === 'combat' && (
+                        {activeTab === 'combat' && (
                             <div className="p-4 space-y-4">
                                 <div className="bg-white rounded-lg shadow border border-stone-200 p-4">
                                     <div className="flex justify-between items-center mb-4">
@@ -333,6 +329,7 @@
                                 </div>
                             </div>
                         )}
+
                         {activeTab === 'spells' && (
                             <div className="p-4 space-y-4">
                                 <div className="grid grid-cols-2 gap-2 mb-4">
@@ -386,17 +383,30 @@
                                 </div>
                             </div>
                         )}
+
                         {activeTab === 'inventory' && (
                             <div className="p-4 space-y-4">
                                 <div className="grid grid-cols-5 gap-2 bg-white p-3 rounded-lg shadow border border-stone-200">
-                                    {['cp', 'sp', 'ep', 'gp', 'pp'].map(curr => (<div key={curr} className="text-center"><div className="text-[10px] font-bold uppercase text-stone-500">{curr}</div><input type="number" className="w-full text-center font-bold border-b border-stone-300" value={char.money[curr]} onChange={e => setChar(p => ({...p, money: {...p.money, [curr]: parseInt(e.target.value)||0}}))} /></div>))}
+                                    {['cp', 'sp', 'ep', 'gp', 'pp'].map(curr => (
+                                        <div key={curr} className="text-center">
+                                            <div className="text-[10px] font-bold uppercase text-stone-500">{curr}</div>
+                                            <input type="number" className="w-full text-center font-bold border-b border-stone-300" value={char.money[curr]} onChange={e => setChar(p => ({...p, money: {...p.money, [curr]: parseInt(e.target.value)||0}}))} />
+                                        </div>
+                                    ))}
                                 </div>
                                 <div className="bg-white p-3 rounded-lg shadow border border-stone-200">
                                     <h3 className="font-serif font-bold mb-2">Mochila</h3>
                                     <textarea value={char.inventory} onChange={e => setChar({...char, inventory: e.target.value})} className="w-full h-32 text-sm bg-stone-50 border p-2 rounded mb-4" placeholder="Lista de equipo..." />
+                                    
                                     <h3 className="font-serif font-bold mb-2 pt-2 border-t">Notas y Rasgos</h3>
-                                    {char.backgroundFeature && <div className="mb-2 p-2 bg-stone-50 border rounded text-xs text-stone-700 italic">{char.backgroundFeature}</div>}
+                                    {char.backgroundFeature && (
+                                        <div className="mb-2 p-2 bg-stone-50 border rounded text-xs text-stone-700 italic">
+                                            {char.backgroundFeature}
+                                        </div>
+                                    )}
                                     <textarea value={char.notes} onChange={e => setChar({...char, notes: e.target.value})} className="w-full h-32 text-sm bg-stone-50 border p-2 rounded" placeholder="Notas de aventura..." />
+                                    {/* Upload background button for Mobile */}
+                                     <button onClick={() => setShowBgUploadModal(true)} className="mt-4 w-full py-2 border border-stone-300 text-stone-500 rounded flex items-center justify-center gap-2"><Icons.Upload size={16}/> Cambiar Fondo (Offline)</button>
                                 </div>
                             </div>
                         )}
@@ -417,8 +427,10 @@
             const [forceMobile, setForceMobile] = useState(false);
             const [activeTab, setActiveTab] = useState('main'); 
             const [showRestModal, setShowRestModal] = useState(false);
-            const [showAvatarModal, setShowAvatarModal] = useState(false); // New State
-            const [previewImage, setPreviewImage] = useState(null); // New State
+            const [showAvatarModal, setShowAvatarModal] = useState(false);
+            const [showBgUploadModal, setShowBgUploadModal] = useState(false); // New modal for background
+            const [previewImage, setPreviewImage] = useState(null); 
+            const [bgPreviewImage, setBgPreviewImage] = useState(null); // New state
 
             useEffect(() => {
                 const handleResize = () => setIsMobile(window.innerWidth < 768);
@@ -433,7 +445,7 @@
                 const saved = localStorage.getItem('dnd_char_v3');
                 const defaults = {
                     name: 'Nuevo Héroe', class: 'Guerrero', race: 'Humano', background: '', backgroundFeature: '', level: 1, backgroundUrl: DEFAULT_BG,
-                    profileImage: null, // New Field
+                    profileImage: null,
                     stats: { str: 10, dex: 10, con: 10, int: 10, wis: 10, cha: 10 },
                     proficiencies: [], savingThrows: [],
                     hp: { current: 10, max: 10, temp: 0, hitDice: '1d10', hitDiceMax: 1, hitDiceUsed: 0, deathSaves: { successes: 0, failures: 0 } },
@@ -451,11 +463,10 @@
                     spellSlots: { ...defaults.spellSlots, ...(loaded.spellSlots || {}) },
                     inspiration: loaded.inspiration || 0,
                     hp: { ...defaults.hp, ...(loaded.hp || {}) },
-                    profileImage: loaded.profileImage || null // Load profile image
+                    profileImage: loaded.profileImage || null
                 };
             });
 
-            // ... (Layout & Effects same as before) ...
             const defaultLayout = {
                 header: { x: 20, y: 20 }, inspiration: { x: 620, y: 20 }, stats: { x: 20, y: 130 }, skills: { x: 130, y: 130 }, combat: { x: 400, y: 130 },
                 attacks: { x: 400, y: 350 }, spells: { x: 400, y: 600 }, spellSlots: { x: 20, y: 600 }, money: { x: 200, y: 600 }, languages: { x: 20, y: 760 }, inventory: { x: 400, y: 860 }, bgControls: { x: 20, y: 920 }
@@ -472,7 +483,7 @@
 
             const pb = calculateProficiency(char.level);
             
-            // ... (Handlers same as before) ...
+            // --- HANDLERS ---
             const updateStat = (id, val) => setChar(p => ({ ...p, stats: { ...p.stats, [id]: parseInt(val) || 10 } }));
             const toggleProficiency = (id) => setChar(p => ({ ...p, proficiencies: p.proficiencies.includes(id) ? p.proficiencies.filter(x => x !== id) : [...p.proficiencies, id] }));
             const toggleSaveProficiency = (id) => setChar(p => ({ ...p, savingThrows: p.savingThrows.includes(id) ? p.savingThrows.filter(x => x !== id) : [...p.savingThrows, id] }));
@@ -485,58 +496,44 @@
             const increaseDice = () => setChar(p => ({...p, hp: {...p.hp, hitDiceUsed: Math.max(0, p.hp.hitDiceUsed - 1)}}));
 
             // --- IMAGE UPLOAD LOGIC ---
-            const handleImageUpload = (e) => {
+            const handleImageUpload = (e, isBg = false) => {
                 const file = e.target.files[0];
                 if (!file) return;
-
                 const reader = new FileReader();
                 reader.onload = (event) => {
-                    const img = new Image();
-                    img.onload = () => {
-                        const canvas = document.createElement('canvas');
-                        const ctx = canvas.getContext('2d');
-                        // Resize to 300x300 square for profile
-                        const size = 300;
-                        canvas.width = size;
-                        canvas.height = size;
-                        
-                        // Calculate center crop
-                        const minDim = Math.min(img.width, img.height);
-                        const sx = (img.width - minDim) / 2;
-                        const sy = (img.height - minDim) / 2;
-                        
-                        ctx.drawImage(img, sx, sy, minDim, minDim, 0, 0, size, size);
-                        
-                        const dataUrl = canvas.toDataURL('image/jpeg', 0.8);
-                        setPreviewImage(dataUrl);
+                    if (isBg) {
+                        setBgPreviewImage(event.target.result); // No crop needed for bg, or simple resize
+                    } else {
+                        const img = new Image();
+                        img.onload = () => {
+                            const canvas = document.createElement('canvas');
+                            const ctx = canvas.getContext('2d');
+                            const size = 300;
+                            canvas.width = size; canvas.height = size;
+                            const minDim = Math.min(img.width, img.height);
+                            const sx = (img.width - minDim) / 2;
+                            const sy = (img.height - minDim) / 2;
+                            ctx.drawImage(img, sx, sy, minDim, minDim, 0, 0, size, size);
+                            setPreviewImage(canvas.toDataURL('image/jpeg', 0.8));
+                        }
+                        img.src = event.target.result;
                     }
-                    img.src = event.target.result;
                 }
                 reader.readAsDataURL(file);
             };
 
-            const saveAvatar = () => {
-                if (previewImage) {
-                    setChar({...char, profileImage: previewImage});
-                    setShowAvatarModal(false);
-                    setPreviewImage(null);
-                }
-            };
+            const saveAvatar = () => { if (previewImage) { setChar({...char, profileImage: previewImage}); setShowAvatarModal(false); setPreviewImage(null); } };
+            const saveBackground = () => { if (bgPreviewImage) { setChar({...char, backgroundUrl: bgPreviewImage}); setShowBgUploadModal(false); setBgPreviewImage(null); } };
 
 
-            // ... (Drag same as before) ...
+            // ... (Drag & Rest Logic same as before) ...
             const [dragging, setDragging] = useState(null); const [isColliding, setIsColliding] = useState(false); const sheetRef = useRef(null); const checkCollision = (r1, r2) => !(r2.left >= r1.right || r2.right <= r1.left || r2.top >= r1.bottom || r2.bottom <= r1.top); const snapToGrid = (val) => Math.round(val / GRID_SIZE) * GRID_SIZE;
             const handleMouseDown = (e, id) => { if (mode !== 'layout' || isMobile) return; e.preventDefault(); const widget = layout[id]; if (!widget) return; const sheetRect = sheetRef.current.getBoundingClientRect(); setDragging({ id, startX: e.clientX, startY: e.clientY, originalPos: { ...widget }, offsetX: e.clientX - (sheetRect.left + widget.x), offsetY: e.clientY - (sheetRect.top + widget.y) }); setIsColliding(false); };
             useEffect(() => { const handleMouseMove = (e) => { if (!dragging || !sheetRef.current) return; const sheetRect = sheetRef.current.getBoundingClientRect(); const rawX = (e.clientX - sheetRect.left) - dragging.offsetX; const rawY = (e.clientY - sheetRect.top) - dragging.offsetY; const snappedX = snapToGrid(rawX); const snappedY = snapToGrid(rawY); const currentEl = document.getElementById(`widget-${dragging.id}`); if (!currentEl) return; const currentRect = { left: snappedX, top: snappedY, right: snappedX + currentEl.offsetWidth, bottom: snappedY + currentEl.offsetHeight }; let collisionFound = false; Object.keys(layout).forEach(key => { if (key === dragging.id) return; const otherEl = document.getElementById(`widget-${key}`); if (!otherEl) return; const otherPos = layout[key]; const otherRect = { left: otherPos.x, top: otherPos.y, right: otherPos.x + otherEl.offsetWidth, bottom: otherPos.y + otherEl.offsetHeight }; if (checkCollision(currentRect, otherRect)) collisionFound = true; }); setIsColliding(collisionFound); setLayout(prev => ({ ...prev, [dragging.id]: { x: snappedX, y: snappedY } })); }; const handleMouseUp = () => { if (dragging && isColliding) setLayout(prev => ({ ...prev, [dragging.id]: dragging.originalPos })); setDragging(null); setIsColliding(false); }; if (dragging) { window.addEventListener('mousemove', handleMouseMove); window.addEventListener('mouseup', handleMouseUp); } return () => { window.removeEventListener('mousemove', handleMouseMove); window.removeEventListener('mouseup', handleMouseUp); }; }, [dragging, isColliding, layout]);
-            
-            // ... (Rest logic same as before) ...
             const handleShortRest = () => { setShowRestModal(false); }; const handleLongRest = () => { setChar(prev => { const newSlots = { ...prev.spellSlots }; Object.keys(newSlots).forEach(k => newSlots[k] = { ...newSlots[k], used: 0 }); return { ...prev, hp: { ...prev.hp, current: prev.hp.max }, spellSlots: newSlots, hp: { ...prev.hp, current: prev.hp.max, hitDiceUsed: Math.max(0, prev.hp.hitDiceUsed - Math.ceil(prev.hp.hitDiceMax / 2)) } }; }); setShowRestModal(false); };
-            
-            // ... (Cast Spell same as before) ...
             const castSpell = (spell) => { if (spell.isCantrip) return; const base = parseInt(spell.level); const avail = []; for(let l=base; l<=9; l++) if(char.spellSlots[l] && char.spellSlots[l].used < char.spellSlots[l].total) avail.push(l); if(avail.length===0) return alert("Sin espacios disponibles."); if(avail.length===1 && avail[0]===base) spendSlot(base); else setCastModalData({ spell, availableLevels: avail }); }; const spendSlot = (lvl) => setChar(p => ({...p, spellSlots: {...p.spellSlots, [lvl]: {...p.spellSlots[lvl], used: p.spellSlots[lvl].used + 1}}}));
             const selectBackground = (bg) => { const featureText = `[${bg.feature}]: ${bg.desc}`; const newNotes = char.notes.includes(bg.feature) ? char.notes : (char.notes ? char.notes + "\n\n" + featureText : featureText); const newProfs = [...char.proficiencies]; bg.skills.forEach(skill => { if (!newProfs.includes(skill)) newProfs.push(skill); }); setChar({ ...char, background: bg.name, backgroundFeature: featureText, notes: newNotes, proficiencies: newProfs }); setShowBgModal(false); };
             
-            // ... (Modals) ...
             const [showSpellForm, setShowSpellForm] = useState(false); const [showAttackForm, setShowAttackForm] = useState(false); const [showBgModal, setShowBgModal] = useState(false); const [castModalData, setCastModalData] = useState(null);
 
             const modals = (
@@ -564,95 +561,24 @@
                         </div>
                     </div>
                 )}
+                {showBgUploadModal && (
+                    <div className="absolute inset-0 bg-black/80 z-[70] flex items-center justify-center p-4">
+                        <div className="bg-white p-6 rounded-lg w-full max-w-sm text-center">
+                             <h2 className="text-xl font-bold mb-4">Fondo de Hoja (Offline)</h2>
+                             <div className="mb-4 relative w-full h-48 bg-stone-200 border-2 border-stone-400 shadow-inner overflow-hidden">
+                                 {bgPreviewImage ? <img src={bgPreviewImage} className="w-full h-full object-cover" /> : <div className="w-full h-full flex items-center justify-center text-stone-400">Sin imagen</div>}
+                             </div>
+                             <input type="file" accept="image/*" onChange={(e) => handleImageUpload(e, true)} className="mb-4 text-sm w-full" />
+                             <div className="flex gap-2"><button onClick={() => { setShowBgUploadModal(false); setBgPreviewImage(null); }} className="w-1/2 py-2 text-stone-500 border border-stone-300 rounded">Cancelar</button><button onClick={saveBackground} className="w-1/2 py-2 bg-blue-600 text-white rounded font-bold disabled:opacity-50" disabled={!bgPreviewImage}>Guardar</button></div>
+                        </div>
+                    </div>
+                )}
                 {/* ... other modals (Rest, Attack, Spell, BG, Cast) ... */}
-                {showRestModal && (
-                    <div className="fixed inset-0 bg-black/80 z-[60] flex items-center justify-center p-4">
-                        <div className="bg-stone-900 text-white p-6 rounded-lg w-full max-w-sm border border-stone-700">
-                            <div className="flex justify-center mb-4 text-orange-500"><Icons.Campfire size={48}/></div>
-                            <h2 className="text-2xl font-serif font-bold text-center mb-2">Hoguera</h2>
-                            <div className="space-y-3 mt-4">
-                                <button onClick={handleShortRest} className="w-full py-3 bg-stone-700 rounded-lg font-bold hover:bg-stone-600 flex items-center justify-center gap-2"><span>Descanso Corto</span></button>
-                                <button onClick={handleLongRest} className="w-full py-3 bg-red-800 rounded-lg font-bold hover:bg-red-700 flex items-center justify-center gap-2 border border-red-900"><span>Descanso Largo</span></button>
-                                <button onClick={() => setShowRestModal(false)} className="w-full py-2 text-stone-500 mt-2">Cancelar</button>
-                            </div>
-                        </div>
-                    </div>
-                )}
-                {showAttackForm && (
-                    <div className="fixed inset-0 bg-black/90 z-[70] flex items-center justify-center p-4">
-                        <div className="bg-white p-6 rounded-lg w-full max-w-sm text-stone-900">
-                            <h2 className="text-xl font-bold mb-4">Nuevo Ataque</h2>
-                            <form onSubmit={(e) => {
-                                e.preventDefault(); const fd = new FormData(e.target);
-                                setChar(p => ({...p, attacks: [...p.attacks, { id: Date.now(), name: fd.get('name'), bonus: fd.get('bonus'), damage: fd.get('damage'), type: fd.get('type') }]}));
-                                setShowAttackForm(false);
-                            }} className="space-y-3">
-                                <input name="name" required placeholder="Ej: Gran Hacha" className="w-full border p-3 rounded" />
-                                <div className="flex gap-2"><input name="bonus" placeholder="Ej: +5" className="w-1/2 border p-3 rounded" /><input name="damage" placeholder="Ej: 1d12 + 3" className="w-1/2 border p-3 rounded" /></div>
-                                <input name="type" placeholder="Ej: Cortante" className="w-full border p-3 rounded" />
-                                <div className="flex gap-2 mt-4"><button type="button" onClick={() => setShowAttackForm(false)} className="w-1/2 py-2 text-stone-500">Cancelar</button><button type="submit" className="w-1/2 py-2 bg-red-700 text-white rounded font-bold">Guardar</button></div>
-                            </form>
-                        </div>
-                    </div>
-                )}
-                {showSpellForm && (
-                    <div className="fixed inset-0 bg-black/90 z-[70] flex items-center justify-center p-4">
-                        <div className="bg-white p-6 rounded-lg w-full max-w-sm max-h-[90vh] overflow-y-auto text-stone-900">
-                            <h2 className="text-xl font-bold mb-4 text-indigo-900">Nuevo Hechizo</h2>
-                            <form onSubmit={(e) => {
-                                e.preventDefault(); const fd = new FormData(e.target);
-                                setChar(p => ({...p, spells: [...p.spells, { id: Date.now(), name: fd.get('name'), level: fd.get('isCantrip') ? 0 : fd.get('level'), isCantrip: fd.get('isCantrip') === 'on', time: fd.get('time'), range: fd.get('range'), desc: fd.get('desc') }]}));
-                                setShowSpellForm(false);
-                            }} className="space-y-3">
-                                <div className="flex items-center gap-2 mb-2 bg-indigo-50 p-2 rounded">
-                                    <input type="checkbox" name="isCantrip" id="isCantrip" className="w-5 h-5" />
-                                    <label htmlFor="isCantrip" className="font-bold text-indigo-900">Es un Truco</label>
-                                </div>
-                                <input name="name" required placeholder="Ej: Bola de Fuego" className="w-full border p-3 rounded" />
-                                <input name="level" type="number" placeholder="Nivel" className="w-full border p-3 rounded" />
-                                <div className="flex gap-2"><input name="time" placeholder="Ej: 1 acción" className="w-1/2 border p-3 rounded" /><input name="range" placeholder="Ej: 150 pies" className="w-1/2 border p-3 rounded" /></div>
-                                <textarea name="desc" placeholder="Ej: Una brillante racha parpadea..." className="w-full border p-3 rounded h-32"></textarea>
-                                <div className="flex gap-2 mt-4"><button type="button" onClick={() => setShowSpellForm(false)} className="w-1/2 py-2 text-stone-500">Cancelar</button><button type="submit" className="w-1/2 py-2 bg-indigo-700 text-white rounded font-bold">Guardar</button></div>
-                            </form>
-                        </div>
-                    </div>
-                )}
-                {showBgModal && (
-                    <div className="fixed inset-0 bg-black/50 z-[60] flex items-center justify-center backdrop-blur-sm p-4">
-                        <div className="bg-white rounded-lg shadow-xl w-full max-w-2xl max-h-[80vh] overflow-hidden flex flex-col text-stone-900">
-                            <div className="p-4 border-b flex justify-between items-center bg-stone-100">
-                                <h2 className="text-xl font-bold font-serif">Elige un Trasfondo (SRD)</h2>
-                                <button onClick={() => setShowBgModal(false)}><Icons.X size={20}/></button>
-                            </div>
-                            <div className="overflow-y-auto p-4 space-y-4">
-                                {BACKGROUNDS_SRD.map(bg => (
-                                    <div key={bg.name} className="border rounded p-3 hover:bg-stone-50 transition-colors cursor-pointer group" onClick={() => selectBackground(bg)}>
-                                        <div className="flex justify-between items-start"><h3 className="font-bold text-lg text-indigo-800">{bg.name}</h3><span className="text-xs bg-indigo-100 text-indigo-800 px-2 py-1 rounded opacity-0 group-hover:opacity-100">Seleccionar</span></div>
-                                        <p className="text-xs font-bold mt-1 text-stone-700">Rasgo: {bg.feature}</p>
-                                        <p className="text-sm text-stone-600 mt-1 line-clamp-2">{bg.desc}</p>
-                                        <p className="text-xs text-stone-500 mt-1 italic">Competencias: {bg.skills.join(', ')}</p>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-                )}
-                {castModalData && (
-                    <div className="fixed inset-0 bg-black/90 z-[70] flex items-center justify-center p-4">
-                        <div className="bg-white p-6 rounded-lg w-full max-w-sm text-stone-900">
-                            <h2 className="text-lg font-bold mb-4">Lanzar "{castModalData.spell.name}"</h2>
-                            <div className="space-y-2 mb-4">
-                                {castModalData.availableLevels.map(lvl => (
-                                    <button key={lvl} onClick={() => { spendSlot(lvl); setCastModalData(null); }} className="w-full text-left p-3 border rounded hover:bg-indigo-50 flex justify-between items-center text-stone-900">
-                                        <span className="font-bold">Nivel {lvl}</span>
-                                        <span className="text-xs bg-indigo-100 text-indigo-800 px-2 py-1 rounded">Quedan {char.spellSlots[lvl].total - char.spellSlots[lvl].used}</span>
-                                    </button>
-                                ))}
-                            </div>
-                            <button onClick={() => setCastModalData(null)} className="w-full py-2 text-stone-500">Cancelar</button>
-                        </div>
-                    </div>
-                )}
+                {showRestModal && ( <div className="fixed inset-0 bg-black/80 z-[60] flex items-center justify-center p-4"> <div className="bg-stone-900 text-white p-6 rounded-lg w-full max-w-sm border border-stone-700"> <div className="flex justify-center mb-4 text-orange-500"><Icons.Campfire size={48}/></div> <h2 className="text-2xl font-serif font-bold text-center mb-2">Hoguera</h2> <div className="space-y-3 mt-4"> <button onClick={handleShortRest} className="w-full py-3 bg-stone-700 rounded-lg font-bold hover:bg-stone-600 flex items-center justify-center gap-2"><span>Descanso Corto</span></button> <button onClick={handleLongRest} className="w-full py-3 bg-red-800 rounded-lg font-bold hover:bg-red-700 flex items-center justify-center gap-2 border border-red-900"><span>Descanso Largo</span></button> <button onClick={() => setShowRestModal(false)} className="w-full py-2 text-stone-500 mt-2">Cancelar</button> </div> </div> </div> )}
+                {showAttackForm && ( <div className="fixed inset-0 bg-black/90 z-[70] flex items-center justify-center p-4"> <div className="bg-white p-6 rounded-lg w-full max-w-sm text-stone-900"> <h2 className="text-xl font-bold mb-4">Nuevo Ataque</h2> <form onSubmit={(e) => { e.preventDefault(); const fd = new FormData(e.target); setChar(p => ({...p, attacks: [...p.attacks, { id: Date.now(), name: fd.get('name'), bonus: fd.get('bonus'), damage: fd.get('damage'), type: fd.get('type') }]})); setShowAttackForm(false); }} className="space-y-3"> <input name="name" required placeholder="Ej: Gran Hacha" className="w-full border p-3 rounded" /> <div className="flex gap-2"><input name="bonus" placeholder="Ej: +5" className="w-1/2 border p-3 rounded" /><input name="damage" placeholder="Ej: 1d12 + 3" className="w-1/2 border p-3 rounded" /></div> <input name="type" placeholder="Ej: Cortante" className="w-full border p-3 rounded" /> <div className="flex gap-2 mt-4"><button type="button" onClick={() => setShowAttackForm(false)} className="w-1/2 py-2 text-stone-500">Cancelar</button><button type="submit" className="w-1/2 py-2 bg-red-700 text-white rounded font-bold">Guardar</button></div> </form> </div> </div> )}
+                {showSpellForm && ( <div className="fixed inset-0 bg-black/90 z-[70] flex items-center justify-center p-4"> <div className="bg-white p-6 rounded-lg w-full max-w-sm max-h-[90vh] overflow-y-auto text-stone-900"> <h2 className="text-xl font-bold mb-4 text-indigo-900">Nuevo Hechizo</h2> <form onSubmit={(e) => { e.preventDefault(); const fd = new FormData(e.target); setChar(p => ({...p, spells: [...p.spells, { id: Date.now(), name: fd.get('name'), level: fd.get('isCantrip') ? 0 : fd.get('level'), isCantrip: fd.get('isCantrip') === 'on', time: fd.get('time'), range: fd.get('range'), desc: fd.get('desc') }]})); setShowSpellForm(false); }} className="space-y-3"> <div className="flex items-center gap-2 mb-2 bg-indigo-50 p-2 rounded"> <input type="checkbox" name="isCantrip" id="isCantrip" className="w-5 h-5" /> <label htmlFor="isCantrip" className="font-bold text-indigo-900">Es un Truco</label> </div> <input name="name" required placeholder="Ej: Bola de Fuego" className="w-full border p-3 rounded" /> <input name="level" type="number" placeholder="Nivel" className="w-full border p-3 rounded" /> <div className="flex gap-2"><input name="time" placeholder="Ej: 1 acción" className="w-1/2 border p-3 rounded" /><input name="range" placeholder="Ej: 150 pies" className="w-1/2 border p-3 rounded" /></div> <textarea name="desc" placeholder="Ej: Una brillante racha parpadea..." className="w-full border p-3 rounded h-32"></textarea> <div className="flex gap-2 mt-4"><button type="button" onClick={() => setShowSpellForm(false)} className="w-1/2 py-2 text-stone-500">Cancelar</button><button type="submit" className="w-1/2 py-2 bg-indigo-700 text-white rounded font-bold">Guardar</button></div> </form> </div> </div> )}
+                {showBgModal && ( <div className="fixed inset-0 bg-black/50 z-[60] flex items-center justify-center backdrop-blur-sm p-4"> <div className="bg-white rounded-lg shadow-xl w-full max-w-2xl max-h-[80vh] overflow-hidden flex flex-col text-stone-900"> <div className="p-4 border-b flex justify-between items-center bg-stone-100"> <h2 className="text-xl font-bold font-serif">Elige un Trasfondo (SRD)</h2> <button onClick={() => setShowBgModal(false)}><Icons.X size={20}/></button> </div> <div className="overflow-y-auto p-4 space-y-4"> {BACKGROUNDS_SRD.map(bg => ( <div key={bg.name} className="border rounded p-3 hover:bg-stone-50 transition-colors cursor-pointer group" onClick={() => selectBackground(bg)}> <div className="flex justify-between items-start"><h3 className="font-bold text-lg text-indigo-800">{bg.name}</h3><span className="text-xs bg-indigo-100 text-indigo-800 px-2 py-1 rounded opacity-0 group-hover:opacity-100">Seleccionar</span></div> <p className="text-xs font-bold mt-1 text-stone-700">Rasgo: {bg.feature}</p> <p className="text-sm text-stone-600 mt-1 line-clamp-2">{bg.desc}</p> <p className="text-xs text-stone-500 mt-1 italic">Competencias: {bg.skills.join(', ')}</p> </div> ))} </div> </div> </div> )}
+                {castModalData && ( <div className="fixed inset-0 bg-black/90 z-[70] flex items-center justify-center p-4"> <div className="bg-white p-6 rounded-lg w-full max-w-sm text-stone-900"> <h2 className="text-lg font-bold mb-4">Lanzar "{castModalData.spell.name}"</h2> <div className="space-y-2 mb-4"> {castModalData.availableLevels.map(lvl => ( <button key={lvl} onClick={() => { spendSlot(lvl); setCastModalData(null); }} className="w-full text-left p-3 border rounded hover:bg-indigo-50 flex justify-between items-center text-stone-900"> <span className="font-bold">Nivel {lvl}</span> <span className="text-xs bg-indigo-100 text-indigo-800 px-2 py-1 rounded">Quedan {char.spellSlots[lvl].total - char.spellSlots[lvl].used}</span> </button> ))} </div> <button onClick={() => setCastModalData(null)} className="w-full py-2 text-stone-500">Cancelar</button> </div> </div> )}
                 </>
             );
 
@@ -668,7 +594,8 @@
                                     toggleDeathSave={toggleDeathSave} 
                                     getSkillInfo={getSkillInfo} getSaveBonus={getSaveBonus} toggleProficiency={toggleProficiency} updateStat={updateStat} toggleSaveProficiency={toggleSaveProficiency}
                                     decreaseDice={decreaseDice} increaseDice={increaseDice}
-                                    setShowAvatarModal={setShowAvatarModal} // Pass setter
+                                    setShowAvatarModal={setShowAvatarModal} 
+                                    setShowBgUploadModal={setShowBgUploadModal} // Pass setter
                                 />
                                 {modals}
                                 <button onClick={() => setForceMobile(false)} className="absolute top-8 right-8 text-stone-500 hover:text-white flex items-center gap-2 bg-stone-800 px-4 py-2 rounded-full font-bold shadow-lg transform translate-x-full -mr-16 translate-y-0" style={{position:'absolute', top:'20px', right:'-200px'}}>
@@ -684,7 +611,8 @@
                                     toggleDeathSave={toggleDeathSave}
                                     getSkillInfo={getSkillInfo} getSaveBonus={getSaveBonus} toggleProficiency={toggleProficiency} updateStat={updateStat} toggleSaveProficiency={toggleSaveProficiency}
                                     decreaseDice={decreaseDice} increaseDice={increaseDice}
-                                    setShowAvatarModal={setShowAvatarModal} // Pass setter
+                                    setShowAvatarModal={setShowAvatarModal} 
+                                    setShowBgUploadModal={setShowBgUploadModal} // Pass setter
                                 />
                                 {modals}
                             </>
@@ -699,7 +627,7 @@
                     <nav className="fixed top-0 w-full bg-stone-800 text-stone-100 p-3 shadow-lg z-50 flex flex-wrap gap-4 items-center justify-between border-b border-stone-700 desktop-only">
                         <div className="flex items-center gap-2">
                             <div className="bg-red-700 p-1.5 rounded-lg"><Icons.Sword size={18} /></div>
-                            <h1 className="text-lg font-bold tracking-wider font-serif">LA FORJA v5.0</h1>
+                            <h1 className="text-lg font-bold tracking-wider font-serif">LA FORJA v5.4</h1>
                         </div>
                         <div className="flex gap-2">
                             <button onClick={() => setForceMobile(true)} className="flex items-center gap-2 px-3 py-1.5 bg-stone-700 hover:bg-stone-600 rounded font-semibold text-xs" title="Forzar Vista Móvil">
