@@ -108,7 +108,78 @@
         .dice-panel   { animation: slideUp 0.3s cubic-bezier(0.34, 1.1, 0.64, 1) forwards; }
         .fab-pulse    { animation: fabPulse 0.3s ease-out; }
 
-        /* === MODO OSCURO / CLARO === */
+        /* === RESPONSIVE DESKTOP === */
+
+        /* Contenedor raíz centrado en desktop */
+        @media (min-width: 768px) {
+            #app-root {
+                display: flex;
+                justify-content: center;
+                align-items: flex-start;
+                min-height: 100vh;
+                background: #0d0b09;
+            }
+            #app-root > * {
+                width: 100%;
+                max-width: 1200px;
+                min-height: 100vh;
+                box-shadow: 0 0 60px rgba(0,0,0,0.8);
+            }
+        }
+
+        /* Menu principal en desktop */
+        @media (min-width: 768px) {
+            .desktop-menu {
+                display: grid;
+                grid-template-columns: 340px 1fr;
+                min-height: 100vh;
+            }
+            .desktop-menu-sidebar {
+                display: flex !important;
+                flex-direction: column;
+                padding: 48px 32px;
+                background: #1c1917;
+                border-right: 1px solid #292524;
+            }
+            .desktop-menu-content {
+                padding: 48px 40px;
+                background: #141210;
+                overflow-y: auto;
+            }
+            .desktop-hide { display: none !important; }
+        }
+
+        /* Ficha en desktop — layout de dos columnas */
+        @media (min-width: 768px) {
+            .desktop-sheet {
+                display: grid !important;
+                grid-template-columns: 360px 1fr;
+                grid-template-rows: auto 1fr;
+                min-height: 100vh;
+            }
+            .desktop-sheet-header {
+                grid-column: 1 / -1;
+            }
+            .desktop-sheet-left {
+                overflow-y: auto;
+                padding: 16px;
+                border-right: 1px solid var(--divider);
+            }
+            .desktop-sheet-right {
+                overflow-y: auto;
+                padding: 16px;
+            }
+            /* En desktop las tabs se convierten en navegación lateral */
+            .desktop-tab-bar { display: none !important; }
+            /* Mostrar todo el contenido sin tabs */
+            .desktop-show-all > div { display: block !important; }
+        }
+
+        @media (max-width: 767px) {
+            .desktop-menu { display: flex; flex-direction: column; }
+            .desktop-menu-sidebar { padding: 0; background: transparent; border: none; }
+            .desktop-menu-content { padding: 0; background: transparent; }
+        }
         :root {
             --sheet-bg:        #f5f4f2;
             --sheet-bg2:       #ede9e6;
@@ -189,7 +260,7 @@
     <script type="text/babel">
         const { useState, useEffect, useRef } = React;
 
-        const CURRENT_VERSION = "v13.0 PWA";
+        const CURRENT_VERSION = "v13.1 Responsive";
         const DEV_TAG = "Evionail";
         const LIBRARY_SIGNATURE = "R4C1N3EV10N41L"; 
         const DEFAULT_BG = "";
@@ -279,6 +350,17 @@
             }
         };
         // ============================================================
+
+        // Hook para detectar desktop (≥768px)
+        function useIsDesktop() {
+            const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 768);
+            useEffect(() => {
+                const handler = () => setIsDesktop(window.innerWidth >= 768);
+                window.addEventListener('resize', handler);
+                return () => window.removeEventListener('resize', handler);
+            }, []);
+            return isDesktop;
+        }
 
         const calculateModifier = (score) => {
             const val = (score === "" || isNaN(Number(score))) ? 10 : Number(score);
@@ -1074,7 +1156,7 @@
             const items = library[tab].filter(i => i.name.toLowerCase().includes(search.toLowerCase()));
 
             return (
-                <div className={`h-full flex flex-col text-stone-900 ${darkMode ? 'dm-bg dm-text' : 'bg-stone-100'}`}>
+                <div className={`h-full flex flex-col text-stone-900 ${darkMode ? 'dm-bg dm-text' : 'bg-stone-100'} ${isDesktop ? 'desktop-sheet' : ''}`}>
                     {/* FIX 1: Padding eliminado del contenedor padre y movido al header */}
                     <div className="bg-stone-800 text-white p-4 pt-10 shadow-md flex justify-between items-center z-10 flex-shrink-0">
                         <button onClick={onClose}><Icons.ArrowLeft/></button>
@@ -1152,6 +1234,8 @@
             handleImageUpload, saveAvatar, saveBackground, removeBackground, handleShortRest, handleLongRest, selectBackground,
             registerBackHandler, darkMode, toggleDark
         }) => {
+            const isDesktop = useIsDesktop();
+
             const boxClass = char.boxTransparent
                 ? darkMode
                     ? "backdrop-blur-md border shadow-sm" // vidrio oscuro
@@ -1253,9 +1337,33 @@
                     {/* Status Bar... (Same code) */}
                     <div className="bg-stone-900 py-3 px-2 flex justify-around border-b border-stone-800 shadow-sm sticky top-0 z-10 text-white"> <div className="flex flex-col items-center"><span className="text-xs text-stone-500 font-bold uppercase tracking-wider">HP</span><div className="flex items-end gap-1"><input type="number" className={`text-2xl font-bold bg-transparent w-12 text-center ${char.hp.current < char.hp.max/2 ? 'text-red-500' : 'text-green-500'}`} value={char.hp.current} onChange={e => setChar({...char, hp: {...char.hp, current: e.target.value === '' ? '' : parseInt(e.target.value)}})} onFocus={e => e.target.select()} /><span className="text-sm text-stone-500 mb-1">/</span><input type="number" className="text-sm text-stone-500 mb-1 w-8 bg-transparent text-center" value={char.hp.max} onChange={e => setChar({...char, hp: {...char.hp, max: e.target.value === '' ? '' : parseInt(e.target.value)}})} onFocus={e => e.target.select()} /></div></div> <div className="w-px bg-stone-700 h-10"></div> <div className="flex flex-col items-center"><span className="text-xs text-stone-500 font-bold uppercase tracking-wider">CA</span><input type="number" className="text-2xl font-bold font-serif bg-transparent w-10 text-center text-white" value={char.ac} onChange={e => setChar({...char, ac: e.target.value === '' ? '' : parseInt(e.target.value)})} onFocus={e => e.target.select()} /></div> <div className="w-px bg-stone-700 h-10"></div> <div className="flex flex-col items-center"><span className="text-xs text-stone-500 font-bold uppercase tracking-wider">INI</span><span className="text-2xl font-bold text-white">{calculateModifier(char.stats.dex) >= 0 ? `+${calculateModifier(char.stats.dex)}` : calculateModifier(char.stats.dex)}</span></div> <div className="w-px bg-stone-700 h-10"></div> <div className="flex flex-col items-center"><span className="text-xs text-stone-500 font-bold uppercase tracking-wider">VEL</span><input type="number" className="text-2xl font-bold bg-transparent w-10 text-center text-white" value={char.speed} onChange={e => setChar({...char, speed: e.target.value === '' ? '' : parseInt(e.target.value)})} onFocus={e => e.target.select()} /></div> <div className="w-px bg-stone-700 h-10"></div> <div className="flex flex-col items-center"><span className="text-xs text-stone-500 font-bold uppercase tracking-wider">BON</span><span className="text-2xl font-bold text-white">+{pb}</span></div> </div>
 
-                    {/* Content ... (Same code, simplified for brevity in this response but kept in file) */}
-                    <div className="flex-1 overflow-y-auto z-0 pb-24 relative">
-                        {activeTab === 'main' && (
+                    {/* Content — desktop: two columns, mobile: tabs */}
+                    {isDesktop ? (
+                        <>
+                            <div className="desktop-sheet-left">
+                                <div className="space-y-4">
+                                    {/* Stats inline for desktop left col */}
+                                    <div className="grid grid-cols-3 gap-3"> {ATTRIBUTES.map(attr => ( <div key={attr.id} className={`${boxClass} rounded-lg p-3 text-center`} style={boxStyle}> <div className="text-xs font-bold uppercase tracking-widest" style={{color:'var(--text-muted)'}}>{attr.label}</div> <div className="text-5xl font-bold my-2" style={{color:'var(--text-primary)'}}>{calculateModifier(char.stats[attr.id]) >= 0 ? `+${calculateModifier(char.stats[attr.id])}` : calculateModifier(char.stats[attr.id])}</div> <input type="number" className="text-base font-bold rounded-full w-14 mx-auto text-center py-1" style={{color:'var(--text-secondary)',background:'var(--input-bg)'}} value={char.stats[attr.id]} onChange={e => updateStat(attr.id, e.target.value)} onFocus={(e) => e.target.select()} /> </div> ))} </div>
+                                <div className={`${boxClass} rounded-lg p-3 flex justify-between gap-4`} style={boxStyle}> <div className="flex-1 text-center pr-2" style={{borderRight:'1px solid var(--divider)'}}> <div className="text-xs font-bold uppercase mb-2" style={{color:'var(--text-muted)'}}>Dados de Golpe</div> <div className="flex items-center justify-center gap-2 mb-2"> <input className="w-16 text-center font-bold text-2xl bg-transparent" style={{borderBottom:'1px solid var(--divider)',color:'var(--text-primary)'}} placeholder="1d10" value={char.hp.hitDice} onChange={e => setChar(p => ({...p, hp: {...p.hp, hitDice: e.target.value}}))} /> <div className="flex flex-col text-[10px] leading-none" style={{color:'var(--text-muted)'}}><span>MAX</span><input type="number" className="w-8 text-center font-bold bg-transparent text-lg" style={{color:'var(--text-primary)'}} value={char.hp.hitDiceMax} onChange={e => setChar(p => ({...p, hp: {...p.hp, hitDiceMax: e.target.value === '' ? '' : parseInt(e.target.value)}}))} onFocus={e => e.target.select()} /></div> </div> <div className="flex items-center justify-center gap-4"> <button onClick={decreaseDice} className="w-10 h-10 rounded font-bold text-2xl flex items-center justify-center" style={{background:'var(--tag-bg)',color:'var(--text-secondary)'}}>-</button> <span className="text-3xl font-bold" style={{color:'var(--text-primary)'}}>{char.hp.hitDiceMax - char.hp.hitDiceUsed}</span> <button onClick={increaseDice} className="w-10 h-10 rounded font-bold text-2xl flex items-center justify-center" style={{background:'var(--tag-bg)',color:'var(--text-secondary)'}}>+</button> </div> </div> <div className="flex-1 text-center pl-2"> <div className="text-xs font-bold uppercase mb-2" style={{color:'var(--text-muted)'}}>Salv. Muerte</div> <div className="flex items-center justify-between text-sm mb-3"> <span className="text-green-600 font-bold uppercase tracking-wide">Éxito</span> <div className="flex gap-2"> {[0,1,2].map(i => (<div key={i} onClick={() => toggleDeathSave('successes', i)} className="cursor-pointer">{i < (char.hp.deathSaves?.successes || 0) ? <div className="text-green-600 drop-shadow-sm"><Icons.Heart size={20}/></div> : <div className="w-5 h-5 rounded-full border-2 border-green-600 opacity-20"></div>}</div>))} </div> </div> <div className="flex items-center justify-between text-sm"> <span className="text-red-500 font-bold uppercase tracking-wide">Fallo</span> <div className="flex gap-2"> {[0,1,2].map(i => (<div key={i} onClick={() => toggleDeathSave('failures', i)} className="cursor-pointer">{i < (char.hp.deathSaves?.failures || 0) ? <div className="text-red-500 drop-shadow-sm"><Icons.Skull size={20}/></div> : <div className="w-5 h-5 rounded-full border-2 border-red-500 opacity-20"></div>}</div>))} </div> </div> </div> </div>
+                                <div className={`${boxClass} rounded-lg p-4`} style={boxStyle}> <h3 className="font-serif font-bold pb-2 mb-3 text-xl" style={{borderBottom:'1px solid var(--divider)',color:'var(--text-primary)'}}>Competencias</h3> <div className="mb-6"> <h4 className="text-xs font-bold uppercase mb-2 tracking-wide" style={{color:'var(--text-muted)'}}>Salvaciones</h4> {ATTRIBUTES.map(attr => ( <div key={attr.id} className="flex justify-between items-center text-lg pb-2 mb-2 last:mb-0" style={{borderBottom:'1px solid var(--divider)'}}> <div className="flex items-center gap-3 flex-1" onClick={() => toggleSaveProficiency(attr.id)}> <div className={`w-5 h-5 rounded-full border-2 flex-shrink-0 flex items-center justify-center transition-colors ${char.savingThrows.includes(attr.id) ? 'bg-stone-600 border-stone-600' : 'bg-transparent border-stone-400'}`}> {char.savingThrows.includes(attr.id) && <div className="w-2 h-2 bg-white rounded-full"></div>} </div> <span style={{color: char.savingThrows.includes(attr.id) ? 'var(--text-primary)' : 'var(--text-secondary)', fontWeight: char.savingThrows.includes(attr.id) ? 'bold' : 'normal'}}>{attr.label}</span> </div> <span className="font-mono font-bold px-3 py-1 rounded ml-2" style={{background:'var(--tag-bg)',color:'var(--text-primary)'}}>{getSaveBonus(attr.id) >= 0 ? `+${getSaveBonus(attr.id)}` : getSaveBonus(attr.id)}</span> </div> ))} </div> <div> <h4 className="text-xs font-bold uppercase mb-2 tracking-wide" style={{color:'var(--text-muted)'}}>Habilidades</h4> {SKILLS_LIST.map(skill => { const { total, breakdown } = getSkillInfo(skill.id); return ( <div key={skill.id} className="flex justify-between items-center text-lg pb-2 mb-2 last:mb-0" style={{borderBottom:'1px solid var(--divider)'}}> <div className="flex items-center gap-3 flex-1 overflow-hidden" onClick={() => toggleProficiency(skill.id)}> <div className={`w-5 h-5 rounded-full border-2 flex-shrink-0 flex items-center justify-center transition-colors ${char.proficiencies.includes(skill.id) ? 'bg-red-700 border-red-700' : 'bg-transparent border-stone-400'}`}> {char.proficiencies.includes(skill.id) && <div className="w-2 h-2 bg-white rounded-full"></div>} </div> <div className="flex flex-col overflow-hidden"> <span className="truncate" style={{color: char.proficiencies.includes(skill.id) ? 'var(--text-primary)' : 'var(--text-secondary)', fontWeight: char.proficiencies.includes(skill.id) ? 'bold' : 'normal'}}>{skill.label}</span> <span className="text-xs truncate" style={{color:'var(--text-muted)'}}>{breakdown}</span> </div> </div> <span className="font-mono font-bold px-3 py-1 rounded ml-2" style={{background:'var(--tag-bg)',color:'var(--text-primary)'}}>{total >= 0 ? `+${total}` : total}</span> </div> ); })} </div> </div>
+                                </div>
+                            </div>
+                            <div className="desktop-sheet-right">
+                                <div className="flex gap-2 mb-4 pb-3" style={{borderBottom:'1px solid var(--divider)'}}>
+                                    {[{id:'combat',label:'Combate'},{id:'spells',label:'Magia'},{id:'inventory',label:'Mochila'}].map(t => (
+                                        <button key={t.id} onClick={() => setActiveTab(t.id)} className="px-4 py-2 rounded-lg text-sm font-bold transition-all"
+                                            style={{ background: activeTab === t.id ? 'var(--card-bg)' : 'transparent', color: activeTab === t.id ? 'var(--text-primary)' : 'var(--text-muted)', border: activeTab === t.id ? '1px solid var(--card-border)' : '1px solid transparent' }}>
+                                            {t.label}
+                                        </button>
+                                    ))}
+                                </div>
+                        {activeTab === 'combat' && ( <div className="space-y-4"> <div className={`${boxClass} rounded-lg p-4`} style={boxStyle}> <div className="flex justify-between items-center mb-4"><h3 className="font-serif font-bold text-xl" style={{color:'var(--text-primary)'}}>Ataques</h3><button onClick={() => setShowAttackForm(true)} className="p-2 rounded" style={{color:'var(--red-text)',background:'var(--red-soft)'}}><Icons.Plus size={24}/></button></div> {char.attacks.map(atk => ( <div key={atk.id} className="rounded-lg p-3 mb-2 flex justify-between items-center flex-wrap" style={{border:'1px solid var(--card-border)',background:'var(--sheet-bg2)'}}> <div className="flex-1 min-w-0 pr-2"> <div className="font-bold text-lg" style={{color:'var(--text-primary)'}}>{atk.name}</div> <div className="text-sm italic" style={{color:'var(--text-muted)'}}>{atk.type}</div> </div> <div className="flex items-center gap-4"> <div className="text-right flex-shrink-0"> <div className="font-bold px-2 py-1 rounded mb-1 text-base" style={{color:'var(--red-text)',background:'var(--red-soft)'}}>{atk.bonus}</div> <div className="text-sm font-mono font-bold" style={{color:'var(--text-primary)'}}>{atk.damage}</div> </div> <div className="flex gap-3"> <button onClick={() => viewAttackDetail(atk)} style={{color:'var(--text-muted)'}}><Icons.Eye size={22}/></button> <button onClick={() => setChar(p => ({...p, attacks: p.attacks.filter(x => x.id !== atk.id)}))} style={{color:'var(--text-muted)'}}><Icons.Trash2 size={22}/></button> </div> </div> {(atk.description || atk.desc) && <p className="w-full text-[10px] mt-1 italic pt-1 line-clamp-2" style={{color:'var(--text-muted)',borderTop:'1px solid var(--divider)'}}>{atk.description || atk.desc}</p>} </div> ))} {char.attacks.length === 0 && <div className="text-center italic py-8 rounded-lg text-lg" style={{color:'var(--text-muted)',border:'2px dashed var(--card-border)'}}>Tu hoja está vacía</div>} </div> </div> )}
+                        {activeTab === 'spells' && ( <div className="space-y-4"> <div className="grid grid-cols-2 gap-3 mb-2"><div className="bg-indigo-900 text-white p-3 rounded-lg text-center shadow"><div className="text-4xl font-bold font-serif">DC {8 + pb + calculateModifier(char.stats.int)}</div><div className="text-xs uppercase tracking-widest opacity-80">Salvación</div></div><div className="bg-indigo-700 text-white p-3 rounded-lg text-center shadow"><div className="text-4xl font-bold font-serif">+{pb + calculateModifier(char.stats.int)}</div><div className="text-xs uppercase tracking-widest opacity-80">Ataque</div></div></div> <div className="flex gap-2 overflow-x-auto pb-4 no-scrollbar snap-x snap-mandatory px-1">{[1,2,3,4,5,6,7,8,9].map(lvl => (<div key={lvl} className="flex-shrink-0 rounded-lg p-2 w-32 text-center snap-center shadow-sm" style={{background:'var(--card-bg)',border:'1px solid var(--card-border)'}}><div className="text-sm font-bold mb-2 flex items-center justify-center gap-1 rounded py-1" style={{color:'var(--indigo-text)',background:'var(--indigo-soft)'}}>Nivel {lvl} <span style={{color:'var(--text-muted)'}}>|</span><input type="number" className="w-8 bg-transparent text-center font-bold focus:outline-none rounded text-lg" style={{color:'var(--indigo-text)'}} value={char.spellSlots[lvl]?.total === 0 ? '' : char.spellSlots[lvl]?.total} placeholder="0" onChange={e => setChar(p => ({...p, spellSlots: {...p.spellSlots, [lvl]: {...p.spellSlots[lvl], total: e.target.value === '' ? 0 : parseInt(e.target.value)}}}) )} onFocus={(e) => e.target.select()} /></div><div className="flex justify-center gap-2 flex-wrap">{Array.from({length: char.spellSlots[lvl]?.total || 0}).map((_, i) => (<div key={i} onClick={() => setChar(p => ({...p, spellSlots: {...p.spellSlots, [lvl]: { ...p.spellSlots[lvl], used: i < char.spellSlots[lvl].used ? p.spellSlots[lvl].used - 1 : p.spellSlots[lvl].used + 1 }}}))} className={`w-6 h-6 rounded-full border-2 border-indigo-700 cursor-pointer transition-all ${i < char.spellSlots[lvl].used ? 'bg-indigo-700 scale-90' : ''}`} style={{background: i < char.spellSlots[lvl].used ? '' : 'var(--card-bg)'}} />))}</div></div>))}</div> <div className={`${boxClass} rounded-lg p-3`} style={boxStyle}> <div className="flex justify-between mb-4 items-center"><h3 className="font-serif font-bold text-xl" style={{color:'var(--indigo-text)'}}>Grimorio</h3><button onClick={() => setShowSpellForm(true)} className="p-2 rounded" style={{color:'var(--indigo-text)',background:'var(--indigo-soft)'}}><Icons.Plus size={24}/></button></div> {char.spells.map(spell => (<div key={spell.id} className="py-3 flex justify-between items-start flex-wrap" style={{borderBottom:'1px solid var(--divider)'}}><div className="flex-1 min-w-0 pr-2"><div className="flex justify-between items-start mb-1"><div className="font-bold text-base truncate flex-1" style={{color:'var(--text-primary)'}}>{spell.name} <span className="text-sm font-normal ml-1" style={{color:'var(--text-muted)'}}>{spell.isCantrip ? '(T)' : `(N${spell.level})`}</span></div><div className="flex items-center gap-3 flex-shrink-0 ml-2"><button onClick={() => viewSpellDetail(spell)} style={{color:'var(--text-muted)'}}><Icons.Eye size={22}/></button>{!spell.isCantrip && <button onClick={() => castSpell(spell)} className="text-xs bg-indigo-600 text-white px-3 py-1.5 rounded font-bold shadow-sm active:scale-95">LANZAR</button>}</div></div><div className="text-xs flex flex-wrap gap-2 items-center"><span className="px-2 py-0.5 rounded text-xs" style={{background:'var(--tag-bg)',color:'var(--text-muted)'}}>⏱ {spell.time}</span><span className="px-2 py-0.5 rounded text-xs" style={{background:'var(--tag-bg)',color:'var(--text-muted)'}}>📏 {spell.range}</span>{spell.damage && <span className="font-bold px-2 py-0.5 rounded text-xs" style={{color:'var(--red-text)',background:'var(--red-soft)'}}>⚔ {spell.damage}</span>}</div></div><button onClick={() => setChar(p => ({...p, spells: p.spells.filter(x => x.id !== spell.id)}))} className="p-2 self-center" style={{color:'var(--text-muted)'}}><Icons.Trash2 size={20}/></button>{(spell.description || spell.desc) && <p className="w-full text-[10px] mt-1 italic pt-1 line-clamp-2" style={{color:'var(--text-muted)',borderTop:'1px solid var(--divider)'}}>{spell.description || spell.desc}</p>}</div>))} {char.spells.length === 0 && <div className="text-center italic py-8 text-lg" style={{color:'var(--text-muted)'}}>Grimorio vacío</div>} </div> </div> )}
+                                {activeTab === 'inventory' && ( <div className="space-y-4"> <div className={`grid grid-cols-5 gap-2 ${boxClass} p-3 rounded-lg`} style={boxStyle}>{['cp', 'sp', 'ep', 'gp', 'pp'].map(curr => (<div key={curr} className="text-center"><div className="text-xs font-bold uppercase mb-1" style={{color:'var(--text-muted)'}}>{curr}</div><input type="number" className="w-full text-center font-bold text-xl bg-transparent outline-none" style={{borderBottom:'1px solid var(--divider)',color:'var(--text-primary)'}} value={char.money[curr]} onChange={e => setChar(p => ({...p, money: {...p.money, [curr]: parseInt(e.target.value)||0}}))} onFocus={(e) => e.target.select()} /></div>))}</div> <div className={`${boxClass} p-4 rounded-lg`} style={boxStyle}> <div className="flex justify-between items-center mb-2"><h3 className="font-serif font-bold text-xl" style={{color:'var(--text-primary)'}}>Mochila</h3></div> <textarea value={char.inventory} onChange={e => setChar({...char, inventory: e.target.value})} className="w-full h-60 text-base p-3 rounded-lg mb-6 outline-none resize-none" style={{background:'var(--input-bg)',border:'1px solid var(--input-border)',color:'var(--text-primary)'}} placeholder="Lista de equipo..." /> <h3 className="font-serif font-bold mb-2 pt-2 text-xl" style={{borderTop:'1px solid var(--divider)',color:'var(--text-primary)'}}>Notas y Rasgos</h3> {char.backgroundFeature && <div className="mb-3 p-3 rounded-lg text-sm leading-relaxed whitespace-pre-wrap" style={{background:'var(--indigo-soft)',color:'var(--indigo-text)',border:'1px solid var(--card-border)'}}><span className="font-bold block mb-1">Rasgo de Trasfondo:</span>{char.backgroundFeature}</div>} <textarea value={char.notes} onChange={e => setChar({...char, notes: e.target.value})} className="w-full h-60 text-base p-3 rounded-lg outline-none resize-none" style={{background:'var(--input-bg)',border:'1px solid var(--input-border)',color:'var(--text-primary)'}} placeholder="Notas de aventura..." /> <button onClick={() => setShowBgUploadModal(true)} className="mt-4 w-full py-3 rounded-lg flex items-center justify-center gap-2 font-bold shadow-sm transition-all" style={{border:'1px solid var(--card-border)',color:'var(--text-secondary)',background:'var(--tag-bg)'}}><Icons.Image size={20}/> Personalizar Fondo</button> </div> </div> )}
+                            </div>
+                        </>
+                    ) : (
+                        <div className="flex-1 overflow-y-auto z-0 pb-24 relative">
                             <div className="p-4 space-y-4">
                                 <div className="grid grid-cols-3 gap-3"> {ATTRIBUTES.map(attr => ( <div key={attr.id} className={`${boxClass} rounded-lg p-3 text-center`} style={boxStyle}> <div className="text-xs font-bold uppercase tracking-widest" style={{color:'var(--text-muted)'}}>{attr.label}</div> <div className="text-5xl font-bold my-2" style={{color:'var(--text-primary)'}}>{calculateModifier(char.stats[attr.id]) >= 0 ? `+${calculateModifier(char.stats[attr.id])}` : calculateModifier(char.stats[attr.id])}</div> <input type="number" className="text-base font-bold rounded-full w-14 mx-auto text-center py-1" style={{color:'var(--text-secondary)',background:'var(--input-bg)'}} value={char.stats[attr.id]} onChange={e => updateStat(attr.id, e.target.value)} onFocus={(e) => e.target.select()} /> </div> ))} </div>
                                 <div className={`${boxClass} rounded-lg p-3 flex justify-between gap-4`} style={boxStyle}> <div className="flex-1 text-center pr-2" style={{borderRight:'1px solid var(--divider)'}}> <div className="text-xs font-bold uppercase mb-2" style={{color:'var(--text-muted)'}}>Dados de Golpe</div> <div className="flex items-center justify-center gap-2 mb-2"> <input className="w-16 text-center font-bold text-2xl bg-transparent" style={{borderBottom:'1px solid var(--divider)',color:'var(--text-primary)'}} placeholder="1d10" value={char.hp.hitDice} onChange={e => setChar(p => ({...p, hp: {...p.hp, hitDice: e.target.value}}))} /> <div className="flex flex-col text-[10px] leading-none" style={{color:'var(--text-muted)'}}><span>MAX</span><input type="number" className="w-8 text-center font-bold bg-transparent text-lg" style={{color:'var(--text-primary)'}} value={char.hp.hitDiceMax} onChange={e => setChar(p => ({...p, hp: {...p.hp, hitDiceMax: e.target.value === '' ? '' : parseInt(e.target.value)}}))} onFocus={e => e.target.select()} /></div> </div> <div className="flex items-center justify-center gap-4"> <button onClick={decreaseDice} className="w-10 h-10 rounded font-bold text-2xl flex items-center justify-center" style={{background:'var(--tag-bg)',color:'var(--text-secondary)'}}>-</button> <span className="text-3xl font-bold" style={{color:'var(--text-primary)'}}>{char.hp.hitDiceMax - char.hp.hitDiceUsed}</span> <button onClick={increaseDice} className="w-10 h-10 rounded font-bold text-2xl flex items-center justify-center" style={{background:'var(--tag-bg)',color:'var(--text-secondary)'}}>+</button> </div> </div> <div className="flex-1 text-center pl-2"> <div className="text-xs font-bold uppercase mb-2" style={{color:'var(--text-muted)'}}>Salv. Muerte</div> <div className="flex items-center justify-between text-sm mb-3"> <span className="text-green-600 font-bold uppercase tracking-wide">Éxito</span> <div className="flex gap-2"> {[0,1,2].map(i => (<div key={i} onClick={() => toggleDeathSave('successes', i)} className="cursor-pointer">{i < (char.hp.deathSaves?.successes || 0) ? <div className="text-green-600 drop-shadow-sm"><Icons.Heart size={20}/></div> : <div className="w-5 h-5 rounded-full border-2 border-green-600 opacity-20"></div>}</div>))} </div> </div> <div className="flex items-center justify-between text-sm"> <span className="text-red-500 font-bold uppercase tracking-wide">Fallo</span> <div className="flex gap-2"> {[0,1,2].map(i => (<div key={i} onClick={() => toggleDeathSave('failures', i)} className="cursor-pointer">{i < (char.hp.deathSaves?.failures || 0) ? <div className="text-red-500 drop-shadow-sm"><Icons.Skull size={20}/></div> : <div className="w-5 h-5 rounded-full border-2 border-red-500 opacity-20"></div>}</div>))} </div> </div> </div> </div>
@@ -1268,12 +1376,17 @@
                         {activeTab === 'inventory' && ( <div className="p-4 space-y-4"> <div className={`grid grid-cols-5 gap-2 ${boxClass} p-3 rounded-lg`} style={boxStyle}>{['cp', 'sp', 'ep', 'gp', 'pp'].map(curr => (<div key={curr} className="text-center"><div className="text-xs font-bold uppercase mb-1" style={{color:'var(--text-muted)'}}>{curr}</div><input type="number" className="w-full text-center font-bold text-xl bg-transparent outline-none" style={{borderBottom:'1px solid var(--divider)',color:'var(--text-primary)'}} value={char.money[curr]} onChange={e => setChar(p => ({...p, money: {...p.money, [curr]: parseInt(e.target.value)||0}}))} onFocus={(e) => e.target.select()} /></div>))}</div> <div className={`${boxClass} p-4 rounded-lg`} style={boxStyle}> <div className="flex justify-between items-center mb-2"><h3 className="font-serif font-bold text-xl" style={{color:'var(--text-primary)'}}>Mochila</h3></div> <textarea value={char.inventory} onChange={e => setChar({...char, inventory: e.target.value})} className="w-full h-60 text-base p-3 rounded-lg mb-6 outline-none resize-none" style={{background:'var(--input-bg)',border:'1px solid var(--input-border)',color:'var(--text-primary)'}} placeholder="Lista de equipo..." /> <h3 className="font-serif font-bold mb-2 pt-2 text-xl" style={{borderTop:'1px solid var(--divider)',color:'var(--text-primary)'}}>Notas y Rasgos</h3> {char.backgroundFeature && <div className="mb-3 p-3 rounded-lg text-sm leading-relaxed whitespace-pre-wrap" style={{background:'var(--indigo-soft)',color:'var(--indigo-text)',border:'1px solid var(--card-border)'}}><span className="font-bold block mb-1">Rasgo de Trasfondo:</span>{char.backgroundFeature}</div>} <textarea value={char.notes} onChange={e => setChar({...char, notes: e.target.value})} className="w-full h-60 text-base p-3 rounded-lg outline-none resize-none" style={{background:'var(--input-bg)',border:'1px solid var(--input-border)',color:'var(--text-primary)'}} placeholder="Notas de aventura..." /> <button onClick={() => setShowBgUploadModal(true)} className="mt-4 w-full py-3 rounded-lg flex items-center justify-center gap-2 font-bold shadow-sm transition-all" style={{border:'1px solid var(--card-border)',color:'var(--text-secondary)',background:'var(--tag-bg)'}}><Icons.Image size={20}/> Personalizar Fondo</button> </div> </div> )}
                     </div>
                     {/* Navegación Inferior */}
+                        </div>
+                    )}
+                    {/* Navegación Inferior — solo móvil */}
+                    {!isDesktop && (
                     <div className="bg-stone-900 text-stone-500 flex justify-around py-4 border-t border-stone-800 fixed bottom-0 w-full z-50 safe-area-pb">
                         <button onClick={() => setActiveTab('main')} className={`flex flex-col items-center transition-colors ${activeTab === 'main' ? 'text-white scale-110' : 'hover:text-stone-300'}`}><Icons.Shield size={28}/><span className="text-xs mt-1 font-bold">Stats</span></button>
                         <button onClick={() => setActiveTab('combat')} className={`flex flex-col items-center transition-colors ${activeTab === 'combat' ? 'text-red-500 scale-110' : 'hover:text-stone-300'}`}><Icons.Sword size={28}/><span className="text-xs mt-1 font-bold">Combate</span></button>
                         <button onClick={() => setActiveTab('spells')} className={`flex flex-col items-center transition-colors ${activeTab === 'spells' ? 'text-indigo-400 scale-110' : 'hover:text-stone-300'}`}><Icons.Zap size={28}/><span className="text-xs mt-1 font-bold">Magia</span></button>
                         <button onClick={() => setActiveTab('inventory')} className={`flex flex-col items-center transition-colors ${activeTab === 'inventory' ? 'text-amber-400 scale-110' : 'hover:text-stone-300'}`}><Icons.Backpack size={28}/><span className="text-xs mt-1 font-bold">Mochila</span></button>
                     </div>
+                    )}
 
                     {/* MODALES */}
                     {showRestModal && <RestModal onClose={() => setShowRestModal(false)} onShortRest={handleShortRest} onLongRest={handleLongRest} />}
@@ -1380,50 +1493,105 @@
 
         const MainMenu = ({ onChangeView, library, onDeleteChar, darkMode, toggleDark }) => {
             const [deleteTarget, setDeleteTarget] = useState(null);
-            
+            const isDesktop = useIsDesktop();
+
             return (
-                <div className="flex flex-col h-full bg-stone-900 text-white p-6 overflow-hidden relative">
-                    {/* Botón modo oscuro/claro */}
-                    <div className="absolute top-6 right-6 z-10">
-                        <button className="dark-toggle" onClick={toggleDark} title={darkMode ? 'Modo claro' : 'Modo oscuro'}>
-                            {darkMode
-                                ? <svg viewBox="0 0 24 24" width="20" height="20" fill="#fbbf24" stroke="#fbbf24" strokeWidth="1.5"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-                                : <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#d97706" strokeWidth="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-                            }
-                        </button>
+                <div className={`desktop-menu h-full ${isDesktop ? '' : 'flex flex-col bg-stone-900 text-white p-6 overflow-hidden relative'}`} style={isDesktop ? {minHeight:'100vh'} : {}}>
+
+                    {/* SIDEBAR / header móvil */}
+                    <div className={`desktop-menu-sidebar ${isDesktop ? '' : 'flex flex-col items-center mb-6'}`}>
+                        {/* Logo */}
+                        <div className={`${isDesktop ? 'mb-10' : 'mb-4 text-center'}`}>
+                            <h1 className="font-serif font-bold text-amber-500" style={{fontSize: isDesktop ? 36 : 28, letterSpacing: 2}}>⚒ La Forja</h1>
+                            <p className="text-stone-500 text-xs tracking-widest uppercase mt-1">Character Sheet · D&D 5e</p>
+                        </div>
+
+                        {/* Botón modo oscuro */}
+                        <div className={`${isDesktop ? 'mb-4' : 'absolute top-4 right-4'}`}>
+                            <button className="dark-toggle" onClick={toggleDark} title={darkMode ? 'Modo claro' : 'Modo oscuro'}>
+                                {darkMode
+                                    ? <svg viewBox="0 0 24 24" width="20" height="20" fill="#fbbf24" stroke="#fbbf24" strokeWidth="1.5"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                                    : <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#d97706" strokeWidth="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                                }
+                            </button>
+                        </div>
+
+                        {/* Acciones principales */}
+                        <div className={`${isDesktop ? 'w-full space-y-3 mb-8' : 'flex gap-3 w-full max-w-xs mb-4'}`}>
+                            <button onClick={() => onChangeView('create')} className={`bg-red-800 hover:bg-red-700 text-white font-bold rounded-lg flex items-center justify-center gap-3 transition-all active:scale-95 border border-red-900 ${isDesktop ? 'w-full py-4 px-6 text-base' : 'flex-1 py-3 text-sm'}`}>
+                                <Icons.Plus size={isDesktop ? 22 : 18}/> Nuevo Héroe
+                            </button>
+                            <button onClick={() => onChangeView('library')} className={`bg-indigo-800 hover:bg-indigo-700 text-white font-bold rounded-lg flex items-center justify-center gap-3 transition-all active:scale-95 border border-indigo-900 ${isDesktop ? 'w-full py-4 px-6 text-base' : 'flex-1 py-3 text-sm'}`}>
+                                <Icons.BookOpen size={isDesktop ? 22 : 18}/> Biblioteca
+                            </button>
+                        </div>
+
+                        {/* Version + about — solo desktop sidebar */}
+                        {isDesktop && (
+                            <div className="mt-auto">
+                                <button onClick={() => onChangeView('about')} className="text-stone-600 hover:text-stone-400 text-xs flex items-center gap-2 transition-colors">
+                                    <Icons.Info size={14}/> Acerca de La Forja
+                                </button>
+                                <div className="text-stone-700 text-xs mt-2">{CURRENT_VERSION}</div>
+                            </div>
+                        )}
                     </div>
-                    <div className="flex-1 flex flex-col items-center justify-center animate-fade-in relative w-full">
-                        <div className="mb-8 text-6xl">⚔️</div>
-                        <h1 className="text-4xl font-serif font-bold text-center mb-2 tracking-widest text-amber-500">LA FORJA</h1>
-                        <p className="text-sm text-stone-500 uppercase tracking-widest mb-12">Gestor 5e</p>
-                        <button onClick={() => onChangeView('create')} className="w-full max-w-xs bg-red-800 hover:bg-red-700 text-white py-4 rounded-lg font-bold shadow-lg mb-6 flex items-center justify-center gap-3 transition-transform active:scale-95 border border-red-900">
-                            <Icons.Plus size={24} /> NUEVO PERSONAJE
-                        </button>
-                        <button onClick={() => onChangeView('library')} className="w-full max-w-xs bg-indigo-800 hover:bg-indigo-700 text-white py-4 rounded-lg font-bold shadow-lg mb-6 flex items-center justify-center gap-3 transition-transform active:scale-95 border border-indigo-900">
-                            <Icons.Library size={24} /> BIBLIOTECA
-                        </button>
-                        <div className="w-full max-w-xs relative group">
-                            <div className="max-h-[40vh] overflow-y-auto pr-2 no-scrollbar space-y-3 pb-8">
-                                {library.length === 0 && <p className="text-center text-stone-600 italic">No hay personajes guardados.</p>}
+
+                    {/* CONTENIDO — lista de personajes */}
+                    <div className={`desktop-menu-content ${isDesktop ? '' : 'flex-1 overflow-y-auto'}`}>
+                        {isDesktop && (
+                            <h2 className="font-serif font-bold text-stone-400 text-lg mb-6 uppercase tracking-widest">Tus Héroes</h2>
+                        )}
+
+                        {library.length === 0 ? (
+                            <div className={`text-center ${isDesktop ? 'mt-32' : 'mt-8'}`}>
+                                <div className="text-6xl mb-4">⚒</div>
+                                <p className="text-stone-500 text-lg font-serif">Tu forja está vacía</p>
+                                <p className="text-stone-600 text-sm mt-2">Crea tu primer héroe para comenzar</p>
+                            </div>
+                        ) : (
+                            <div className={`${isDesktop ? 'grid grid-cols-2 gap-4' : 'space-y-3'}`}>
                                 {library.map(char => (
-                                    <div key={char.id} className="bg-stone-800 border border-stone-700 rounded-lg p-3 flex justify-between items-center group hover:border-stone-500 transition-colors">
-                                        <div className="cursor-pointer flex-1" onClick={() => onChangeView('sheet', char.id)}>
-                                            <div className="font-serif font-bold text-lg text-stone-200">{char.name || "Sin Nombre"}</div>
-                                            <div className="text-xs text-stone-500">{char.race} {char.class} • Nvl {char.level}</div>
+                                    <div key={char.id} className={`group relative rounded-xl border transition-all cursor-pointer ${isDesktop ? 'p-5 hover:border-amber-600' : 'p-4'}`}
+                                         style={{background: isDesktop ? 'rgba(255,255,255,0.03)' : 'rgba(255,255,255,0.05)', borderColor: 'rgba(255,255,255,0.08)'}}
+                                         onClick={() => onChangeView('sheet', char.id)}>
+                                        <div className="flex items-center gap-3">
+                                            <div className="w-12 h-12 rounded-full bg-stone-700 flex items-center justify-center font-serif font-bold text-amber-500 text-xl flex-shrink-0 border border-stone-600">
+                                                {(char.name || 'H')[0].toUpperCase()}
+                                            </div>
+                                            <div className="flex-1 min-w-0">
+                                                <div className="font-bold text-white truncate text-base">{char.name}</div>
+                                                <div className="text-stone-400 text-sm">{char.race} · {char.class} · Nvl {char.level}</div>
+                                            </div>
+                                            <button
+                                                onClick={e => { e.stopPropagation(); setDeleteTarget(char.id); }}
+                                                className="opacity-0 group-hover:opacity-100 transition-opacity p-2 text-stone-600 hover:text-red-500"
+                                            >
+                                                <Icons.Trash2 size={16}/>
+                                            </button>
                                         </div>
-                                        <button onClick={(e) => { e.stopPropagation(); setDeleteTarget(char.id); }} className="text-stone-600 hover:text-red-500 p-2"> <Icons.Trash size={18} /> </button>
                                     </div>
                                 ))}
                             </div>
-                            {library.length > 3 && <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-stone-900 to-transparent pointer-events-none"></div>}
-                        </div>
+                        )}
                     </div>
-                    <div className="mt-auto flex justify-between items-center text-stone-600 pt-6 border-t border-stone-800"> <button onClick={() => onChangeView('about')} className="flex items-center gap-2 hover:text-stone-300 transition-colors text-xs font-bold uppercase"><Icons.Info size={16}/> Acerca de</button> <div className="text-[10px] opacity-50">{CURRENT_VERSION}</div> </div>
-                    {deleteTarget && ( <div className="absolute inset-0 bg-black/90 flex items-center justify-center p-6 z-50 animate-fade-in"> <div className="bg-stone-800 border border-stone-600 p-6 rounded-lg text-center w-full max-w-sm shadow-2xl"> <h3 className="text-xl font-serif font-bold text-red-500 mb-2">¿Eliminar Héroe?</h3> <p className="text-stone-400 text-sm mb-6">Esta acción no se puede deshacer.</p> <div className="flex gap-3"> <button onClick={() => setDeleteTarget(null)} className="flex-1 py-3 border border-stone-600 rounded text-stone-400 font-bold">Cancelar</button> <button onClick={() => { onDeleteChar(deleteTarget); setDeleteTarget(null); }} className="flex-1 py-3 bg-red-700 text-white rounded font-bold">Eliminar</button> </div> </div> </div> )}
+
+                    {/* Modal de confirmación de borrado */}
+                    {deleteTarget && (
+                        <div className="fixed inset-0 bg-black/90 flex items-center justify-center p-6 z-50">
+                            <div className="bg-stone-800 border border-stone-600 p-6 rounded-lg text-center w-full max-w-sm shadow-2xl">
+                                <h3 className="text-xl font-serif font-bold text-red-500 mb-2">¿Eliminar Héroe?</h3>
+                                <p className="text-stone-400 text-sm mb-6">Esta acción no se puede deshacer.</p>
+                                <div className="flex gap-3">
+                                    <button onClick={() => setDeleteTarget(null)} className="flex-1 py-3 border border-stone-600 rounded text-stone-400 font-bold">Cancelar</button>
+                                    <button onClick={() => { onDeleteChar(deleteTarget); setDeleteTarget(null); }} className="flex-1 py-3 bg-red-700 text-white rounded font-bold">Eliminar</button>
+                                </div>
+                            </div>
+                        </div>
+                    )}
                 </div>
             );
         };
-
         const AboutScreen = ({ onBack }) => {
             return (
                 <div className="h-full bg-stone-900 text-stone-300 p-6 overflow-y-auto">
