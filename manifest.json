@@ -1,0 +1,27 @@
+{
+    "name": "La Forja — Character Sheet",
+    "short_name": "La Forja",
+    "description": "Ficha de personaje para D&D 5e. Offline-first, sin registro.",
+    "start_url": "./index.html",
+    "display": "standalone",
+    "orientation": "portrait",
+    "background_color": "#1c1917",
+    "theme_color": "#1c1917",
+    "lang": "es",
+    "icons": [
+        {
+            "src": "icono.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "icono.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "categories": ["games", "utilities"],
+    "screenshots": []
+}

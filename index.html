@@ -11,13 +11,36 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     
+    <!-- PWA META TAGS -->
+    <meta name="theme-color" content="#1c1917">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="La Forja">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="La Forja">
+    <link rel="manifest" href="manifest.json">
+    <!-- Ícono para iOS (no usa manifest) -->
+    <link rel="apple-touch-icon" href="icono.png">
+    <!-- Ícono estándar -->
+    <link rel="icon" type="image/png" href="icono.png">
+
     <!-- LIBRERÍAS LOCALES (OFFLINE) -->
     <script src="js/tailwind.js"></script>
     <script src="js/react.js"></script>
     <script src="js/react-dom.js"></script>
-    <script src="js/idb.js"></script>
     <script src="js/three.js"></script>
     <script src="js/babel.js"></script>
+
+    <script>
+        // Registrar Service Worker para offline-first
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(reg => console.log('[SW] Registrado:', reg.scope))
+                    .catch(err => console.log('[SW] Error:', err));
+            });
+        }
+    </script>
 
     <!-- ESTILOS -->
     <style>
@@ -166,7 +189,7 @@
     <script type="text/babel">
         const { useState, useEffect, useRef } = React;
 
-        const CURRENT_VERSION = "v12.8 Dark Mode Complete";
+        const CURRENT_VERSION = "v13.0 PWA";
         const DEV_TAG = "Evionail";
         const LIBRARY_SIGNATURE = "R4C1N3EV10N41L"; 
         const DEFAULT_BG = "";
@@ -183,89 +206,74 @@
         const SKILLS_LIST = [{ id: 'acrobatics', label: 'Acrobacias', attr: 'dex' }, { id: 'animal_handling', label: 'Trato con Animales', attr: 'wis' }, { id: 'arcana', label: 'Arcana', attr: 'int' }, { id: 'athletics', label: 'Atletismo', attr: 'str' }, { id: 'deception', label: 'Engaño', attr: 'cha' }, { id: 'history', label: 'Historia', attr: 'int' }, { id: 'insight', label: 'Perspicacia', attr: 'wis' }, { id: 'intimidation', label: 'Intimidación', attr: 'cha' }, { id: 'investigation', label: 'Investigación', attr: 'int' }, { id: 'medicine', label: 'Medicina', attr: 'wis' }, { id: 'nature', label: 'Naturaleza', attr: 'int' }, { id: 'perception', label: 'Percepción', attr: 'wis' }, { id: 'performance', label: 'Interpretación', attr: 'cha' }, { id: 'persuasion', label: 'Persuasión', attr: 'cha' }, { id: 'religion', label: 'Religión', attr: 'int' }, { id: 'sleight_of_hand', label: 'Juego de Manos', attr: 'dex' }, { id: 'stealth', label: 'Sigilo', attr: 'dex' }, { id: 'survival', label: 'Supervivencia', attr: 'wis' }];
 
         // ============================================================
-        // CAPA DE PERSISTENCIA — IndexedDB vía idb
-        // Toda la app habla con DB, nunca con IndexedDB directamente.
+        // CAPA DE PERSISTENCIA — IndexedDB nativo (sin dependencias)
         // ============================================================
         const DB_NAME = 'forja_db';
         const DB_VERSION = 1;
 
-        const dbPromise = idb.openDB(DB_NAME, DB_VERSION, {
-            upgrade(db) {
-                if (!db.objectStoreNames.contains('characters')) {
-                    db.createObjectStore('characters');
-                }
-                if (!db.objectStoreNames.contains('settings')) {
-                    db.createObjectStore('settings');
-                }
-            }
-        });
+        function openDB() {
+            return new Promise((resolve, reject) => {
+                const req = indexedDB.open(DB_NAME, DB_VERSION);
+                req.onupgradeneeded = e => {
+                    const db = e.target.result;
+                    if (!db.objectStoreNames.contains('characters')) db.createObjectStore('characters');
+                    if (!db.objectStoreNames.contains('settings'))   db.createObjectStore('settings');
+                };
+                req.onsuccess = e => resolve(e.target.result);
+                req.onerror   = e => reject(e.target.error);
+            });
+        }
+
+        function dbGet(store, key) {
+            return openDB().then(db => new Promise((resolve, reject) => {
+                const req = db.transaction(store, 'readonly').objectStore(store).get(key);
+                req.onsuccess = e => resolve(e.target.result);
+                req.onerror   = e => reject(e.target.error);
+            }));
+        }
+
+        function dbPut(store, key, value) {
+            return openDB().then(db => new Promise((resolve, reject) => {
+                const req = db.transaction(store, 'readwrite').objectStore(store).put(value, key);
+                req.onsuccess = e => resolve(e.target.result);
+                req.onerror   = e => reject(e.target.error);
+            }));
+        }
+
+        function dbDelete(store, key) {
+            return openDB().then(db => new Promise((resolve, reject) => {
+                const req = db.transaction(store, 'readwrite').objectStore(store).delete(key);
+                req.onsuccess = e => resolve(e.target.result);
+                req.onerror   = e => reject(e.target.error);
+            }));
+        }
 
         const DB = {
-            // Personajes
-            async getChar(id) {
-                return (await dbPromise).get('characters', `char_${id}`);
-            },
-            async saveChar(id, data) {
-                return (await dbPromise).put('characters', data, `char_${id}`);
-            },
-            async deleteChar(id) {
-                return (await dbPromise).delete('characters', `char_${id}`);
-            },
+            getChar:           id    => dbGet('characters', `char_${id}`),
+            saveChar:          (id, data) => dbPut('characters', `char_${id}`, data),
+            deleteChar:        id    => dbDelete('characters', `char_${id}`),
+            getLibrary:        ()    => dbGet('settings', 'forja_library').then(v => v || []),
+            saveLibrary:       data  => dbPut('settings', 'forja_library', data),
+            getLibraryMaster:  ()    => dbGet('settings', 'forja_library_master').then(v => v || { spells: [], attacks: [] }),
+            saveLibraryMaster: data  => dbPut('settings', 'forja_library_master', data),
+            getSetting:        key   => dbGet('settings', key),
+            setSetting:        (key, value) => dbPut('settings', key, value),
 
-            // Librería de personajes (lista del menú)
-            async getLibrary() {
-                return (await dbPromise).get('settings', 'forja_library') || [];
-            },
-            async saveLibrary(data) {
-                return (await dbPromise).put('settings', data, 'forja_library');
-            },
-
-            // Biblioteca maestra (ataques/hechizos)
-            async getLibraryMaster() {
-                return (await dbPromise).get('settings', 'forja_library_master') || { spells: [], attacks: [] };
-            },
-            async saveLibraryMaster(data) {
-                return (await dbPromise).put('settings', data, 'forja_library_master');
-            },
-
-            // Configuración genérica (tutorial, etc.)
-            async getSetting(key) {
-                return (await dbPromise).get('settings', key);
-            },
-            async setSetting(key, value) {
-                return (await dbPromise).put('settings', value, key);
-            },
-
-            // Migración desde localStorage (se ejecuta una sola vez)
             async migrateFromLocalStorage() {
                 const migrated = await DB.getSetting('ls_migration_done');
                 if (migrated) return;
-
                 console.log('[DB] Iniciando migración desde localStorage...');
-
-                // Migrar lista de personajes
                 const rawLib = localStorage.getItem('forja_library');
-                if (rawLib) {
-                    await DB.saveLibrary(JSON.parse(rawLib));
-                }
-
-                // Migrar cada personaje
+                if (rawLib) await DB.saveLibrary(JSON.parse(rawLib));
                 const lib = await DB.getLibrary();
                 for (const item of lib) {
                     const raw = localStorage.getItem(`forja_char_${item.id}`);
                     if (raw) await DB.saveChar(item.id, JSON.parse(raw));
                 }
-
-                // Migrar biblioteca maestra
                 const rawMaster = localStorage.getItem('forja_library_master');
-                if (rawMaster) {
-                    await DB.saveLibraryMaster(JSON.parse(rawMaster));
-                }
-
-                // Migrar configuración
+                if (rawMaster) await DB.saveLibraryMaster(JSON.parse(rawMaster));
                 const tutorialSeen = localStorage.getItem('forja_library_tutorial_seen');
                 if (tutorialSeen) await DB.setSetting('forja_library_tutorial_seen', true);
-
                 await DB.setSetting('ls_migration_done', true);
                 console.log('[DB] Migración completada.');
             }
@@ -341,8 +349,8 @@
                         <h2 className="text-xl font-bold mb-2" style={{color:'var(--text-primary)'}}>Personalizar Fondo</h2>
                         {/* Preview */}
                         <div className="flex-1 relative mb-4 rounded-lg overflow-hidden shadow-inner" style={{border:'1px solid var(--card-border)',background:'var(--sheet-bg2)'}}>
-                            {imgToShow && <div className="absolute inset-0 bg-cover bg-center transition-all duration-300" style={{ backgroundImage: `url(${imgToShow})` }}></div>}
-                            {imgToShow && <div className="absolute inset-0 transition-opacity duration-300" style={{ background: darkMode ? `rgba(0,0,0,${opacity})` : `rgba(255,255,255,${opacity})` }}></div>}
+                            {imgToShow && <div className="absolute inset-0 bg-cover bg-center transition-all duration-300" style={{ backgroundImage: `url(${imgToShow})`, backgroundSize:'cover', backgroundPosition:'center' }}></div>}
+                            {imgToShow && opacity > 0 && <div className="absolute inset-0 transition-opacity duration-300" style={{ background: darkMode ? `rgba(0,0,0,${opacity})` : `rgba(255,255,255,${opacity})` }}></div>}
                             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                                 <div className={`p-4 rounded-lg w-3/4 text-sm font-bold ${boxTrans ? 'backdrop-blur-md' : ''}`}
                                      style={{ background: boxTrans ? (darkMode ? 'rgba(30,28,27,0.65)' : 'rgba(255,255,255,0.7)') : 'var(--card-bg)', border: boxTrans ? '1px solid rgba(255,255,255,0.2)' : '1px solid var(--card-border)', color:'var(--text-primary)' }}>
@@ -1208,12 +1216,19 @@
 
             return (
                 <div className="flex flex-col h-full overflow-hidden relative text-stone-900">
-                    <div className="fixed inset-0 pointer-events-none z-0" style={{ backgroundImage: char.backgroundUrl ? `url(${char.backgroundUrl})` : 'none', backgroundSize: 'cover', backgroundPosition: 'center', height: '100lvh', background: char.backgroundUrl ? undefined : 'var(--sheet-bg)' }}>
-                         {/* Capa de blanco/oscuro sobre imagen — solo cuando hay imagen */}
-                         {char.backgroundUrl && <div className="absolute inset-0 transition-opacity duration-300" style={{ background: darkMode ? `rgba(0,0,0,${char.bgOpacity !== undefined ? char.bgOpacity : 0})` : `rgba(255,255,255,${char.bgOpacity !== undefined ? char.bgOpacity : 0})` }}></div>}
-                         {/* Sin imagen: fondo sólido por variable CSS */}
-                         {!char.backgroundUrl && <div className="absolute inset-0" style={{ background: 'var(--sheet-bg)' }}></div>}
-                    </div>
+                    {/* Fondo sólido — solo cuando NO hay imagen */}
+                    {!char.backgroundUrl && (
+                        <div className="fixed inset-0 pointer-events-none z-0" style={{ background: 'var(--sheet-bg)', height: '100lvh' }} />
+                    )}
+                    {/* Imagen de fondo — solo cuando SÍ hay imagen */}
+                    {char.backgroundUrl && (
+                        <div className="fixed inset-0 pointer-events-none z-0" style={{ backgroundImage: `url(${char.backgroundUrl})`, backgroundSize: 'cover', backgroundPosition: 'center', height: '100lvh' }}>
+                            {/* Capa de oscurecimiento/aclarado — solo si opacity > 0 */}
+                            {(char.bgOpacity > 0) && (
+                                <div className="absolute inset-0 transition-opacity duration-300" style={{ background: darkMode ? `rgba(0,0,0,${char.bgOpacity})` : `rgba(255,255,255,${char.bgOpacity})` }} />
+                            )}
+                        </div>
+                    )}
                     
                     {/* Header... (Same code as before) */}
                     <div className="bg-stone-800 p-3 pt-8 shadow-md z-20 flex justify-between items-start border-b border-stone-700 relative">
