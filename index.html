@@ -181,7 +181,7 @@
     <script type="text/babel">
         const { useState, useEffect, useRef } = React;
 
-        const CURRENT_VERSION = "v13.5 PWA";
+        const CURRENT_VERSION = "v13.6 PWA Fix";
         const DEV_TAG = "Evionail";
         const LIBRARY_SIGNATURE = "R4C1N3EV10N41L"; 
         const DEFAULT_BG = "";
@@ -917,7 +917,7 @@
             );
         };
 
-        const LibraryManager = ({ onClose }) => {
+        const LibraryManager = ({ onClose, darkMode }) => {
             const [tab, setTab] = useState('attacks');
             const [search, setSearch] = useState('');
             const [library, setLibrary] = useState({ spells: [], attacks: [] });
@@ -1579,7 +1579,7 @@
                         /> 
                     )}
                     {view === 'about' && <AboutScreen onBack={() => setView('menu')} />}
-                    {view === 'library' && <LibraryManager onClose={() => setView('menu')} />}
+                    {view === 'library' && <LibraryManager onClose={() => setView('menu')} darkMode={darkMode} />}
                     {view === 'sheet' && activeCharId && ( <CharacterSheet charId={activeCharId} onClose={() => { refreshLibrary(); setActiveCharId(null); setView('menu'); }} registerBackHandler={(fn) => { childBackHandlerRef.current = fn; }} darkMode={darkMode} toggleDark={toggleDark} /> )}
                 </div>
             );
