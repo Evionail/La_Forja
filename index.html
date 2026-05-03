@@ -181,7 +181,7 @@
     <script type="text/babel">
         const { useState, useEffect, useRef } = React;
 
-        const CURRENT_VERSION = "v13.6 PWA Fix";
+        const CURRENT_VERSION = "v13.7 BG Fix";
         const DEV_TAG = "Evionail";
         const LIBRARY_SIGNATURE = "R4C1N3EV10N41L"; 
         const DEFAULT_BG = "";
@@ -1198,12 +1198,16 @@
 
             return (
                 <div className="flex flex-col h-full overflow-hidden relative text-stone-900">
-                    <div className="fixed inset-0 pointer-events-none z-0" style={{ backgroundImage: char.backgroundUrl ? `url(${char.backgroundUrl})` : 'none', backgroundSize: 'cover', backgroundPosition: 'center', height: '100lvh', background: char.backgroundUrl ? undefined : 'var(--sheet-bg)' }}>
-                         {/* Capa de blanco/oscuro sobre imagen — solo cuando hay imagen */}
-                         {char.backgroundUrl && <div className="absolute inset-0 transition-opacity duration-300" style={{ background: darkMode ? `rgba(0,0,0,${char.bgOpacity !== undefined ? char.bgOpacity : 0})` : `rgba(255,255,255,${char.bgOpacity !== undefined ? char.bgOpacity : 0})` }}></div>}
-                         {/* Sin imagen: fondo sólido por variable CSS */}
-                         {!char.backgroundUrl && <div className="absolute inset-0" style={{ background: 'var(--sheet-bg)' }}></div>}
-                    </div>
+                    {!char.backgroundUrl && (
+                        <div className="fixed inset-0 pointer-events-none z-0" style={{ background: 'var(--sheet-bg)', height: '100lvh' }} />
+                    )}
+                    {char.backgroundUrl && (
+                        <div className="fixed inset-0 pointer-events-none z-0" style={{ backgroundImage: `url(${char.backgroundUrl})`, backgroundSize: 'cover', backgroundPosition: 'center', height: '100lvh' }}>
+                            {(char.bgOpacity > 0) && (
+                                <div className="absolute inset-0 transition-opacity duration-300" style={{ background: darkMode ? `rgba(0,0,0,${char.bgOpacity})` : `rgba(255,255,255,${char.bgOpacity})` }} />
+                            )}
+                        </div>
+                    )}
                     
                     {/* Header... (Same code as before) */}
                     <div className="bg-stone-800 p-3 pt-8 shadow-md z-20 flex justify-between items-start border-b border-stone-700 relative">
