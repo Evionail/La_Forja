@@ -11,13 +11,28 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     
+    <!-- PWA -->
+    <meta name="apple-mobile-web-app-title" content="La Forja">
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icono.png">
+    <link rel="icon" type="image/png" href="icono.png">
+
     <!-- LIBRERÍAS LOCALES (OFFLINE) -->
     <script src="js/tailwind.js"></script>
     <script src="js/react.js"></script>
     <script src="js/react-dom.js"></script>
-    <script src="js/idb.js"></script>
     <script src="js/three.js"></script>
     <script src="js/babel.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(r => console.log('[SW] Registrado:', r.scope))
+                    .catch(e => console.log('[SW] Error:', e));
+            });
+        }
+    </script>
 
     <!-- ESTILOS -->
     <style>
@@ -166,7 +181,7 @@
     <script type="text/babel">
         const { useState, useEffect, useRef } = React;
 
-        const CURRENT_VERSION = "v12.8 Dark Mode Complete";
+        const CURRENT_VERSION = "v13.5 PWA";
         const DEV_TAG = "Evionail";
         const LIBRARY_SIGNATURE = "R4C1N3EV10N41L"; 
         const DEFAULT_BG = "";
@@ -183,91 +198,66 @@
         const SKILLS_LIST = [{ id: 'acrobatics', label: 'Acrobacias', attr: 'dex' }, { id: 'animal_handling', label: 'Trato con Animales', attr: 'wis' }, { id: 'arcana', label: 'Arcana', attr: 'int' }, { id: 'athletics', label: 'Atletismo', attr: 'str' }, { id: 'deception', label: 'Engaño', attr: 'cha' }, { id: 'history', label: 'Historia', attr: 'int' }, { id: 'insight', label: 'Perspicacia', attr: 'wis' }, { id: 'intimidation', label: 'Intimidación', attr: 'cha' }, { id: 'investigation', label: 'Investigación', attr: 'int' }, { id: 'medicine', label: 'Medicina', attr: 'wis' }, { id: 'nature', label: 'Naturaleza', attr: 'int' }, { id: 'perception', label: 'Percepción', attr: 'wis' }, { id: 'performance', label: 'Interpretación', attr: 'cha' }, { id: 'persuasion', label: 'Persuasión', attr: 'cha' }, { id: 'religion', label: 'Religión', attr: 'int' }, { id: 'sleight_of_hand', label: 'Juego de Manos', attr: 'dex' }, { id: 'stealth', label: 'Sigilo', attr: 'dex' }, { id: 'survival', label: 'Supervivencia', attr: 'wis' }];
 
         // ============================================================
-        // CAPA DE PERSISTENCIA — IndexedDB vía idb
-        // Toda la app habla con DB, nunca con IndexedDB directamente.
+        // CAPA DE PERSISTENCIA — IndexedDB nativo (sin dependencias)
         // ============================================================
-        const DB_NAME = 'forja_db';
-        const DB_VERSION = 1;
-
-        const dbPromise = idb.openDB(DB_NAME, DB_VERSION, {
-            upgrade(db) {
-                if (!db.objectStoreNames.contains('characters')) {
-                    db.createObjectStore('characters');
-                }
-                if (!db.objectStoreNames.contains('settings')) {
-                    db.createObjectStore('settings');
-                }
-            }
-        });
-
+        function openDB() {
+            return new Promise((resolve, reject) => {
+                const req = indexedDB.open('forja_db', 1);
+                req.onupgradeneeded = e => {
+                    const db = e.target.result;
+                    if (!db.objectStoreNames.contains('characters')) db.createObjectStore('characters');
+                    if (!db.objectStoreNames.contains('settings'))   db.createObjectStore('settings');
+                };
+                req.onsuccess = e => resolve(e.target.result);
+                req.onerror   = e => reject(e.target.error);
+            });
+        }
+        function dbGet(store, key) {
+            return openDB().then(db => new Promise((resolve, reject) => {
+                const req = db.transaction(store,'readonly').objectStore(store).get(key);
+                req.onsuccess = e => resolve(e.target.result);
+                req.onerror   = e => reject(e.target.error);
+            }));
+        }
+        function dbPut(store, key, value) {
+            return openDB().then(db => new Promise((resolve, reject) => {
+                const req = db.transaction(store,'readwrite').objectStore(store).put(value, key);
+                req.onsuccess = e => resolve(e.target.result);
+                req.onerror   = e => reject(e.target.error);
+            }));
+        }
+        function dbDelete(store, key) {
+            return openDB().then(db => new Promise((resolve, reject) => {
+                const req = db.transaction(store,'readwrite').objectStore(store).delete(key);
+                req.onsuccess = e => resolve(e.target.result);
+                req.onerror   = e => reject(e.target.error);
+            }));
+        }
         const DB = {
-            // Personajes
-            async getChar(id) {
-                return (await dbPromise).get('characters', `char_${id}`);
-            },
-            async saveChar(id, data) {
-                return (await dbPromise).put('characters', data, `char_${id}`);
-            },
-            async deleteChar(id) {
-                return (await dbPromise).delete('characters', `char_${id}`);
-            },
-
-            // Librería de personajes (lista del menú)
-            async getLibrary() {
-                return (await dbPromise).get('settings', 'forja_library') || [];
-            },
-            async saveLibrary(data) {
-                return (await dbPromise).put('settings', data, 'forja_library');
-            },
-
-            // Biblioteca maestra (ataques/hechizos)
-            async getLibraryMaster() {
-                return (await dbPromise).get('settings', 'forja_library_master') || { spells: [], attacks: [] };
-            },
-            async saveLibraryMaster(data) {
-                return (await dbPromise).put('settings', data, 'forja_library_master');
-            },
-
-            // Configuración genérica (tutorial, etc.)
-            async getSetting(key) {
-                return (await dbPromise).get('settings', key);
-            },
-            async setSetting(key, value) {
-                return (await dbPromise).put('settings', value, key);
-            },
-
-            // Migración desde localStorage (se ejecuta una sola vez)
+            getChar:           id    => dbGet('characters', `char_${id}`),
+            saveChar:          (id,d) => dbPut('characters', `char_${id}`, d),
+            deleteChar:        id    => dbDelete('characters', `char_${id}`),
+            getLibrary:        ()    => dbGet('settings','forja_library').then(v => v || []),
+            saveLibrary:       d     => dbPut('settings','forja_library', d),
+            getLibraryMaster:  ()    => dbGet('settings','forja_library_master').then(v => v || {spells:[],attacks:[]}),
+            saveLibraryMaster: d     => dbPut('settings','forja_library_master', d),
+            getSetting:        key   => dbGet('settings', key),
+            setSetting:        (k,v) => dbPut('settings', k, v),
             async migrateFromLocalStorage() {
-                const migrated = await DB.getSetting('ls_migration_done');
-                if (migrated) return;
-
-                console.log('[DB] Iniciando migración desde localStorage...');
-
-                // Migrar lista de personajes
+                const done = await DB.getSetting('ls_migration_done');
+                if (done) return;
                 const rawLib = localStorage.getItem('forja_library');
-                if (rawLib) {
-                    await DB.saveLibrary(JSON.parse(rawLib));
-                }
-
-                // Migrar cada personaje
+                if (rawLib) await DB.saveLibrary(JSON.parse(rawLib));
                 const lib = await DB.getLibrary();
                 for (const item of lib) {
                     const raw = localStorage.getItem(`forja_char_${item.id}`);
                     if (raw) await DB.saveChar(item.id, JSON.parse(raw));
                 }
-
-                // Migrar biblioteca maestra
                 const rawMaster = localStorage.getItem('forja_library_master');
-                if (rawMaster) {
-                    await DB.saveLibraryMaster(JSON.parse(rawMaster));
-                }
-
-                // Migrar configuración
-                const tutorialSeen = localStorage.getItem('forja_library_tutorial_seen');
-                if (tutorialSeen) await DB.setSetting('forja_library_tutorial_seen', true);
-
+                if (rawMaster) await DB.saveLibraryMaster(JSON.parse(rawMaster));
+                const tutorial = localStorage.getItem('forja_library_tutorial_seen');
+                if (tutorial) await DB.setSetting('forja_library_tutorial_seen', true);
                 await DB.setSetting('ls_migration_done', true);
-                console.log('[DB] Migración completada.');
             }
         };
         // ============================================================
