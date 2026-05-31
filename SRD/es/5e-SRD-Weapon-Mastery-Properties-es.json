@@ -1,0 +1,50 @@
+[
+  {
+    "index": "cleave",
+    "name": "Hender",
+    "description": "Si impactas a una criatura con una tirada de ataque cuerpo a cuerpo usando esta arma, puedes hacer una tirada de ataque cuerpo a cuerpo con el arma contra una segunda criatura a 5 pies o menos de la primera que también esté a tu alcance. En un impacto, la segunda criatura recibe el daño del arma, pero no sumes tu modificador de característica a ese daño a menos que el modificador sea negativo. Solo puedes hacer este ataque adicional una vez por turno.",
+    "url": "/api/2024/weapon-mastery-properties/cleave"
+  },
+  {
+    "index": "graze",
+    "name": "Roce",
+    "description": "Si tu tirada de ataque con esta arma falla a una criatura, puedes infligirle un daño igual al modificador de característica que usaste para hacer la tirada de ataque. Este daño es del mismo tipo que inflige el arma, y solo puede incrementarse aumentando el modificador de característica.",
+    "url": "/api/2024/weapon-mastery-properties/graze"
+  },
+  {
+    "index": "nick",
+    "name": "Mella",
+    "description": "Cuando realizas el ataque adicional de la propiedad Ligera, puedes hacerlo como parte de la acción de Atacar en lugar de como una Acción adicional. Solo puedes hacer este ataque adicional una vez por turno.",
+    "url": "/api/2024/weapon-mastery-properties/nick"
+  },
+  {
+    "index": "push",
+    "name": "Empujar",
+    "description": "Si impactas a una criatura con esta arma, puedes empujarla hasta 10 pies en línea recta alejándola de ti si es de tamaño Grande o menor.",
+    "url": "/api/2024/weapon-mastery-properties/push"
+  },
+  {
+    "index": "sap",
+    "name": "Mermar",
+    "description": "Si impactas a una criatura con esta arma, esa criatura tiene Desventaja en su próxima tirada de ataque antes del inicio de tu siguiente turno.",
+    "url": "/api/2024/weapon-mastery-properties/sap"
+  },
+  {
+    "index": "slow",
+    "name": "Ralentizar",
+    "description": "Si impactas a una criatura con esta arma y le infliges daño, puedes reducir su Velocidad en 10 pies hasta el inicio de tu siguiente turno. Si la criatura es impactada más de una vez por armas que tengan esta propiedad, la reducción de Velocidad no supera los 10 pies.",
+    "url": "/api/2024/weapon-mastery-properties/slow"
+  },
+  {
+    "index": "topple",
+    "name": "Derribar",
+    "description": "Si impactas a una criatura con esta arma, puedes forzarla a hacer una tirada de salvación de Constitución (CD 8 más el modificador de característica usado para hacer la tirada de ataque y tu Bonificador de Competencia). Si falla la salvación, la criatura gana la condición Derribado.",
+    "url": "/api/2024/weapon-mastery-properties/topple"
+  },
+  {
+    "index": "vex",
+    "name": "Vejación",
+    "description": "Si impactas a una criatura con esta arma y le infliges daño, tienes Ventaja en tu próxima tirada de ataque contra esa criatura antes del final de tu siguiente turno.",
+    "url": "/api/2024/weapon-mastery-properties/vex"
+  }
+]

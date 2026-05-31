@@ -1,0 +1,50 @@
+[
+  {
+    "index": "abjuration",
+    "name": "Abjuración",
+    "description": "Previene o revierte efectos dañinos",
+    "url": "/api/2024/magic-schools/abjuration"
+  },
+  {
+    "index": "conjuration",
+    "name": "Conjuración",
+    "description": "Transporta criaturas u objetos",
+    "url": "/api/2024/magic-schools/conjuration"
+  },
+  {
+    "index": "divination",
+    "name": "Adivinación",
+    "description": "Revela información",
+    "url": "/api/2024/magic-schools/divination"
+  },
+  {
+    "index": "enchantment",
+    "name": "Encantamiento",
+    "description": "Influye en las mentes",
+    "url": "/api/2024/magic-schools/enchantment"
+  },
+  {
+    "index": "evocation",
+    "name": "Evocación",
+    "description": "Canaliza energía para crear efectos que a menudo son destructivos",
+    "url": "/api/2024/magic-schools/evocation"
+  },
+  {
+    "index": "illusion",
+    "name": "Ilusión",
+    "description": "Engaña a la mente o a los sentidos",
+    "url": "/api/2024/magic-schools/illusion"
+  },
+  {
+    "index": "necromancy",
+    "name": "Necromancia",
+    "description": "Manipula la vida y la muerte",
+    "url": "/api/2024/magic-schools/necromancy"
+  },
+  {
+    "index": "transmutation",
+    "name": "Transmutación",
+    "description": "Transforma criaturas u objetos",
+    "url": "/api/2024/magic-schools/transmutation"
+  }
+]

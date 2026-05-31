@@ -1,0 +1,80 @@
+[
+  {
+    "index": "acid",
+    "name": "Ácido",
+    "description": "Líquidos corrosivos, enzimas digestivas",
+    "url": "/api/2024/damage-types/acid"
+  },
+  {
+    "index": "bludgeoning",
+    "name": "Contundente",
+    "description": "Objetos romos, constricción, caídas",
+    "url": "/api/2024/damage-types/bludgeoning"
+  },
+  {
+    "index": "cold",
+    "name": "Frío",
+    "description": "Agua helada, ráfagas heladas",
+    "url": "/api/2024/damage-types/cold"
+  },
+  {
+    "index": "fire",
+    "name": "Fuego",
+    "description": "Llamas, calor insoportable",
+    "url": "/api/2024/damage-types/fire"
+  },
+  {
+    "index": "force",
+    "name": "Fuerza",
+    "description": "Energía mágica pura",
+    "url": "/api/2024/damage-types/force"
+  },
+  {
+    "index": "lightning",
+    "name": "Relámpago",
+    "description": "Electricidad",
+    "url": "/api/2024/damage-types/lightning"
+  },
+  {
+    "index": "necrotic",
+    "name": "Necrótico",
+    "description": "Energía que drena la vida",
+    "url": "/api/2024/damage-types/necrotic"
+  },
+  {
+    "index": "piercing",
+    "name": "Perforante",
+    "description": "Colmillos, objetos punzantes",
+    "url": "/api/2024/damage-types/piercing"
+  },
+  {
+    "index": "poison",
+    "name": "Veneno",
+    "description": "Gas tóxico, veneno",
+    "url": "/api/2024/damage-types/poison"
+  },
+  {
+    "index": "psychic",
+    "name": "Psíquico",
+    "description": "Energía que desgarra la mente",
+    "url": "/api/2024/damage-types/psychic"
+  },
+  {
+    "index": "radiant",
+    "name": "Radiante",
+    "description": "Energía sagrada, radiación abrasadora",
+    "url": "/api/2024/damage-types/radiant"
+  },
+  {
+    "index": "slashing",
+    "name": "Cortante",
+    "description": "Garras, objetos cortantes",
+    "url": "/api/2024/damage-types/slashing"
+  },
+  {
+    "index": "thunder",
+    "name": "Trueno",
+    "description": "Sonido concusivo",
+    "url": "/api/2024/damage-types/thunder"
+  }
+]

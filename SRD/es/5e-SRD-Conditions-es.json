@@ -1,0 +1,92 @@
+[
+  {
+    "index": "blinded",
+    "name": "Cegado",
+    "description": "Mientras tienes la condición Cegado, experimentas los siguientes efectos.\n**No puede ver.** No puedes ver y fallas automáticamente cualquier control de característica que requiera la vista.\n**Ataques afectados.** Las tiradas de ataque contra ti tienen Ventaja, y tus tiradas de ataque tienen Desventaja.",
+    "url": "/api/2024/conditions/blinded"
+  },
+  {
+    "index": "charmed",
+    "name": "Hechizado",
+    "description": "Mientras tienes la condición Hechizado, experimentas los siguientes efectos.\n**No puede dañar al hechicero.** No puedes atacar al hechicero ni elegirlo como objetivo con habilidades dañinas o efectos mágicos.\n**Ventaja social.** El hechicero tiene Ventaja en los controles de característica para interactuar socialmente contigo.",
+    "url": "/api/2024/conditions/charmed"
+  },
+  {
+    "index": "deafened",
+    "name": "Ensordecido",
+    "description": "Mientras tienes la condición Ensordecido, experimentas el siguiente efecto.\n**No puede oír.** No puedes oír y fallas automáticamente cualquier control de característica que requiera la audición.",
+    "url": "/api/2024/conditions/deafened"
+  },
+  {
+    "index": "exhaustion",
+    "name": "Agotamiento",
+    "description": "Mientras tienes la condición Agotamiento, experimentas los siguientes efectos.\n**Niveles de agotamiento.** Esta condición es acumulativa. Cada vez que la recibes, ganas 1 nivel de Agotamiento. Mueres si tu nivel de Agotamiento es 6.\n**Pruebas de d20 afectadas.** Cuando realizas una Prueba de d20, a la tirada se le resta 2 veces tu nivel de Agotamiento.\n**Velocidad reducida.** Tu Velocidad se reduce en un número de pies igual a 5 veces tu nivel de Agotamiento.\n**Eliminar niveles de agotamiento.** Terminar un Descanso largo elimina 1 de tus niveles de Agotamiento. Cuando tu nivel de Agotamiento llega a 0, la condición termina.",
+    "url": "/api/2024/conditions/exhaustion"
+  },
+  {
+    "index": "frightened",
+    "name": "Asustado",
+    "description": "Mientras tienes la condición Asustado, experimentas los siguientes efectos.\n**Controles de característica y ataques afectados.** Tienes Desventaja en los controles de característica y tiradas de ataque mientras la fuente de tu miedo esté a la vista.\n**No puede acercarse.** No puedes acercarte voluntariamente a la fuente de tu miedo.",
+    "url": "/api/2024/conditions/frightened"
+  },
+  {
+    "index": "grappled",
+    "name": "Agarrado",
+    "description": "Mientras tienes la condición Agarrado, experimentas los siguientes efectos.\n**Velocidad 0.** Tu Velocidad es 0 y no puede aumentar.\n**Ataques afectados.** Tienes Desventaja en las tiradas de ataque contra cualquier objetivo que no sea quien te agarra.\n**Movible.** Quien te agarra puede arrastrarte o cargarte cuando se mueve, pero cada pie de movimiento le cuesta 1 pie adicional a menos que seas de tamaño Diminuto o dos o más tamaños más pequeño.",
+    "url": "/api/2024/conditions/grappled"
+  },
+  {
+    "index": "incapacitated",
+    "name": "Incapacitado",
+    "description": "Mientras tienes la condición Incapacitado, experimentas los siguientes efectos.\n**Inactivo.** No puedes realizar ninguna acción, Acción adicional o Reacción.\n**Sin concentración.** Tu Concentración se rompe.\n**Sin habla.** No puedes hablar.\n**Sorprendido.** Si estás Incapacitado cuando tiras Iniciativa, tienes Desventaja en la tirada.",
+    "url": "/api/2024/conditions/incapacitated"
+  },
+  {
+    "index": "invisible",
+    "name": "Invisible",
+    "description": "Mientras tienes la condición Invisible, experimentas los siguientes efectos.\n**Sorpresa.** Si eres Invisible cuando tiras Iniciativa, tienes Ventaja en la tirada.\n**Oculto.** No te ves afectado por ningún efecto que requiera que su objetivo sea visto a menos que el creador del efecto pueda verte de alguna manera. Cualquier equipo que lleves puesto o lleves contigo también está oculto.\n**Ataques afectados.** Las tiradas de ataque contra ti tienen Desventaja, y tus tiradas de ataque tienen Ventaja. Si una criatura puede verte de alguna manera, no obtienes este beneficio contra esa criatura.",
+    "url": "/api/2024/conditions/invisible"
+  },
+  {
+    "index": "paralyzed",
+    "name": "Paralizado",
+    "description": "Mientras tienes la condición Paralizado, experimentas los siguientes efectos.\n**Incapacitado.** Tienes la condición Incapacitado.\n**Velocidad 0.** Tu Velocidad es 0 y no puede aumentar.\n**Tiradas de salvación afectadas.** Fallas automáticamente las tiradas de salvación de Fuerza y Destreza.\n**Ataques afectados.** Las tiradas de ataque contra ti tienen Ventaja.\n**Impactos críticos automáticos.** Cualquier tirada de ataque que te impacte es un Impacto crítico si el atacante está a 5 pies o menos de ti.",
+    "url": "/api/2024/conditions/paralyzed"
+  },
+  {
+    "index": "petrified",
+    "name": "Petrificado",
+    "description": "Mientras tienes la condición Petrificado, experimentas los siguientes efectos.\n**Convertido en sustancia inanimada.** Te transformas, junto con cualquier objeto no mágico que lleves puesto o lleves contigo, en una sustancia inanimada sólida (generalmente piedra). Tu peso se multiplica por diez y dejas de envejecer.\n**Incapacitado.** Tienes la condición Incapacitado.\n**Velocidad 0.** Tu Velocidad es 0 y no puede aumentar.\n**Ataques afectados.** Las tiradas de ataque contra ti tienen Ventaja.\n**Tiradas de salvación afectadas.** Fallas automáticamente las tiradas de salvación de Fuerza y Destreza.\n**Resistencia al daño.** Tienes Resistencia a todo el daño.\n**Inmunidad al veneno.** Tienes Inmunidad a la condición Envenenado.\n**Tiradas de salvación afectadas.** Fallas automáticamente las tiradas de salvación de Fuerza y Destreza.\n**Resistencia al daño.** Tienes Resistencia a todo el daño.\n**Inmunidad al veneno.** Tienes Inmunidad a la condición Envenenado.",
+    "url": "/api/2024/conditions/petrified"
+  },
+  {
+    "index": "poisoned",
+    "name": "Envenenado",
+    "description": "Mientras tienes la condición Envenenado, experimentas el siguiente efecto.\n**Controles de característica y ataques afectados.** Tienes Desventaja en las tiradas de ataque y controles de característica.",
+    "url": "/api/2024/conditions/poisoned"
+  },
+  {
+    "index": "prone",
+    "name": "Derribado",
+    "description": "Mientras tienes la condición Derribado, experimentas los siguientes efectos.\n**Movimiento restringido.** Tus únicas opciones de movimiento son gatear o gastar una cantidad de movimiento igual a la mitad de tu Velocidad (redondeando hacia abajo) para enderezarte y así terminar la condición. Si tu Velocidad es 0, no puedes enderezarte.\n**Ataques afectados.** Tienes Desventaja en las tiradas de ataque. Una tirada de ataque contra ti tiene Ventaja si el atacante está a 5 pies o menos de ti. De lo contrario, esa tirada de ataque tiene Desventaja.",
+    "url": "/api/2024/conditions/prone"
+  },
+  {
+    "index": "restrained",
+    "name": "Apresado",
+    "description": "Mientras tienes la condición Apresado, experimentas los siguientes efectos.\n**Velocidad 0.** Tu Velocidad es 0 y no puede aumentar.\n**Ataques afectados.** Las tiradas de ataque contra ti tienen Ventaja, y tus tiradas de ataque tienen Desventaja.\n**Tiradas de salvación afectadas.** Tienes Desventaja en las tiradas de salvación de Destreza.",
+    "url": "/api/2024/conditions/restrained"
+  },
+  {
+    "index": "stunned",
+    "name": "Aturdido",
+    "description": "Mientras tienes la condición Aturdido, experimentas los siguientes efectos.\n**Incapacitado.** Tienes la condición Incapacitado.\n**Tiradas de salvación afectadas.** Fallas automáticamente las tiradas de salvación de Fuerza y Destreza.\n**Ataques afectados.** Las tiradas de ataque contra ti tienen Ventaja.",
+    "url": "/api/2024/conditions/stunned"
+  },
+  {
+    "index": "unconscious",
+    "name": "Inconsciente",
+    "description": "Mientras tienes la condición Inconsciente, experimentas los siguientes efectos.\n**Inerte.** Tienes las condiciones Incapacitado y Derribado, y sueltas cualquier cosa que estés sosteniendo.\n**Cuando esta condición termina, permaneces Derribado.\n**Velocidad 0.** Tu Velocidad es 0 y no puede aumentar.\n**Ataques afectados.** Las tiradas de ataque contra ti tienen Ventaja.\n**Tiradas de salvación afectadas.** Fallas automáticamente las tiradas de salvación de Fuerza y Destreza.\n**Impactos críticos automáticos.** Cualquier tirada de ataque que te impacte es un Impacto crítico si el atacante está a 5 pies o menos de ti.\n**Inconsciente.** No eres consciente de tu entorno.",
+    "url": "/api/2024/conditions/unconscious"
+  }
+]

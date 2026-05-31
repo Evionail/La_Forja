@@ -1,0 +1,135 @@
+[
+  {
+    "index": "common",
+    "name": "Común",
+    "is_rare": false,
+    "note": "",
+    "url": "/api/2024/languages/common"
+  },
+  {
+    "index": "common-sign-language",
+    "name": "Lenguaje de señas común",
+    "is_rare": false,
+    "note": "",
+    "url": "/api/2024/languages/common-sign-language"
+  },
+  {
+    "index": "draconic",
+    "name": "Dracónico",
+    "is_rare": false,
+    "note": "",
+    "url": "/api/2024/languages/draconic"
+  },
+  {
+    "index": "dwarvish",
+    "name": "Enano",
+    "is_rare": false,
+    "note": "",
+    "url": "/api/2024/languages/dwarvish"
+  },
+  {
+    "index": "elvish",
+    "name": "Élfico",
+    "is_rare": false,
+    "note": "",
+    "url": "/api/2024/languages/elvish"
+  },
+  {
+    "index": "giant",
+    "name": "Gigante",
+    "is_rare": false,
+    "note": "",
+    "url": "/api/2024/languages/giant"
+  },
+  {
+    "index": "gnomish",
+    "name": "Gnómico",
+    "is_rare": false,
+    "note": "",
+    "url": "/api/2024/languages/gnomish"
+  },
+  {
+    "index": "goblin",
+    "name": "Goblin",
+    "is_rare": false,
+    "note": "",
+    "url": "/api/2024/languages/goblin"
+  },
+  {
+    "index": "halfling",
+    "name": "Mediano",
+    "is_rare": false,
+    "note": "",
+    "url": "/api/2024/languages/halfling"
+  },
+  {
+    "index": "orc",
+    "name": "Orco",
+    "is_rare": false,
+    "note": "",
+    "url": "/api/2024/languages/orc"
+  },
+  {
+    "index": "abyssal",
+    "name": "Abisal",
+    "is_rare": true,
+    "note": "",
+    "url": "/api/2024/languages/abyssal"
+  },
+  {
+    "index": "celestial",
+    "name": "Celestial",
+    "is_rare": true,
+    "note": "",
+    "url": "/api/2024/languages/celestial"
+  },
+  {
+    "index": "deep-speech",
+    "name": "Habla profunda",
+    "is_rare": true,
+    "note": "",
+    "url": "/api/2024/languages/deep-speech"
+  },
+  {
+    "index": "druidic",
+    "name": "Druídico",
+    "is_rare": false,
+    "note": "",
+    "url": "/api/2024/languages/druidic"
+  },
+  {
+    "index": "infernal",
+    "name": "Infernal",
+    "is_rare": true,
+    "note": "",
+    "url": "/api/2024/languages/infernal"
+  },
+  {
+    "index": "primordial",
+    "name": "Primordial",
+    "is_rare": true,
+    "note": "El Primordial incluye los dialectos Acuano, Aurano, Ígneo y Térreo. Las criaturas que conocen uno de estos dialectos pueden comunicarse con aquellas que conocen uno diferente.",
+    "url": "/api/2024/languages/primordial"
+  },
+  {
+    "index": "sylvan",
+    "name": "Silvano",
+    "is_rare": true,
+    "note": "",
+    "url": "/api/2024/languages/sylvan"
+  },
+  {
+    "index": "thieves-cant",
+    "name": "Jerga de ladrones",
+    "is_rare": true,
+    "note": "",
+    "url": "/api/2024/languages/thieves-cant"
+  },
+  {
+    "index": "undercommon",
+    "name": "Infracomún",
+    "is_rare": true,
+    "note": "",
+    "url": "/api/2024/languages/undercommon"
+  }
+]

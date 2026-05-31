@@ -1,0 +1,1592 @@
+[
+  {
+    "index": "adrenaline-rush",
+    "url": "/api/2024/traits/adrenaline-rush",
+    "name": "Subidón de adrenalina",
+    "description": "Puedes realizar la acción de Carrera como una Acción adicional. Cuando lo haces, obtienes un número de Puntos de Golpe temporales igual a tu Bonificador de Competencia.\nPuedes usar este rasgo un número de veces igual a tu Bonificador de Competencia, y recuperas todos los usos gastados cuando terminas un Descanso corto o un Descanso largo.",
+    "species": [
+      {
+        "index": "orc",
+        "url": "/api/2024/species/orc",
+        "name": "Orco"
+      }
+    ]
+  },
+  {
+    "index": "brave",
+    "url": "/api/2024/traits/brave",
+    "name": "Valiente",
+    "description": "Tienes Ventaja en las tiradas de salvación que hagas para evitar o terminar la condición Asustado.",
+    "species": [
+      {
+        "index": "halfling",
+        "url": "/api/2024/species/halfling",
+        "name": "Mediano"
+      }
+    ]
+  },
+  {
+    "index": "draconic-breath-weapon-acid",
+    "url": "/api/2024/traits/draconic-breath-weapon-acid",
+    "name": "Arma de aliento: Ácido",
+    "description": "Cuando realizas la acción de Atacar en tu turno, puedes reemplazar uno de tus ataques con una exhalación de energía mágica en un Cono de 15 pies o en una Línea de 30 pies que tiene 5 pies de ancho (elige la forma cada vez). Cada criatura en esa área debe hacer una tirada de salvación de Destreza (CD 8 más tu modificador de Constitución y Bonificador de Competencia). Si falla la salvación, la criatura recibe 1d10 de daño por ácido. Si tiene éxito, recibe la mitad del daño. Este daño aumenta en 1d10 cuando alcanzas los niveles de personaje 5 (2d10), 11 (3d10) y 17 (4d10).\nPuedes usar esta Arma de aliento un número de veces igual a tu Bonificador de Competencia, y recuperas todos los usos gastados cuando terminas un Descanso largo.",
+    "species": [
+      {
+        "index": "dragonborn",
+        "url": "/api/2024/species/dragonborn",
+        "name": "Dracónido"
+      }
+    ],
+    "subspecies": [
+      {
+        "index": "draconic-ancestor-black",
+        "url": "/api/2024/subspecies/draconic-ancestor-black",
+        "name": "Ancestro dracónico: Negro"
+      },
+      {
+        "index": "draconic-ancestor-copper",
+        "url": "/api/2024/subspecies/draconic-ancestor-copper",
+        "name": "Ancestro dracónico: Cobre"
+      }
+    ]
+  },
+  {
+    "index": "draconic-breath-weapon-cold",
+    "url": "/api/2024/traits/draconic-breath-weapon-cold",
+    "name": "Arma de aliento: Frío",
+    "description": "Cuando realizas la acción de Atacar en tu turno, puedes reemplazar uno de tus ataques con una exhalación de energía mágica en un Cono de 15 pies o en una Línea de 30 pies que tiene 5 pies de ancho (elige la forma cada vez). Cada criatura en esa área debe hacer una tirada de salvación de Destreza (CD 8 más tu modificador de Constitución y Bonificador de Competencia). Si falla la salvación, la criatura recibe 1d10 de daño por frío. Si tiene éxito, recibe la mitad del daño. Este daño aumenta en 1d10 cuando alcanzas los niveles de personaje 5 (2d10), 11 (3d10) y 17 (4d10).\nPuedes usar esta Arma de aliento un número de veces igual a tu Bonificador de Competencia, y recuperas todos los usos gastados cuando terminas un Descanso largo.",
+    "species": [
+      {
+        "index": "dragonborn",
+        "url": "/api/2024/species/dragonborn",
+        "name": "Dracónido"
+      }
+    ],
+    "subspecies": [
+      {
+        "index": "draconic-ancestor-silver",
+        "url": "/api/2024/subspecies/draconic-ancestor-silver",
+        "name": "Ancestro dracónico: Plata"
+      },
+      {
+        "index": "draconic-ancestor-white",
+        "url": "/api/2024/subspecies/draconic-ancestor-white",
+        "name": "Ancestro dracónico: Blanco"
+      }
+    ]
+  },
+  {
+    "index": "draconic-breath-weapon-fire",
+    "url": "/api/2024/traits/draconic-breath-weapon-fire",
+    "name": "Arma de aliento: Fuego",
+    "description": "Cuando realizas la acción de Atacar en tu turno, puedes reemplazar uno de tus ataques con una exhalación de energía mágica en un Cono de 15 pies o en una Línea de 30 pies que tiene 5 pies de ancho (elige la forma cada vez). Cada criatura en esa área debe hacer una tirada de salvación de Destreza (CD 8 más tu modificador de Constitución y Bonificador de Competencia). Si falla la salvación, la criatura recibe 1d10 de daño por fuego. Si tiene éxito, recibe la mitad del daño. Este daño aumenta en 1d10 cuando alcanzas los niveles de personaje 5 (2d10), 11 (3d10) y 17 (4d10).\nPuedes usar esta Arma de aliento un número de veces igual a tu Bonificador de Competencia, y recuperas todos los usos gastados cuando terminas un Descanso largo.",
+    "species": [
+      {
+        "index": "dragonborn",
+        "url": "/api/2024/species/dragonborn",
+        "name": "Dracónido"
+      }
+    ],
+    "subspecies": [
+      {
+        "index": "draconic-ancestor-brass",
+        "url": "/api/2024/subspecies/draconic-ancestor-brass",
+        "name": "Ancestro dracónico: Oropel"
+      },
+      {
+        "index": "draconic-ancestor-gold",
+        "url": "/api/2024/subspecies/draconic-ancestor-gold",
+        "name": "Ancestro dracónico: Oro"
+      },
+      {
+        "index": "draconic-ancestor-red",
+        "url": "/api/2024/subspecies/draconic-ancestor-red",
+        "name": "Ancestro dracónico: Rojo"
+      }
+    ]
+  },
+  {
+    "index": "draconic-breath-weapon-lightning",
+    "url": "/api/2024/traits/draconic-breath-weapon-lightning",
+    "name": "Arma de aliento: Relámpago",
+    "description": "Cuando realizas la acción de Atacar en tu turno, puedes reemplazar uno de tus ataques con una exhalación de energía mágica en un Cono de 15 pies o en una Línea de 30 pies que tiene 5 pies de ancho (elige la forma cada vez). Cada criatura en esa área debe hacer una tirada de salvación de Destreza (CD 8 más tu modificador de Constitución y Bonificador de Competencia). Si falla la salvación, la criatura recibe 1d10 de daño por relámpago. Si tiene éxito, recibe la mitad del daño. Este daño aumenta en 1d10 cuando alcanzas los niveles de personaje 5 (2d10), 11 (3d10) y 17 (4d10).\nPuedes usar esta Arma de aliento un número de veces igual a tu Bonificador de Competencia, y recuperas todos los usos gastados cuando terminas un Descanso largo.",
+    "species": [
+      {
+        "index": "dragonborn",
+        "url": "/api/2024/species/dragonborn",
+        "name": "Dracónido"
+      }
+    ],
+    "subspecies": [
+      {
+        "index": "draconic-ancestor-blue",
+        "url": "/api/2024/subspecies/draconic-ancestor-blue",
+        "name": "Ancestro dracónico: Azul"
+      },
+      {
+        "index": "draconic-ancestor-bronze",
+        "url": "/api/2024/subspecies/draconic-ancestor-bronze",
+        "name": "Ancestro dracónico: Bronce"
+      }
+    ]
+  },
+  {
+    "index": "draconic-breath-weapon-poison",
+    "url": "/api/2024/traits/draconic-breath-weapon-poison",
+    "name": "Arma de aliento: Veneno",
+    "description": "Cuando realizas la acción de Atacar en tu turno, puedes reemplazar uno de tus ataques con una exhalación de energía mágica en un Cono de 15 pies o en una Línea de 30 pies que tiene 5 pies de ancho (elige la forma cada vez). Cada criatura en esa área debe hacer una tirada de salvación de Destreza (CD 8 más tu modificador de Constitución y Bonificador de Competencia). Si falla la salvación, la criatura recibe 1d10 de daño por veneno. Si tiene éxito, recibe la mitad del daño. Este daño aumenta en 1d10 cuando alcanzas los niveles de personaje 5 (2d10), 11 (3d10) y 17 (4d10).\nPuedes usar esta Arma de aliento un número de veces igual a tu Bonificador de Competencia, y recuperas todos los usos gastados cuando terminas un Descanso largo.",
+    "species": [
+      {
+        "index": "dragonborn",
+        "url": "/api/2024/species/dragonborn",
+        "name": "Dracónido"
+      }
+    ],
+    "subspecies": [
+      {
+        "index": "draconic-ancestor-green",
+        "url": "/api/2024/subspecies/draconic-ancestor-green",
+        "name": "Ancestro dracónico: Verde"
+      }
+    ]
+  },
+  {
+    "index": "draconic-damage-resistance-acid",
+    "url": "/api/2024/traits/draconic-damage-resistance-acid",
+    "name": "Resistencia al daño: Ácido",
+    "description": "Tienes Resistencia al daño por ácido, según lo determine tu rasgo de Ascendencia dracónica.",
+    "species": [
+      {
+        "index": "dragonborn",
+        "url": "/api/2024/species/dragonborn",
+        "name": "Dracónido"
+      }
+    ],
+    "subspecies": [
+      {
+        "index": "draconic-ancestor-black",
+        "url": "/api/2024/subspecies/draconic-ancestor-black",
+        "name": "Ancestro dracónico: Negro"
+      },
+      {
+        "index": "draconic-ancestor-copper",
+        "url": "/api/2024/subspecies/draconic-ancestor-copper",
+        "name": "Ancestro dracónico: Cobre"
+      }
+    ]
+  },
+  {
+    "index": "draconic-damage-resistance-cold",
+    "url": "/api/2024/traits/draconic-damage-resistance-cold",
+    "name": "Resistencia al daño: Frío",
+    "description": "Tienes Resistencia al daño por frío, según lo determine tu rasgo de Ascendencia dracónica.",
+    "species": [
+      {
+        "index": "dragonborn",
+        "url": "/api/2024/species/dragonborn",
+        "name": "Dracónido"
+      }
+    ],
+    "subspecies": [
+      {
+        "index": "draconic-ancestor-silver",
+        "url": "/api/2024/subspecies/draconic-ancestor-silver",
+        "name": "Ancestro dracónico: Plata"
+      },
+      {
+        "index": "draconic-ancestor-white",
+        "url": "/api/2024/subspecies/draconic-ancestor-white",
+        "name": "Ancestro dracónico: Blanco"
+      }
+    ]
+  },
+  {
+    "index": "draconic-damage-resistance-fire",
+    "url": "/api/2024/traits/draconic-damage-resistance-fire",
+    "name": "Resistencia al daño: Fuego",
+    "description": "Tienes Resistencia al daño por fuego, según lo determine tu rasgo de Ascendencia dracónica.",
+    "species": [
+      {
+        "index": "dragonborn",
+        "url": "/api/2024/species/dragonborn",
+        "name": "Dracónido"
+      }
+    ],
+    "subspecies": [
+      {
+        "index": "draconic-ancestor-brass",
+        "url": "/api/2024/subspecies/draconic-ancestor-brass",
+        "name": "Ancestro dracónico: Oropel"
+      },
+      {
+        "index": "draconic-ancestor-gold",
+        "url": "/api/2024/subspecies/draconic-ancestor-gold",
+        "name": "Ancestro dracónico: Oro"
+      },
+      {
+        "index": "draconic-ancestor-red",
+        "url": "/api/2024/subspecies/draconic-ancestor-red",
+        "name": "Ancestro dracónico: Rojo"
+      }
+    ]
+  },
+  {
+    "index": "draconic-damage-resistance-lightning",
+    "url": "/api/2024/traits/draconic-damage-resistance-lightning",
+    "name": "Resistencia al daño: Relámpago",
+    "description": "Tienes Resistencia al daño por relámpago, según lo determine tu rasgo de Ascendencia dracónica.",
+    "species": [
+      {
+        "index": "dragonborn",
+        "url": "/api/2024/species/dragonborn",
+        "name": "Dracónido"
+      }
+    ]
+  },
+  {
+    "index": "draconic-damage-resistance-poison",
+    "url": "/api/2024/traits/draconic-damage-resistance-poison",
+    "name": "Resistencia al daño: Veneno",
+    "description": "Tienes Resistencia al daño por veneno, según lo determine tu rasgo de Ascendencia dracónica.",
+    "species": [
+      {
+        "index": "dragonborn",
+        "url": "/api/2024/species/dragonborn",
+        "name": "Dracónido"
+      }
+    ]
+  },
+  {
+    "index": "darkvision-60",
+    "url": "/api/2024/traits/darkvision-60",
+    "name": "Visión en la oscuridad (60 pies)",
+    "description": "Tienes Visión en la oscuridad con un alcance de 60 pies.",
+    "species": [
+      {
+        "index": "dragonborn",
+        "url": "/api/2024/species/dragonborn",
+        "name": "Dracónido"
+      },
+      {
+        "index": "elf",
+        "url": "/api/2024/species/elf",
+        "name": "Elfo"
+      },
+      {
+        "index": "gnome",
+        "url": "/api/2024/species/gnome",
+        "name": "Gnomo"
+      },
+      {
+        "index": "tiefling",
+        "url": "/api/2024/species/tiefling",
+        "name": "Tiflin"
+      }
+    ]
+  },
+  {
+    "index": "darkvision-120",
+    "url": "/api/2024/traits/darkvision-120",
+    "name": "Visión en la oscuridad (120 pies)",
+    "description": "Tienes Visión en la oscuridad con un alcance de 120 pies.",
+    "species": [
+      {
+        "index": "dwarf",
+        "url": "/api/2024/species/dwarf",
+        "name": "Enano"
+      },
+      {
+        "index": "orc",
+        "url": "/api/2024/species/orc",
+        "name": "Orco"
+      }
+    ],
+    "subspecies": [
+      {
+        "index": "elven-lineage-drow",
+        "url": "/api/2024/subspecies/elven-lineage-drow",
+        "name": "Linaje élfico: Drow"
+      }
+    ]
+  },
+  {
+    "index": "draconic-ancestry",
+    "url": "/api/2024/traits/draconic-ancestry",
+    "name": "Ascendencia dracónica",
+    "description": "Tu linaje proviene de un dragón progenitor. Elige el tipo de dragón de la tabla de Ancestros dracónicos. Tu elección afecta tus rasgos de Arma de aliento y Resistencia al daño, así como tu apariencia.\nAncestros dracónicos\nDragón / Tipo de daño\nNegro / Ácido\nAzul / Relámpago\nOropel / Fuego\nBronce / Relámpago\nCobre / Ácido\nVerde / Veneno\nOro / Fuego\nRojo / Fuego\nPlata / Frío\nBlanco / Frío",
+    "species": [
+      {
+        "index": "dragonborn",
+        "url": "/api/2024/species/dragonborn",
+        "name": "Dracónido"
+      }
+    ]
+  },
+  {
+    "index": "draconic-flight",
+    "url": "/api/2024/traits/draconic-flight",
+    "name": "Vuelo dracónico",
+    "description": "Cuando alcanzas el nivel 5 de personaje, puedes canalizar magia dracónica para otorgarte vuelo temporal. Como Acción adicional, te brotan unas alas espectrales en la espalda que duran 10 minutos o hasta que las retraigas (no requiere acción) o tengas la condición Incapacitado. Durante ese tiempo, tienes una Velocidad de vuelo igual a tu Velocidad. Tus alas parecen estar hechas de la misma energía que tu Arma de aliento. Una vez que usas este rasgo, no puedes volver a usarlo hasta que termines un Descanso largo.",
+    "species": [
+      {
+        "index": "dragonborn",
+        "url": "/api/2024/species/dragonborn",
+        "name": "Dracónido"
+      }
+    ]
+  },
+  {
+    "index": "dwarven-resilience",
+    "url": "/api/2024/traits/dwarven-resilience",
+    "name": "Resiliencia enana",
+    "description": "Tienes Resistencia al daño por Veneno. También tienes Ventaja en las tiradas de salvación que hagas para evitar o terminar la condición Envenenado.",
+    "species": [
+      {
+        "index": "dwarf",
+        "url": "/api/2024/species/dwarf",
+        "name": "Enano"
+      }
+    ]
+  },
+  {
+    "index": "dwarven-toughness",
+    "url": "/api/2024/traits/dwarven-toughness",
+    "name": "Dureza enana",
+    "description": "Tu máximo de Puntos de Golpe aumenta en 1, y aumenta en 1 de nuevo cada vez que ganas un nivel.",
+    "species": [
+      {
+        "index": "dwarf",
+        "url": "/api/2024/species/dwarf",
+        "name": "Enano"
+      }
+    ]
+  },
+  {
+    "index": "elven-lineage",
+    "url": "/api/2024/traits/elven-lineage",
+    "name": "Linaje élfico",
+    "description": "Eres parte de un linaje que te otorga habilidades sobrenaturales. Elige un linaje de la tabla de Linajes élficos. Obtienes el beneficio de nivel 1 de ese linaje.\nCuando alcanzas los niveles de personaje 3 y 5, aprendes un conjuro de mayor nivel, como se muestra en la tabla.\nSiempre tienes ese conjuro preparado. Puedes lanzarlo una vez sin usar un espacio de conjuro, y recuperas la capacidad de lanzarlo de esa manera cuando terminas un Descanso largo. También puedes lanzar el conjuro utilizando cualquier espacio de conjuro que tengas del nivel apropiado.\nLinajes élficos\nDrow\nNivel 1. El alcance de tu Visión en la oscuridad aumenta a 120 pies. También conoces el truco Luces danzantes.\nNivel 3. Fuego feérico\nNivel 5. Oscuridad\nElfo alto\nNivel 1. Conoces el truco Prestidigitación. Siempre que termines un Descanso largo, puedes reemplazar ese truco con un truco diferente de la lista de conjuros del Mago.\nNivel 3. Detectar magia\nNivel 5. Paso brumoso\nElfo de los bosques\nNivel 1. Tu Velocidad aumenta a 35 pies. También conoces el truco Druidismo.\nNivel 3. Zancada prodigiosa\nNivel 5. Pasar sin dejar rastro\nInteligencia, Sabiduría o Carisma es tu aptitud mágica para los conjuros que lanzas con este rasgo (elige la característica cuando selecciones el linaje).",
+    "species": [
+      {
+        "index": "elf",
+        "url": "/api/2024/species/elf",
+        "name": "Elfo"
+      }
+    ]
+  },
+  {
+    "index": "fey-ancestry",
+    "url": "/api/2024/traits/fey-ancestry",
+    "name": "Ascendencia feérica",
+    "description": "Tienes Ventaja en las tiradas de salvación que hagas para evitar o terminar la condición Hechizado.",
+    "species": [
+      {
+        "index": "elf",
+        "url": "/api/2024/species/elf",
+        "name": "Elfo"
+      }
+    ]
+  },
+  {
+    "index": "fiendish-legacy",
+    "url": "/api/2024/traits/fiendish-legacy",
+    "name": "Legado infernal",
+    "description": "Eres el receptor de un legado que te otorga habilidades sobrenaturales. Elige un legado de la tabla de Legados infernales. Obtienes el beneficio de nivel 1 del legado elegido.\nCuando alcanzas los niveles de personaje 3 y 5, aprendes un conjuro de mayor nivel, como se muestra en la tabla.\nSiempre tienes ese conjuro preparado. Puedes lanzarlo una vez sin usar un espacio de conjuro, y recuperas la capacidad de lanzarlo de esa manera cuando terminas un Descanso largo. También puedes lanzar el conjuro utilizando cualquier espacio de conjuro que tengas del nivel apropiado.\nInteligencia, Sabiduría o Carisma es tu aptitud mágica para los conjuros que lanzas con este rasgo (elige la característica cuando selecciones el legado).\nLegados infernales\nAbisal.\nNivel 1. Tienes Resistencia al daño por Veneno. También conoces el truco Rociada venenosa.\nNivel 3. Rayo de enfermedad\nNivel 5. Inmovilizar persona\nCtónico.\nNivel 1. Tienes Resistencia al daño Necrótico. También conoces el truco Toque helado.\nNivel 3. Falsa vida\nNivel 5. Rayo de debilitamiento\nInfernal.\nNivel 1. Tienes Resistencia al daño por Fuego. También conoces el truco Descarga de fuego.\nNivel 3. Reprensión infernal\nNivel 5. Oscuridad",
+    "species": [
+      {
+        "index": "tiefling",
+        "url": "/api/2024/species/tiefling",
+        "name": "Tiflin"
+      }
+    ]
+  },
+  {
+    "index": "giant-ancestry",
+    "url": "/api/2024/traits/giant-ancestry",
+    "name": "Ascendencia de gigante",
+    "description": "Desciendes de Gigantes. Elige uno de los siguientes beneficios, una bendición sobrenatural de tu ascendencia; puedes usar el beneficio elegido un número de veces igual a tu Bonificador de Competencia, y recuperas todos los usos gastados cuando terminas un Descanso largo:\nPaseo de la nube (Gigante de las nubes). Como Acción adicional, te teletransportas mágicamente hasta 30 pies a un espacio desocupado que puedas ver.\nArdor del fuego (Gigante de fuego). Cuando impactas a un objetivo con una tirada de ataque e infliges daño, también puedes infligir 1d10 de daño por Fuego a ese objetivo.\nEscalofrío de la escarcha (Gigante de escarcha). Cuando impactas a un objetivo con una tirada de ataque e infliges daño, también puedes infligir 1d6 de daño por Frío a ese objetivo y reducir su Velocidad en 10 pies hasta el inicio de tu siguiente turno.\nTropiezo de la colina (Gigante de las colinas). Cuando impactas a una criatura Grande o más pequeña con una tirada de ataque e infliges daño, puedes darle a ese objetivo la condición Derribado.\nAguante de la piedra (Gigante de piedra). Cuando recibes daño, puedes usar una Reacción para tirar 1d12. Suma tu modificador de Constitución al número obtenido y reduce el daño en ese total.\nTrueno de la tormenta (Gigante de las tormentas). Cuando recibes daño de una criatura a 60 pies o menos de ti, puedes usar una Reacción para infligir 1d8 de daño por Trueno a esa criatura.",
+    "species": [
+      {
+        "index": "goliath",
+        "url": "/api/2024/species/goliath",
+        "name": "Goliat"
+      }
+    ]
+  },
+  {
+    "index": "giant-ancestry-clouds-jaunt",
+    "url": "/api/2024/traits/giant-ancestry-clouds-jaunt",
+    "name": "Ascendencia de gigante: Paseo de la nube",
+    "description": "Como Acción adicional, te teletransportas mágicamente hasta 30 pies a un espacio desocupado que puedas ver.",
+    "species": [
+      {
+        "index": "goliath",
+        "name": "Goliat",
+        "url": "/api/2024/species/goliath"
+      }
+    ],
+    "subspecies": [
+      {
+        "index": "giant-ancestry-clouds-jaunt",
+        "url": "/api/2024/subspecies/giant-ancestry-clouds-jaunt",
+        "name": "Ascendencia de gigante: Paseo de la nube"
+      }
+    ]
+  },
+  {
+    "index": "giant-ancestry-fires-burn",
+    "url": "/api/2024/traits/giant-ancestry-fires-burn",
+    "name": "Ascendencia de gigante: Ardor del fuego",
+    "description": "Cuando impactas a un objetivo con una tirada de ataque e infliges daño, también puedes infligir 1d10 de daño por Fuego a ese objetivo.",
+    "species": [
+      {
+        "index": "goliath",
+        "name": "Goliat",
+        "url": "/api/2024/species/goliath"
+      }
+    ],
+    "subspecies": [
+      {
+        "index": "giant-ancestry-fires-burn",
+        "url": "/api/2024/subspecies/giant-ancestry-fires-burn",
+        "name": "Ascendencia de gigante: Ardor del fuego"
+      }
+    ]
+  },
+  {
+    "index": "giant-ancestry-frosts-chill",
+    "url": "/api/2024/traits/giant-ancestry-frosts-chill",
+    "name": "Ascendencia de gigante: Escalofrío de la escarcha",
+    "description": "Cuando impactas a un objetivo con una tirada de ataque e infliges daño, también puedes infligir 1d6 de daño por Frío a ese objetivo y reducir su Velocidad en 10 pies hasta el inicio de tu siguiente turno.",
+    "species": [
+      {
+        "index": "goliath",
+        "name": "Goliat",
+        "url": "/api/2024/species/goliath"
+      }
+    ],
+    "subspecies": [
+      {
+        "index": "giant-ancestry-frosts-chill",
+        "url": "/api/2024/subspecies/giant-ancestry-frosts-chill",
+        "name": "Ascendencia de gigante: Escalofrío de la escarcha"
+      }
+    ]
+  },
+  {
+    "index": "giant-ancestry-hills-tumble",
+    "url": "/api/2024/traits/giant-ancestry-hills-tumble",
+    "name": "Ascendencia de gigante: Tropiezo de la colina",
+    "description": "Cuando impactas a una criatura Grande o más pequeña con una tirada de ataque e infliges daño, puedes darle a ese objetivo la condición Derribado.",
+    "species": [
+      {
+        "index": "goliath",
+        "name": "Goliat",
+        "url": "/api/2024/species/goliath"
+      }
+    ],
+    "subspecies": [
+      {
+        "index": "giant-ancestry-hills-tumble",
+        "url": "/api/2024/subspecies/giant-ancestry-hills-tumble",
+        "name": "Ascendencia de gigante: Tropiezo de la colina"
+      }
+    ]
+  },
+  {
+    "index": "giant-ancestry-stones-endurance",
+    "url": "/api/2024/traits/giant-ancestry-stones-endurance",
+    "name": "Ascendencia de gigante: Aguante de la piedra",
+    "description": "Cuando recibes daño, puedes usar una Reacción para tirar 1d12. Suma tu modificador de Constitución al número obtenido y reduce el daño en ese total.",
+    "species": [
+      {
+        "index": "goliath",
+        "name": "Goliat",
+        "url": "/api/2024/species/goliath"
+      }
+    ],
+    "subspecies": [
+      {
+        "index": "giant-ancestry-stones-endurance",
+        "url": "/api/2024/subspecies/giant-ancestry-stones-endurance",
+        "name": "Ascendencia de gigante: Aguante de la piedra"
+      }
+    ]
+  },
+  {
+    "index": "giant-ancestry-storms-thunder",
+    "url": "/api/2024/traits/giant-ancestry-storms-thunder",
+    "name": "Ascendencia de gigante: Trueno de la tormenta",
+    "description": "Cuando recibes daño de una criatura a 60 pies o menos de ti, puedes usar una Reacción para infligir 1d8 de daño por Trueno a esa criatura.",
+    "species": [
+      {
+        "index": "goliath",
+        "name": "Goliat",
+        "url": "/api/2024/species/goliath"
+      }
+    ],
+    "subspecies": [
+      {
+        "index": "giant-ancestry-storms-thunder",
+        "url": "/api/2024/subspecies/giant-ancestry-storms-thunder",
+        "name": "Ascendencia de gigante: Trueno de la tormenta"
+      }
+    ]
+  },
+  {
+    "index": "gnomish-cunning",
+    "url": "/api/2024/traits/gnomish-cunning",
+    "name": "Astucia gnómica",
+    "description": "Tienes Ventaja en las tiradas de salvación de Inteligencia, Sabiduría y Carisma.",
+    "species": [
+      {
+        "index": "gnome",
+        "url": "/api/2024/species/gnome",
+        "name": "Gnomo"
+      }
+    ]
+  },
+  {
+    "index": "gnomish-lineage",
+    "url": "/api/2024/traits/gnomish-lineage",
+    "name": "Linaje gnómico",
+    "description": "Eres parte de un linaje que te otorga habilidades sobrenaturales. Elige una de las siguientes opciones; sea cual sea la que elijas, Inteligencia, Sabiduría o Carisma es tu aptitud mágica para los conjuros que lanzas con este rasgo (elige la característica cuando selecciones el linaje):\nGnomo de los bosques. Conoces el truco Ilusión menor. También tienes siempre preparado el conjuro Hablar con los animales. Puedes lanzarlo sin usar un espacio de conjuro un número de veces igual a tu Bonificador de Competencia, y recuperas todos los usos gastados cuando terminas un Descanso largo. También puedes usar cualquier espacio de conjuro que tengas para lanzar el conjuro.\nGnomo de la roca. Conoces los trucos Remendar y Prestidigitación. Además, puedes pasar 10 minutos lanzando Prestidigitación para crear un dispositivo de relojería Diminuto (CA 5, 1 PG), como un juguete, un encendedor o una caja de música. Cuando creas el dispositivo, determinas su función eligiendo un efecto de Prestidigitación; el dispositivo produce ese efecto siempre que tú u otra criatura tome una Acción adicional para activarlo con un toque. Si el efecto elegido tiene opciones dentro de él, eliges una de esas opciones para el dispositivo cuando lo creas.\nPor ejemplo, si eliges el efecto de encender/apagar del conjuro, determinas si el dispositivo enciende o apaga el fuego; el dispositivo no hace ambas cosas. Puedes tener tres de estos dispositivos en existencia a la vez, y cada uno se desarma 8 horas después de su creación o cuando lo desarmas con un toque como una acción de Utilizar.",
+    "species": [
+      {
+        "index": "gnome",
+        "url": "/api/2024/species/gnome",
+        "name": "Gnomo"
+      }
+    ]
+  },
+  {
+    "index": "gnomish-lineage-forest-gnome",
+    "url": "/api/2024/traits/gnomish-lineage-forest-gnome",
+    "name": "Linaje gnómico: Gnomo de los bosques",
+    "description": "Siempre tienes preparado el conjuro Hablar con los animales. Puedes lanzarlo sin usar un espacio de conjuro un número de veces igual a tu Bonificador de Competencia, y recuperas todos los usos gastados cuando terminas un Descanso largo. También puedes usar cualquier espacio de conjuro que tengas para lanzar el conjuro.",
+    "spells": [
+      {
+        "spell": {
+          "index": "speak-with-animals",
+          "name": "Hablar con los animales",
+          "url": "/api/2024/spells/speak-with-animals-nyi"
+        },
+        "uses": "Bonificador de Competencia",
+        "recovery": "Descanso largo"
+      }
+    ],
+    "species": [
+      {
+        "index": "gnome",
+        "name": "Gnomo",
+        "url": "/api/2024/species/gnome"
+      }
+    ],
+    "subspecies": [
+      {
+        "index": "gnomish-lineage-forest-gnome",
+        "url": "/api/2024/subspecies/gnomish-lineage-forest-gnome",
+        "name": "Linaje gnómico: Gnomo de los bosques"
+      }
+    ]
+  },
+  {
+    "index": "gnomish-lineage-rock-gnome",
+    "url": "/api/2024/traits/gnomish-lineage-rock-gnome",
+    "name": "Linaje gnómico: Gnomo de la roca",
+    "description": "Conoces el truco Prestidigitación. Además, puedes pasar 10 minutos lanzando Prestidigitación para crear un dispositivo de relojería Diminuto (CA 5, 1 PG), como un juguete, un encendedor o una caja de música. Cuando creas el dispositivo, determinas su función eligiendo un efecto de Prestidigitación; el dispositivo produce ese efecto siempre que tú u otra criatura tome una Acción adicional para activarlo con un toque. Si el efecto elegido tiene opciones dentro de él, eliges una de esas opciones para el dispositivo cuando lo creas. Por ejemplo, si eliges el efecto de encender/apagar del conjuro, determinas si el dispositivo enciende o apaga el fuego; el dispositivo no hace ambas cosas. Puedes tener tres de estos dispositivos en existencia a la vez, y cada uno se desarma 8 horas después de su creación o cuando lo desarmas con un toque como una acción de Utilizar.",
+    "spells": [
+      {
+        "spell": {
+          "index": "prestidigitation",
+          "name": "Prestidigitation",
+          "url": "/api/2024/spells/prestidigitation-nyi"
+        }
+      }
+    ],
+    "species": [
+      {
+        "index": "gnome",
+        "name": "Gnomo",
+        "url": "/api/2024/species/gnome"
+      }
+    ],
+    "subspecies": [
+      {
+        "index": "gnomish-lineage-rock-gnome",
+        "url": "/api/2024/subspecies/gnomish-lineage-rock-gnome",
+        "name": "Linaje gnómico: Gnomo de la roca"
+      }
+    ]
+  },
+  {
+    "index": "halfling-nimbleness",
+    "url": "/api/2024/traits/halfling-nimbleness",
+    "name": "Agilidad de mediano",
+    "description": "Puedes moverte a través del espacio de cualquier criatura que sea de un tamaño mayor que tú, pero no puedes detenerte en el mismo espacio.",
+    "species": [
+      {
+        "index": "halfling",
+        "url": "/api/2024/species/halfling",
+        "name": "Mediano"
+      }
+    ]
+  },
+  {
+    "index": "high-elf-cantrip-versatility",
+    "url": "/api/2024/traits/high-elf-cantrip-versatility",
+    "name": "Elfo alto: Versatilidad de trucos",
+    "description": "Conoces el truco Prestidigitación. Siempre que termines un Descanso largo, puedes reemplazar ese truco con un truco diferente de la lista de conjuros del Mago.",
+    "spells": [
+      {
+        "spell": {
+          "index": "prestidigitation",
+          "name": "Prestidigitación",
+          "url": "/api/2024/spells/prestidigitation-nyi"
+        }
+      }
+    ],
+    "species": [
+      {
+        "index": "elf",
+        "url": "/api/2024/species/elf",
+        "name": "Elfo"
+      }
+    ],
+    "subspecies": [
+      {
+        "index": "elven-lineage-high-elf",
+        "url": "/api/2024/subspecies/elven-lineage-high-elf",
+        "name": "Linaje élfico: Elfo alto"
+      }
+    ]
+  },
+  {
+    "index": "keen-senses",
+    "url": "/api/2024/traits/keen-senses",
+    "name": "Sentidos agudos",
+    "description": "Tienes competencia en la habilidad Perspicacia, Percepción o Supervivencia.",
+    "proficiency_choices": {
+      "desc": "Elige una de las siguientes habilidades: Perspicacia, Percepción o Supervivencia.",
+      "choose": 1,
+      "type": "proficiencies",
+      "from": {
+        "option_set_type": "options_array",
+        "options": [
+          {
+            "option_type": "reference",
+            "item": {
+              "index": "insight",
+              "name": "Perspicacia",
+              "url": "/api/2024/skills/insight"
+            }
+          },
+          {
+            "option_type": "reference",
+            "item": {
+              "index": "perception",
+              "name": "Percepción",
+              "url": "/api/2024/skills/perception"
+            }
+          },
+          {
+            "option_type": "reference",
+            "item": {
+              "index": "survival",
+              "name": "Supervivencia",
+              "url": "/api/2024/skills/survival"
+            }
+          }
+        ]
+      }
+    },
+    "species": [
+      {
+        "index": "elf",
+        "url": "/api/2024/species/elf",
+        "name": "Elfo"
+      }
+    ]
+  },
+  {
+    "index": "large-form",
+    "url": "/api/2024/traits/large-form",
+    "name": "Forma grande",
+    "description": "A partir del nivel 5 de personaje, puedes cambiar tu tamaño a Grande como una Acción adicional si te encuentras en un espacio lo suficientemente amplio. Esta transformación dura 10 minutos o hasta que la termines (no requiere acción). Durante esa duración, tienes Ventaja en los controles de Fuerza, y tu Velocidad aumenta en 10 pies. Una vez que uses este rasgo, no puedes volver a usarlo hasta que termines un Descanso largo.",
+    "species": [
+      {
+        "index": "goliath",
+        "url": "/api/2024/species/goliath",
+        "name": "Goliat"
+      }
+    ]
+  },
+  {
+    "index": "lineage-resistance-fire",
+    "url": "/api/2024/traits/lineage-resistance-fire",
+    "name": "Resistencia al daño: Fuego",
+    "description": "Tienes Resistencia al daño por Fuego.",
+    "species": [
+      {
+        "index": "tiefling",
+        "url": "/api/2024/species/tiefling",
+        "name": "Tiflin"
+      }
+    ],
+    "subspecies": [
+      {
+        "index": "fiendish-legacy-infernal",
+        "url": "/api/2024/subspecies/fiendish-legacy-infernal",
+        "name": "Legado infernal: Infernal"
+      }
+    ]
+  },
+  {
+    "index": "lineage-resistance-necrotic",
+    "url": "/api/2024/traits/lineage-resistance-necrotic",
+    "name": "Resistencia al daño: Necrótico",
+    "description": "Tienes Resistencia al daño Necrótico.",
+    "species": [
+      {
+        "index": "tiefling",
+        "url": "/api/2024/species/tiefling",
+        "name": "Tiflin"
+      }
+    ],
+    "subspecies": [
+      {
+        "index": "fiendish-legacy-chthonic",
+        "url": "/api/2024/subspecies/fiendish-legacy-chthonic",
+        "name": "Legado infernal: Ctónico"
+      }
+    ]
+  },
+  {
+    "index": "lineage-resistance-poison",
+    "url": "/api/2024/traits/lineage-resistance-poison",
+    "name": "Resistencia al daño: Veneno",
+    "description": "Tienes Resistencia al daño por Veneno.",
+    "species": [
+      {
+        "index": "tiefling",
+        "url": "/api/2024/species/tiefling",
+        "name": "Tiflin"
+      }
+    ],
+    "subspecies": [
+      {
+        "index": "fiendish-legacy-abyssal",
+        "url": "/api/2024/subspecies/fiendish-legacy-abyssal",
+        "name": "Legado infernal: Abisal"
+      }
+    ]
+  },
+  {
+    "index": "lineage-spell-chill-touch",
+    "url": "/api/2024/traits/lineage-spell-chill-touch",
+    "name": "Toque helado",
+    "description": "Conoces el conjuro Toque helado.",
+    "spells": [
+      {
+        "spell": {
+          "index": "chill-touch",
+          "name": "Toque helado",
+          "url": "/api/2024/spells/chill-touch-nyi"
+        }
+      }
+    ],
+    "species": [
+      {
+        "index": "tiefling",
+        "url": "/api/2024/species/tiefling",
+        "name": "Tiflin"
+      }
+    ],
+    "subspecies": [
+      {
+        "index": "fiendish-legacy-chthonic",
+        "url": "/api/2024/subspecies/fiendish-legacy-chthonic",
+        "name": "Legado infernal: Ctónico"
+      }
+    ]
+  },
+  {
+    "index": "lineage-spell-dancing-lights",
+    "url": "/api/2024/traits/lineage-spell-dancing-lights",
+    "name": "Luces danzantes",
+    "description": "Conoces el conjuro Luces danzantes.",
+    "spells": [
+      {
+        "spell": {
+          "index": "dancing-lights",
+          "name": "Luces danzantes",
+          "url": "/api/2024/spells/dancing-lights-nyi"
+        }
+      }
+    ],
+    "species": [
+      {
+        "index": "elf",
+        "url": "/api/2024/species/elf",
+        "name": "Elfo"
+      }
+    ],
+    "subspecies": [
+      {
+        "index": "elven-lineage-drow",
+        "url": "/api/2024/subspecies/elven-lineage-drow",
+        "name": "Linaje élfico: Drow"
+      }
+    ]
+  },
+  {
+    "index": "lineage-spell-darkness",
+    "url": "/api/2024/traits/lineage-spell-darkness",
+    "name": "Oscuridad",
+    "description": "Conoces el conjuro Oscuridad.",
+    "spells": [
+      {
+        "spell": {
+          "index": "darkness",
+          "name": "Oscuridad",
+          "url": "/api/2024/spells/darkness-nyi"
+        }
+      }
+    ],
+    "species": [
+      {
+        "index": "elf",
+        "url": "/api/2024/species/elf",
+        "name": "Elfo"
+      },
+      {
+        "index": "tiefling",
+        "name": "Tiflin",
+        "url": "/api/2024/species/tiefling"
+      }
+    ],
+    "subspecies": [
+      {
+        "index": "elven-lineage-drow",
+        "url": "/api/2024/subspecies/elven-lineage-drow",
+        "name": "Linaje élfico: Drow"
+      },
+      {
+        "index": "fiendish-legacy-infernal",
+        "url": "/api/2024/subspecies/fiendish-legacy-infernal",
+        "name": "Legado infernal: Infernal"
+      }
+    ]
+  },
+  {
+    "index": "lineage-spell-detect-magic",
+    "url": "/api/2024/traits/lineage-spell-detect-magic",
+    "name": "Detectar magia",
+    "description": "Conoces el conjuro Detectar magia.",
+    "spells": [
+      {
+        "spell": {
+          "index": "detect-magic",
+          "name": "Detectar magia",
+          "url": "/api/2024/spells/detect-magic-nyi"
+        }
+      }
+    ],
+    "species": [
+      {
+        "index": "elf",
+        "url": "/api/2024/species/elf",
+        "name": "Elfo"
+      }
+    ],
+    "subspecies": [
+      {
+        "index": "elven-lineage-high-elf",
+        "url": "/api/2024/subspecies/elven-lineage-high-elf",
+        "name": "Linaje élfico: Elfo alto"
+      }
+    ]
+  },
+  {
+    "index": "lineage-spell-faerie-fire",
+    "url": "/api/2024/traits/lineage-spell-faerie-fire",
+    "name": "Fuego feérico",
+    "description": "Conoces el conjuro Fuego feérico.",
+    "spells": [
+      {
+        "spell": {
+          "index": "faerie-fire",
+          "name": "Fuego feérico",
+          "url": "/api/2024/spells/faerie-fire-nyi"
+        }
+      }
+    ],
+    "species": [
+      {
+        "index": "elf",
+        "url": "/api/2024/species/elf",
+        "name": "Elfo"
+      }
+    ],
+    "subspecies": [
+      {
+        "index": "elven-lineage-drow",
+        "url": "/api/2024/subspecies/elven-lineage-drow",
+        "name": "Linaje élfico: Drow"
+      }
+    ]
+  },
+  {
+    "index": "lineage-spell-false-life",
+    "url": "/api/2024/traits/lineage-spell-false-life",
+    "name": "Falsa vida",
+    "description": "Conoces el conjuro Falsa vida.",
+    "spells": [
+      {
+        "spell": {
+          "index": "false-life",
+          "name": "Falsa vida",
+          "url": "/api/2024/spells/false-life-nyi"
+        }
+      }
+    ],
+    "species": [
+      {
+        "index": "tiefling",
+        "url": "/api/2024/species/tiefling",
+        "name": "Tiflin"
+      }
+    ],
+    "subspecies": [
+      {
+        "index": "fiendish-legacy-chthonic",
+        "url": "/api/2024/subspecies/fiendish-legacy-chthonic",
+        "name": "Legado infernal: Ctónico"
+      }
+    ]
+  },
+  {
+    "index": "lineage-spell-fire-bolt",
+    "url": "/api/2024/traits/lineage-spell-fire-bolt",
+    "name": "Descarga de fuego",
+    "description": "Conoces el conjuro Descarga de fuego.",
+    "spells": [
+      {
+        "spell": {
+          "index": "fire-bolt",
+          "name": "Descarga de fuego",
+          "url": "/api/2024/spells/fire-bolt-nyi"
+        }
+      }
+    ],
+    "species": [
+      {
+        "index": "tiefling",
+        "url": "/api/2024/species/tiefling",
+        "name": "Tiflin"
+      }
+    ],
+    "subspecies": [
+      {
+        "index": "fiendish-legacy-infernal",
+        "url": "/api/2024/subspecies/fiendish-legacy-infernal",
+        "name": "Legado infernal: Infernal"
+      }
+    ]
+  },
+  {
+    "index": "lineage-spell-hellish-rebuke",
+    "url": "/api/2024/traits/lineage-spell-hellish-rebuke",
+    "name": "Reprensión infernal",
+    "description": "Conoces el conjuro Reprensión infernal.",
+    "spells": [
+      {
+        "spell": {
+          "index": "hellish-rebuke",
+          "name": "Reprensión infernal",
+          "url": "/api/2024/spells/hellish-rebuke-nyi"
+        }
+      }
+    ],
+    "species": [
+      {
+        "index": "tiefling",
+        "url": "/api/2024/species/tiefling",
+        "name": "Tiflin"
+      }
+    ],
+    "subspecies": [
+      {
+        "index": "fiendish-legacy-infernal",
+        "url": "/api/2024/subspecies/fiendish-legacy-infernal",
+        "name": "Legado infernal: Infernal"
+      }
+    ]
+  },
+  {
+    "index": "lineage-spell-hold-person",
+    "url": "/api/2024/traits/lineage-spell-hold-person",
+    "name": "Inmovilizar persona",
+    "description": "Conoces el conjuro Inmovilizar persona.",
+    "spells": [
+      {
+        "spell": {
+          "index": "hold-person",
+          "name": "Inmovilizar persona",
+          "url": "/api/2024/spells/hold-person-nyi"
+        }
+      }
+    ],
+    "species": [
+      {
+        "index": "tiefling",
+        "url": "/api/2024/species/tiefling",
+        "name": "Tiflin"
+      }
+    ],
+    "subspecies": [
+      {
+        "index": "fiendish-legacy-abyssal",
+        "url": "/api/2024/subspecies/fiendish-legacy-abyssal",
+        "name": "Legado infernal: Abisal"
+      }
+    ]
+  },
+  {
+    "index": "lineage-spell-longstrider",
+    "url": "/api/2024/traits/lineage-spell-longstrider",
+    "name": "Zancada prodigiosa",
+    "description": "Aprendes el conjuro Zancada prodigiosa.",
+    "spells": [
+      {
+        "spell": {
+          "index": "longstrider",
+          "name": "Zancada prodigiosa",
+          "url": "/api/2024/spells/longstrider-nyi"
+        }
+      }
+    ],
+    "species": [
+      {
+        "index": "elf",
+        "url": "/api/2024/species/elf",
+        "name": "Elfo"
+      }
+    ],
+    "subspecies": [
+      {
+        "index": "elven-lineage-wood-elf",
+        "url": "/api/2024/subspecies/elven-lineage-wood-elf",
+        "name": "Linaje élfico: Elfo de los bosques"
+      }
+    ]
+  },
+  {
+    "index": "lineage-spell-mending",
+    "url": "/api/2024/traits/lineage-spell-mending",
+    "name": "Remendar",
+    "description": "Conoces el truco Remendar.",
+    "spells": [
+      {
+        "spell": {
+          "index": "mending",
+          "name": "Remendar",
+          "url": "/api/2024/spells/mending-nyi"
+        }
+      }
+    ],
+    "species": [
+      {
+        "index": "gnome",
+        "url": "/api/2024/species/gnome",
+        "name": "Gnomo"
+      }
+    ],
+    "subspecies": [
+      {
+        "index": "gnomish-lineage-rock-gnome",
+        "url": "/api/2024/subspecies/gnomish-lineage-rock-gnome",
+        "name": "Linaje gnómico: Gnomo de la roca"
+      }
+    ]
+  },
+  {
+    "index": "lineage-spell-minor-illusion",
+    "url": "/api/2024/traits/lineage-spell-minor-illusion",
+    "name": "Ilusión menor",
+    "description": "Conoces el conjuro Ilusión menor.",
+    "spells": [
+      {
+        "spell": {
+          "index": "minor-illusion",
+          "name": "Ilusión menor",
+          "url": "/api/2024/spells/minor-illusion-nyi"
+        }
+      }
+    ],
+    "species": [
+      {
+        "index": "gnome",
+        "url": "/api/2024/species/gnome",
+        "name": "Gnomo"
+      }
+    ],
+    "subspecies": [
+      {
+        "index": "gnomish-lineage-forest-gnome",
+        "url": "/api/2024/subspecies/gnomish-lineage-forest-gnome",
+        "name": "Linaje gnómico: Gnomo de los bosques"
+      }
+    ]
+  },
+  {
+    "index": "lineage-spell-misty-step",
+    "url": "/api/2024/traits/lineage-spell-misty-step",
+    "name": "Paso brumoso",
+    "description": "Conoces el conjuro Paso brumoso.",
+    "spells": [
+      {
+        "spell": {
+          "index": "misty-step",
+          "name": "Paso brumoso",
+          "url": "/api/2024/spells/misty-step-nyi"
+        }
+      }
+    ],
+    "species": [
+      {
+        "index": "elf",
+        "url": "/api/2024/species/elf",
+        "name": "Elfo"
+      }
+    ],
+    "subspecies": [
+      {
+        "index": "elven-lineage-high-elf",
+        "url": "/api/2024/subspecies/elven-lineage-high-elf",
+        "name": "Linaje élfico: Elfo alto"
+      }
+    ]
+  },
+  {
+    "index": "lineage-spell-pass-without-trace",
+    "url": "/api/2024/traits/lineage-spell-pass-without-trace",
+    "name": "Pasar sin dejar rastro",
+    "description": "Aprendes el conjuro Pasar sin dejar rastro.",
+    "spells": [
+      {
+        "spell": {
+          "index": "pass-without-trace",
+          "name": "Pasar sin dejar rastro",
+          "url": "/api/2024/spells/pass-without-trace-nyi"
+        }
+      }
+    ],
+    "species": [
+      {
+        "index": "elf",
+        "url": "/api/2024/species/elf",
+        "name": "Elfo"
+      }
+    ],
+    "subspecies": [
+      {
+        "index": "elven-lineage-wood-elf",
+        "url": "/api/2024/subspecies/elven-lineage-wood-elf",
+        "name": "Linaje élfico: Elfo de los bosques"
+      }
+    ]
+  },
+  {
+    "index": "lineage-spell-poison-spray",
+    "url": "/api/2024/traits/lineage-spell-poison-spray",
+    "name": "Rociada venenosa",
+    "description": "Conoces el conjuro Rociada venenosa.",
+    "spells": [
+      {
+        "spell": {
+          "index": "poison-spray",
+          "name": "Rociada venenosa",
+          "url": "/api/2024/spells/poison-spray-nyi"
+        }
+      }
+    ],
+    "species": [
+      {
+        "index": "tiefling",
+        "url": "/api/2024/species/tiefling",
+        "name": "Tiflin"
+      }
+    ],
+    "subspecies": [
+      {
+        "index": "fiendish-legacy-abyssal",
+        "url": "/api/2024/subspecies/fiendish-legacy-abyssal",
+        "name": "Legado infernal: Abisal"
+      }
+    ]
+  },
+  {
+    "index": "lineage-spell-ray-of-enfeeblement",
+    "url": "/api/2024/traits/lineage-spell-ray-of-enfeeblement",
+    "name": "Rayo de debilitamiento",
+    "description": "Conoces el conjuro Rayo de debilitamiento.",
+    "spells": [
+      {
+        "spell": {
+          "index": "ray-of-enfeeblement",
+          "name": "Rayo de debilitamiento",
+          "url": "/api/2024/spells/ray-of-enfeeblement-nyi"
+        }
+      }
+    ],
+    "species": [
+      {
+        "index": "tiefling",
+        "url": "/api/2024/species/tiefling",
+        "name": "Tiflin"
+      }
+    ],
+    "subspecies": [
+      {
+        "index": "fiendish-legacy-chthonic",
+        "url": "/api/2024/subspecies/fiendish-legacy-chthonic",
+        "name": "Legado infernal: Ctónico"
+      }
+    ]
+  },
+  {
+    "index": "lineage-spell-ray-of-sickness",
+    "url": "/api/2024/traits/lineage-spell-ray-of-sickness",
+    "name": "Rayo de enfermedad",
+    "description": "Conoces el conjuro Rayo de enfermedad.",
+    "spells": [
+      {
+        "spell": {
+          "index": "ray-of-sickness",
+          "name": "Rayo de enfermedad",
+          "url": "/api/2024/spells/ray-of-sickness-nyi"
+        }
+      }
+    ],
+    "species": [
+      {
+        "index": "tiefling",
+        "url": "/api/2024/species/tiefling",
+        "name": "Tiflin"
+      }
+    ],
+    "subspecies": [
+      {
+        "index": "fiendish-legacy-abyssal",
+        "url": "/api/2024/subspecies/fiendish-legacy-abyssal",
+        "name": "Legado infernal: Abisal"
+      }
+    ]
+  },
+  {
+    "index": "luck",
+    "url": "/api/2024/traits/luck",
+    "name": "Suerte",
+    "description": "Cuando sacas un 1 en el d20 de una Prueba de d20, puedes volver a tirar el dado, y debes usar la nueva tirada.",
+    "species": [
+      {
+        "index": "halfling",
+        "url": "/api/2024/species/halfling",
+        "name": "Mediano"
+      }
+    ]
+  },
+  {
+    "index": "naturally-stealthy",
+    "url": "/api/2024/traits/naturally-stealthy",
+    "name": "Sigiloso por naturaleza",
+    "description": "Puedes realizar la acción de Esconderte incluso cuando estás oscurecido únicamente por una criatura que sea al menos un tamaño mayor que tú.",
+    "species": [
+      {
+        "index": "halfling",
+        "url": "/api/2024/species/halfling",
+        "name": "Mediano"
+      }
+    ]
+  },
+  {
+    "index": "otherworldly-presence",
+    "url": "/api/2024/traits/otherworldly-presence",
+    "name": "Presencia de otro mundo",
+    "description": "Conoces el truco Taumaturgia. Cuando lo lanzas con este rasgo, el conjuro usa la misma aptitud mágica que usas para tu rasgo de Legado infernal.",
+    "species": [
+      {
+        "index": "tiefling",
+        "url": "/api/2024/species/tiefling",
+        "name": "Tiflin"
+      }
+    ]
+  },
+  {
+    "index": "powerful-build",
+    "url": "/api/2024/traits/powerful-build",
+    "name": "Constitución robusta",
+    "description": "Tienes Ventaja en cualquier control de característica que hagas para terminar la condición Agarrado. También cuentas como de un tamaño mayor a la hora de determinar tu capacidad de carga.",
+    "species": [
+      {
+        "index": "goliath",
+        "url": "/api/2024/species/goliath",
+        "name": "Goliat"
+      }
+    ]
+  },
+  {
+    "index": "relentless-endurance",
+    "url": "/api/2024/traits/relentless-endurance",
+    "name": "Resistencia implacable",
+    "description": "Cuando tus Puntos de Golpe se reducen a 0 pero no mueres directamente, puedes quedarte con 1 Punto de Golpe en su lugar. Una vez que usas este rasgo, no puedes volver a hacerlo hasta que termines un Descanso largo.",
+    "species": [
+      {
+        "index": "orc",
+        "url": "/api/2024/species/orc",
+        "name": "Orco"
+      }
+    ]
+  },
+  {
+    "index": "resourceful",
+    "url": "/api/2024/traits/resourceful",
+    "name": "Ingenioso",
+    "description": "Ganas Inspiración heroica cada vez que terminas un Descanso largo.",
+    "species": [
+      {
+        "index": "human",
+        "url": "/api/2024/species/human",
+        "name": "Humano"
+      }
+    ]
+  },
+  {
+    "index": "skillful",
+    "url": "/api/2024/traits/skillful",
+    "name": "Habilidoso",
+    "description": "Ganas competencia en una habilidad de tu elección.",
+    "proficiency_choices": {
+      "desc": "Elige cualquier habilidad.",
+      "choose": 1,
+      "type": "proficiencies",
+      "from": {
+        "option_set_type": "options_array",
+        "options": [
+          {
+            "option_type": "reference",
+            "item": {
+              "index": "acrobatics",
+              "name": "Acrobacias",
+              "url": "/api/2024/skills/acrobatics"
+            }
+          },
+          {
+            "option_type": "reference",
+            "item": {
+              "index": "animal-handling",
+              "name": "Trato con animales",
+              "url": "/api/2024/skills/animal-handling"
+            }
+          },
+          {
+            "option_type": "reference",
+            "item": {
+              "index": "arcana",
+              "name": "Arcano",
+              "url": "/api/2024/skills/arcana"
+            }
+          },
+          {
+            "option_type": "reference",
+            "item": {
+              "index": "athletics",
+              "name": "Atletismo",
+              "url": "/api/2024/skills/athletics"
+            }
+          },
+          {
+            "option_type": "reference",
+            "item": {
+              "index": "deception",
+              "name": "Engaño",
+              "url": "/api/2024/skills/deception"
+            }
+          },
+          {
+            "option_type": "reference",
+            "item": {
+              "index": "history",
+              "name": "Historia",
+              "url": "/api/2024/skills/history"
+            }
+          },
+          {
+            "option_type": "reference",
+            "item": {
+              "index": "insight",
+              "name": "Perspicacia",
+              "url": "/api/2024/skills/insight"
+            }
+          },
+          {
+            "option_type": "reference",
+            "item": {
+              "index": "intimidation",
+              "name": "Intimidación",
+              "url": "/api/2024/skills/intimidation"
+            }
+          },
+          {
+            "option_type": "reference",
+            "item": {
+              "index": "investigation",
+              "name": "Investigación",
+              "url": "/api/2024/skills/investigation"
+            }
+          },
+          {
+            "option_type": "reference",
+            "item": {
+              "index": "medicine",
+              "name": "Medicina",
+              "url": "/api/2024/skills/medicine"
+            }
+          },
+          {
+            "option_type": "reference",
+            "item": {
+              "index": "nature",
+              "name": "Naturaleza",
+              "url": "/api/2024/skills/nature"
+            }
+          },
+          {
+            "option_type": "reference",
+            "item": {
+              "index": "perception",
+              "name": "Percepción",
+              "url": "/api/2024/skills/perception"
+            }
+          },
+          {
+            "option_type": "reference",
+            "item": {
+              "index": "performance",
+              "name": "Interpretación",
+              "url": "/api/2024/skills/performance"
+            }
+          },
+          {
+            "option_type": "reference",
+            "item": {
+              "index": "persuasion",
+              "name": "Persuasión",
+              "url": "/api/2024/skills/persuasion"
+            }
+          },
+          {
+            "option_type": "reference",
+            "item": {
+              "index": "religion",
+              "name": "Religión",
+              "url": "/api/2024/skills/religion"
+            }
+          },
+          {
+            "option_type": "reference",
+            "item": {
+              "index": "sleight-of-hand",
+              "name": "Juego de manos",
+              "url": "/api/2024/skills/sleight-of-hand"
+            }
+          },
+          {
+            "option_type": "reference",
+            "item": {
+              "index": "stealth",
+              "name": "Sigilo",
+              "url": "/api/2024/skills/stealth"
+            }
+          },
+          {
+            "option_type": "reference",
+            "item": {
+              "index": "survival",
+              "name": "Supervivencia",
+              "url": "/api/2024/skills/survival"
+            }
+          }
+        ]
+      }
+    },
+    "species": [
+      {
+        "index": "human",
+        "url": "/api/2024/species/human",
+        "name": "Humano"
+      }
+    ]
+  },
+  {
+    "index": "stonecunning",
+    "url": "/api/2024/traits/stonecunning",
+    "name": "Afinidad con la piedra",
+    "description": "Como Acción adicional, obtienes Sentido sísmico con un alcance de 60 pies durante 10 minutos. Debes estar sobre una superficie de piedra o tocando una superficie de piedra para usar este Sentido sísmico. La piedra puede ser natural o trabajada.\nPuedes usar esta Acción adicional un número de veces igual a tu Bonificador de Competencia, y recuperas todos los usos gastados cuando terminas un Descanso largo.",
+    "species": [
+      {
+        "index": "dwarf",
+        "url": "/api/2024/species/dwarf",
+        "name": "Enano"
+      }
+    ]
+  },
+  {
+    "index": "trance",
+    "url": "/api/2024/traits/trance",
+    "name": "Trance",
+    "description": "No necesitas dormir, y la magia no puede ponerte a dormir. Puedes terminar un Descanso largo en 4 horas si pasas esas horas en una meditación profunda, durante la cual conservas la consciencia.",
+    "species": [
+      {
+        "index": "elf",
+        "url": "/api/2024/species/elf",
+        "name": "Elfo"
+      }
+    ]
+  },
+  {
+    "index": "versatile",
+    "url": "/api/2024/traits/versatile",
+    "name": "Versátil",
+    "description": "Obtienes una dote de Origen de tu elección (ver \"Dotes\"). Se recomienda Habilidoso.",
+    "species": [
+      {
+        "index": "human",
+        "url": "/api/2024/species/human",
+        "name": "Humano"
+      }
+    ]
+  },
+  {
+    "index": "wood-elf-speed-increase",
+    "url": "/api/2024/traits/wood-elf-speed-increase",
+    "name": "Elfo de los bosques: Aumento de velocidad de movimiento",
+    "description": "Tu Velocidad de movimiento aumenta a 35 pies.",
+    "speed": 35,
+    "species": [
+      {
+        "index": "elf",
+        "url": "/api/2024/species/elf",
+        "name": "Elfo"
+      }
+    ],
+    "subspecies": [
+      {
+        "index": "elven-lineage-wood-elf",
+        "url": "/api/2024/subspecies/elven-lineage-wood-elf",
+        "name": "Linaje élfico: Elfo de los bosques"
+      }
+    ]
+  }
+]

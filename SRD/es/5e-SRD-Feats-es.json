@@ -1,0 +1,192 @@
+[
+  {
+    "index": "alert",
+    "name": "Alerta",
+    "description": "Obtienes los siguientes beneficios.\n**Competencia en Iniciativa.** Cuando tiras Iniciativa, puedes sumar tu Bonificador de Competencia a la tirada.\n**Intercambio de Iniciativa.** Inmediatamente después de tirar Iniciativa, puedes intercambiar tu Iniciativa con la Iniciativa de un aliado dispuesto en el mismo combate. No puedes hacer este intercambio si tú o el aliado tienen la condición Incapacitado.",
+    "type": "origin",
+    "url": "/api/2024/feats/alert"
+  },
+  {
+    "index": "magic-initiate",
+    "name": "Iniciado mágico",
+    "description": "Obtienes los siguientes beneficios.\n**Dos trucos.** Aprendes dos trucos de tu elección de la lista de conjuros del Clérigo, Druida o Mago. Inteligencia, Sabiduría o Carisma es tu aptitud mágica para los conjuros de esta dote (elige cuando selecciones esta dote).\n**Conjuro de nivel 1.** Elige un conjuro de nivel 1 de la misma lista que seleccionaste para los trucos de esta dote. Siempre tienes ese conjuro preparado. Puedes lanzarlo una vez sin usar un espacio de conjuro, y recuperas la capacidad de lanzarlo de esa manera cuando terminas un Descanso largo. También puedes lanzar el conjuro utilizando cualquier espacio de conjuro que tengas.\n**Cambio de conjuro.** Cada vez que ganas un nuevo nivel, puedes reemplazar uno de los conjuros que elegiste para esta dote por un conjuro diferente del mismo nivel de la lista de conjuros elegida.",
+    "repeatable": "Puedes elegir esta dote más de una vez, pero debes elegir una lista de conjuros diferente cada vez.",
+    "type": "origin",
+    "url": "/api/2024/feats/magic-initiate"
+  },
+  {
+    "index": "savage-attacker",
+    "name": "Atacante salvaje",
+    "description": "Te has entrenado para asestar golpes particularmente dañinos. Una vez por turno, cuando impactas a un objetivo con un arma, puedes tirar los dados de daño del arma dos veces y usar cualquiera de las tiradas contra el objetivo.",
+    "type": "origin",
+    "url": "/api/2024/feats/savage-attacker"
+  },
+  {
+    "index": "skilled",
+    "name": "Habilidoso",
+    "description": "Obtienes competencia en cualquier combinación de tres habilidades o herramientas de tu elección.",
+    "repeatable": "Puedes elegir esta dote más de una vez.",
+    "type": "origin",
+    "url": "/api/2024/feats/skilled"
+  },
+  {
+    "index": "ability-score-improvement",
+    "name": "Mejora de puntuación de característica",
+    "type": "general",
+    "prerequisites": {
+      "minimum_level": 4
+    },
+    "description": "Aumenta una puntuación de característica de tu elección en 2, o aumenta dos puntuaciones de característica de tu elección en 1. Esta dote no puede aumentar una puntuación de característica por encima de 20.",
+    "repeatable": "Puedes elegir esta dote más de una vez.",
+    "url": "/api/2024/feats/ability-score-improvement"
+  },
+  {
+    "index": "grappler",
+    "name": "Luchador",
+    "type": "general",
+    "prerequisites": {
+      "minimum_level": 4
+    },
+    "prerequisite_options": {
+      "desc": "Fuerza o Destreza 13+",
+      "type": "ability-scores",
+      "choose": 1,
+      "from": {
+        "option_set_type": "options_array",
+        "options": [
+          {
+            "option_type": "score_prerequisite",
+            "ability_score": {
+              "index": "str",
+              "name": "FUE",
+              "url": "/api/2024/ability-scores/str"
+            },
+            "minimum_score": 13
+          },
+          {
+            "option_type": "score_prerequisite",
+            "ability_score": {
+              "index": "dex",
+              "name": "DES",
+              "url": "/api/2024/ability-scores/dex"
+            },
+            "minimum_score": 13
+          }
+        ]
+      }
+    },
+    "description": "Obtienes los siguientes beneficios.\n**Aumento de puntuación de característica.** Aumenta tu puntuación de Fuerza o Destreza en 1, hasta un máximo de 20.\n**Golpear y agarrar.** Cuando impactas a una criatura con un Impacto desarmado como parte de la acción de Atacar en tu turno, puedes usar tanto la opción de Daño como la de Agarrar. Puedes usar este beneficio solo una vez por turno.\n**Ventaja en ataque.** Tienes Ventaja en las tiradas de ataque contra una criatura Agarrada por ti.\n**Luchador rápido.** No tienes que gastar movimiento adicional para mover a una criatura Agarrada por ti si la criatura es de tu tamaño o más pequeña.",
+    "url": "/api/2024/feats/grappler"
+  },
+  {
+    "index": "archery",
+    "name": "Arquería",
+    "type": "fighting-style",
+    "prerequisites": {
+      "feature_named": "Fighting Style"
+    },
+    "description": "Obtienes un bonificador de +2 a las tiradas de ataque que hagas con armas a distancia.",
+    "url": "/api/2024/feats/archery"
+  },
+  {
+    "index": "defense",
+    "name": "Defensa",
+    "type": "fighting-style",
+    "prerequisites": {
+      "feature_named": "Fighting Style"
+    },
+    "description": "Mientras lleves puesta una armadura ligera, media o pesada, obtienes un bonificador de +1 a la Clase de Armadura.",
+    "url": "/api/2024/feats/defense"
+  },
+  {
+    "index": "great-weapon-fighting",
+    "name": "Combate con armas a dos manos",
+    "type": "fighting-style",
+    "prerequisites": {
+      "feature_named": "Fighting Style"
+    },
+    "description": "Cuando tiras el daño de un ataque que realizas con un arma cuerpo a cuerpo que sostienes con dos manos, puedes tratar cualquier 1 o 2 en un dado de daño como un 3. El arma debe tener la propiedad A dos manos o Versátil para obtener este beneficio.",
+    "url": "/api/2024/feats/great-weapon-fighting"
+  },
+  {
+    "index": "two-weapon-fighting",
+    "name": "Combate con dos armas",
+    "type": "fighting-style",
+    "prerequisites": {
+      "feature_named": "Fighting Style"
+    },
+    "description": "Cuando realizas un ataque adicional como resultado de usar un arma que tiene la propiedad Ligera, puedes sumar tu modificador de característica al daño de ese ataque si no lo estabas sumando ya al daño.",
+    "url": "/api/2024/feats/two-weapon-fighting"
+  },
+  {
+    "index": "boon-of-combat-prowess",
+    "name": "Bendición de destreza en combate",
+    "type": "epic-boon",
+    "prerequisites": {
+      "minimum_level": 19
+    },
+    "description": "Obtienes los siguientes beneficios.\n**Aumento de puntuación de característica.** Aumenta una puntuación de característica de tu elección en 1, hasta un máximo de 30.\n**Puntería sin igual.** Cuando fallas una tirada de ataque, puedes impactar en su lugar. Una vez que usas este beneficio, no puedes volver a usarlo hasta el inicio de tu siguiente turno.",
+    "url": "/api/2024/feats/boon-of-combat-prowess"
+  },
+  {
+    "index": "boon-of-dimensional-travel",
+    "name": "Bendición de viaje dimensional",
+    "type": "epic-boon",
+    "prerequisites": {
+      "minimum_level": 19
+    },
+    "description": "Obtienes los siguientes beneficios.\n**Aumento de puntuación de característica.** Aumenta una puntuación de característica de tu elección en 1, hasta un máximo de 30.\n**Pasos parpadeantes.** Inmediatamente después de realizar la acción de Atacar o la Acción Mágica, puedes teletransportarte hasta 30 pies a un espacio desocupado que puedas ver.",
+    "url": "/api/2024/feats/boon-of-dimensional-travel"
+  },
+  {
+    "index": "boon-of-fate",
+    "name": "Bendición del destino",
+    "type": "epic-boon",
+    "prerequisites": {
+      "minimum_level": 19
+    },
+    "description": "Obtienes los siguientes beneficios.\n**Aumento de puntuación de característica.** Aumenta una puntuación de característica de tu elección en 1, hasta un máximo de 30.\n**Mejorar el destino.** Cuando tú u otra criatura a 60 pies o menos de ti tiene éxito o falla en una Prueba de d20, puedes tirar 2d4 y aplicar el total obtenido como un bonificador o penalizador a la tirada del d20. Una vez que usas este beneficio, no puedes volver a usarlo hasta que tires Iniciativa o termines un Descanso corto o largo.",
+    "url": "/api/2024/feats/boon-of-fate"
+  },
+  {
+    "index": "boon-of-irresistible-offense",
+    "name": "Bendición de ofensiva irresistible",
+    "type": "epic-boon",
+    "prerequisites": {
+      "minimum_level": 19
+    },
+    "description": "Obtienes los siguientes beneficios.\n**Aumento de puntuación de característica.** Aumenta una puntuación de característica de tu elección en 1, hasta un máximo de 30.\n**Superar defensas.** El daño Contundente, Perforante y Cortante que infliges ignora siempre la Resistencia.\n**Golpe abrumador.** Cuando sacas un 20 en el d20 para una tirada de ataque, puedes infligir daño adicional al objetivo igual a la puntuación de característica aumentada por esta dote. El tipo del daño adicional es el mismo que el tipo del ataque.",
+    "url": "/api/2024/feats/boon-of-irresistible-offense"
+  },
+  {
+    "index": "boon-of-spell-recall",
+    "name": "Bendición de recuerdo de conjuros",
+    "type": "epic-boon",
+    "prerequisites": {
+      "minimum_level": 19,
+      "feature_named": "Spellcasting"
+    },
+    "description": "Obtienes los siguientes beneficios.\n**Aumento de puntuación de característica.** Aumenta una puntuación de característica de tu elección en 1, hasta un máximo de 30.\n**Lanzamiento gratuito.** Cada vez que lanzas un conjuro con un espacio de conjuro de nivel 1 a 4, tira 1d4. Si el número que obtienes es el mismo que el nivel del espacio, el espacio no se gasta.",
+    "url": "/api/2024/feats/boon-of-spell-recall"
+  },
+  {
+    "index": "boon-of-the-night-spirit",
+    "name": "Bendición del espíritu de la noche",
+    "type": "epic-boon",
+    "prerequisites": {
+      "minimum_level": 19
+    },
+    "description": "Obtienes los siguientes beneficios.\n**Aumento de puntuación de característica.** Aumenta una puntuación de característica de tu elección en 1, hasta un máximo de 30.\n**Fundirse con las sombras.** Mientras estés en Luz tenue u Oscuridad, puedes otorgarte a ti mismo la condición Invisible como Acción adicional. La condición termina en ti inmediatamente después de que realices una acción, Acción adicional o Reacción.\n**Forma sombría.** Mientras estés en Luz tenue u Oscuridad, tienes Resistencia a todo el daño excepto Psíquico y Radiante.",
+    "url": "/api/2024/feats/boon-of-the-night-spirit"
+  },
+  {
+    "index": "boon-of-truesight",
+    "name": "Bendición de visión verdadera",
+    "type": "epic-boon",
+    "prerequisites": {
+      "minimum_level": 19
+    },
+    "description": "Obtienes los siguientes beneficios.\n**Aumento de puntuación de característica.** Aumenta una puntuación de característica de tu elección en 1, hasta un máximo de 30.\n**Visión verdadera.** Tienes Visión verdadera con un alcance de 60 pies.",
+    "url": "/api/2024/feats/boon-of-truesight"
+  }
+]

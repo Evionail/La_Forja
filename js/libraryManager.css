@@ -1,0 +1,464 @@
+/* ============================================================
+   LIBRARY MANAGER — La Forja v14.5
+   Estilos del componente. Cargado desde index.html.
+   ============================================================ */
+
+.lm-wrap { display:flex; flex-direction:column; height:100%; position:relative; overflow:hidden; }
+
+/* ── LIGHT MODE (default) ──────────────────────────────────── */
+.lm-wrap.lm-light { background:#f8fafc; color:#0f172a; }
+.lm-light .lm-hdr { background:#fff; border-bottom:1px solid #e2e8f0; }
+.lm-light .lm-title { color:#1e40af; }
+.lm-light .lm-sinput { background:#f1f5f9; border:1px solid #e2e8f0; color:#0f172a; }
+.lm-light .lm-sinput::placeholder { color:#94a3b8; }
+.lm-light .lm-fbtn { background:#f1f5f9; border:1px solid #e2e8f0; color:#64748b; }
+.lm-light .lm-fbtn.on { background:#1e40af; border-color:#1e40af; color:#fff; }
+.lm-light .lm-tab { color:#94a3b8; }
+.lm-light .lm-tab.on { color:#1e40af; border-bottom-color:#1e40af; }
+.lm-light .lm-chips { background:#fff; border-bottom:1px solid #e2e8f0; }
+.lm-light .lm-chip { background:#eff6ff; color:#1e40af; border:1px solid #bfdbfe; }
+.lm-light .lm-content { background:#f8fafc; }
+.lm-light .lm-catcard { background:#fff; border:1px solid #e2e8f0; }
+.lm-light .lm-catcard:active { border-color:#1e40af; }
+.lm-light .lm-cname { color:#0f172a; }
+.lm-light .lm-ccnt { color:#94a3b8; }
+.lm-light .lm-reftoggle { background:#fff; border:1px solid #e2e8f0; }
+.lm-light .lm-reftitle { color:#94a3b8; }
+.lm-light .lm-refcard { background:#fff; border:1px solid #e2e8f0; }
+.lm-light .lm-refname { color:#64748b; }
+.lm-light .lm-refcnt { color:#94a3b8; }
+.lm-light .lm-icard { background:#fff; border:1px solid #e2e8f0; }
+.lm-light .lm-icard:active { border-color:#1e40af; }
+.lm-light .lm-iname { color:#0f172a; }
+.lm-light .lm-isub { color:#94a3b8; }
+.lm-light .lm-iarrow { color:#cbd5e1; }
+.lm-light .lm-badge-srd { background:#eff6ff; color:#1d4ed8; }
+.lm-light .lm-badge-brew { background:#f5f3ff; color:#7c3aed; }
+.lm-light .lm-no-results { color:#94a3b8; }
+.lm-light .lm-detail { background:#f8fafc; }
+.lm-light .lm-dname { color:#0f172a; }
+.lm-light .lm-dtype { color:#94a3b8; }
+.lm-light .lm-hr { border-top:1px solid #e2e8f0; }
+.lm-light .lm-dlabel { color:#94a3b8; }
+.lm-light .lm-ddesc { color:#334155; }
+.lm-light .lm-ddesc b, .lm-light .lm-ddesc strong { color:#0f172a; }
+.lm-light .lm-sbox { background:#fff; border:1px solid #e2e8f0; }
+.lm-light .lm-sval { color:#1e40af; }
+.lm-light .lm-slbl { color:#94a3b8; }
+.lm-light .lm-applybtn { background:#1e40af; }
+.lm-light .lm-filtpanel { background:#fff; box-shadow:-4px 0 20px rgba(0,0,0,.1); }
+.lm-light .lm-fhandle { background:#e2e8f0; }
+.lm-light .lm-fsectitle { color:#94a3b8; }
+.lm-light .lm-fopt { background:#f1f5f9; color:#334155; border:1px solid #e2e8f0; }
+.lm-light .lm-fopt.on { background:#1e40af; border-color:#1e40af; color:#fff; }
+.lm-light .lm-fclear { border:1px solid #e2e8f0; color:#94a3b8; background:transparent; }
+.lm-light .lm-fapply { background:#1e40af; color:#fff; }
+.lm-light .lm-brewbtn { background:#f5f3ff; color:#7c3aed; border:1px solid #ddd6fe; }
+.lm-light .lm-editbtn { background:#f1f5f9; color:#334155; border:1px solid #e2e8f0; }
+.lm-light .lm-delbtn { background:#fef2f2; color:#991b1b; border:1px solid #fecaca; }
+.lm-light .lm-back { background:#f1f5f9; color:#334155; border:none; }
+.lm-light .lm-form-input { background:#f1f5f9; border:1px solid #e2e8f0; color:#0f172a; }
+.lm-light .lm-form-label { color:#64748b; }
+.lm-light .lm-form-wrap { background:#fff; }
+.lm-light .lm-toast { background:#eff6ff; color:#1e40af; border:1px solid #bfdbfe; }
+.lm-light .lm-sortbtn { background:#f1f5f9; color:#64748b; border:1px solid #e2e8f0; }
+.lm-light .lm-sortbtn.on { background:#1e40af; color:#fff; border-color:#1e40af; }
+.lm-light .lm-form-save { background:#1e40af; }
+.lm-light .lm-spinner { border-color:#e2e8f0; border-top-color:#1e40af; }
+
+/* ── DARK MODE ─────────────────────────────────────────────── */
+.lm-wrap.lm-dark { background:#1c1917; color:#f5f4f2; }
+.lm-dark .lm-hdr { background:#292524; border-bottom:1px solid #44403c; }
+.lm-dark .lm-title { color:#d97706; }
+.lm-dark .lm-sinput { background:#44403c; border:1px solid #57534e; color:#f5f4f2; }
+.lm-dark .lm-sinput::placeholder { color:#78716c; }
+.lm-dark .lm-fbtn { background:#44403c; border:1px solid #57534e; color:#a8a29e; }
+.lm-dark .lm-fbtn.on { background:#92400e; border-color:#d97706; color:#fff; }
+.lm-dark .lm-tab { color:#78716c; }
+.lm-dark .lm-tab.on { color:#d97706; border-bottom-color:#d97706; }
+.lm-dark .lm-chips { background:#292524; border-bottom:1px solid #44403c; }
+.lm-dark .lm-chip { background:#92400e; color:#fef3c7; border:1px solid #d97706; }
+.lm-dark .lm-content { background:#1c1917; }
+.lm-dark .lm-catcard { background:#292524; border:1px solid #44403c; }
+.lm-dark .lm-catcard:active { border-color:#d97706; }
+.lm-dark .lm-cname { color:#f5f4f2; }
+.lm-dark .lm-ccnt { color:#78716c; }
+.lm-dark .lm-reftoggle { background:#292524; border:1px solid #44403c; }
+.lm-dark .lm-reftitle { color:#78716c; }
+.lm-dark .lm-refcard { background:#292524; border:1px solid #44403c; }
+.lm-dark .lm-refname { color:#a8a29e; }
+.lm-dark .lm-refcnt { color:#57534e; }
+.lm-dark .lm-icard { background:#292524; border:1px solid #44403c; }
+.lm-dark .lm-icard:active { border-color:#d97706; }
+.lm-dark .lm-iname { color:#f5f4f2; }
+.lm-dark .lm-isub { color:#78716c; }
+.lm-dark .lm-iarrow { color:#57534e; }
+.lm-dark .lm-badge-srd { background:#1e3a4a; color:#67e8f9; }
+.lm-dark .lm-badge-brew { background:#2d1b4e; color:#c4b5fd; }
+.lm-dark .lm-no-results { color:#57534e; }
+.lm-dark .lm-detail { background:#1c1917; }
+.lm-dark .lm-dname { color:#f5f4f2; }
+.lm-dark .lm-dtype { color:#78716c; }
+.lm-dark .lm-hr { border-top:1px solid #44403c; }
+.lm-dark .lm-dlabel { color:#78716c; }
+.lm-dark .lm-ddesc { color:#d6d3d1; }
+.lm-dark .lm-ddesc b, .lm-dark .lm-ddesc strong { color:#f5f4f2; }
+.lm-dark .lm-sbox { background:#292524; border:1px solid #44403c; }
+.lm-dark .lm-sval { color:#d97706; }
+.lm-dark .lm-slbl { color:#78716c; }
+.lm-dark .lm-applybtn { background:#92400e; }
+.lm-dark .lm-filtpanel { background:#292524; box-shadow:-4px 0 20px rgba(0,0,0,.5); }
+.lm-dark .lm-fhandle { background:#57534e; }
+.lm-dark .lm-fsectitle { color:#78716c; }
+.lm-dark .lm-fopt { background:#44403c; color:#d6d3d1; border:1px solid #57534e; }
+.lm-dark .lm-fopt.on { background:#92400e; border-color:#d97706; color:#fff; }
+.lm-dark .lm-fclear { border:1px solid #57534e; color:#a8a29e; background:transparent; }
+.lm-dark .lm-fapply { background:#1e3a8a; color:#fff; }
+.lm-dark .lm-brewbtn { background:#2d1b4e; color:#c4b5fd; border:1px solid #4c1d95; }
+.lm-dark .lm-editbtn { background:#44403c; color:#d6d3d1; border:1px solid #57534e; }
+.lm-dark .lm-delbtn { background:#450a0a; color:#fca5a5; border:1px solid #991b1b; }
+.lm-dark .lm-back { background:#44403c; color:#d6d3d1; border:none; }
+.lm-dark .lm-form-input { background:#44403c; border:1px solid #57534e; color:#f5f4f2; }
+.lm-dark .lm-form-label { color:#a8a29e; }
+.lm-dark .lm-form-wrap { background:#292524; }
+.lm-dark .lm-toast { background:#064e3b; color:#6ee7b7; border:1px solid #047857; }
+.lm-dark .lm-sortbtn { background:#44403c; color:#a8a29e; border:1px solid #57534e; }
+.lm-dark .lm-sortbtn.on { background:#92400e; color:#fff; border-color:#d97706; }
+.lm-dark .lm-form-save { background:#92400e; }
+.lm-dark .lm-spinner { border-color:#44403c; border-top-color:#d97706; }
+
+/* ── ESTRUCTURA (compartida) ───────────────────────────────── */
+.lm-hdr { padding:10px 13px 0; flex-shrink:0; }
+.lm-hdr-row { display:flex; align-items:center; gap:8px; margin-bottom:8px; }
+.lm-back { width:30px; height:30px; border-radius:50%; cursor:pointer; font-size:14px;
+           display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.lm-title { font-size:15px; font-weight:700; flex:1; letter-spacing:1px;
+            white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.lm-srow { display:flex; gap:7px; margin-bottom:9px; }
+.lm-sinput { flex:1; border-radius:9px; padding:7px 11px; font-size:13px; outline:none; }
+.lm-fbtn { width:36px; height:36px; border-radius:9px; cursor:pointer; font-size:14px;
+           display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all .15s; }
+.lm-tabs { display:flex; }
+.lm-tab { flex:1; padding:8px 4px; text-align:center; font-size:12px; font-weight:700;
+          border-bottom:2px solid transparent; cursor:pointer; letter-spacing:.5px; transition:all .15s; }
+.lm-chips { display:flex; gap:5px; padding:6px 13px; overflow-x:auto; scrollbar-width:none; flex-shrink:0; }
+.lm-chips::-webkit-scrollbar { display:none; }
+.lm-chip { border-radius:20px; padding:3px 8px; font-size:11px; white-space:nowrap;
+           cursor:pointer; display:flex; align-items:center; gap:3px; }
+.lm-content { flex:1; overflow-y:auto; scrollbar-width:thin; }
+
+/* Sort row */
+.lm-sortrow { display:flex; gap:6px; padding:6px 13px 8px; align-items:center; }
+.lm-sortlbl { font-size:10px; font-weight:700; text-transform:uppercase;
+              letter-spacing:.6px; opacity:.6; margin-right:2px; }
+.lm-sortbtn { border-radius:7px; padding:4px 10px; font-size:11px; font-weight:700; cursor:pointer;
+              display:flex; align-items:center; gap:4px; transition:all .15s; }
+
+/* Categorías */
+.lm-catgrid { display:grid; grid-template-columns:1fr 1fr; gap:8px; padding:12px; }
+.lm-catcard { border-radius:11px; padding:12px 10px; cursor:pointer; transition:border-color .15s; }
+.lm-cicon { font-size:19px; margin-bottom:4px; }
+.lm-cname { font-size:12px; font-weight:700; }
+.lm-ccnt { font-size:10px; margin-top:2px; }
+.lm-reftoggle { margin:0 12px 8px; border-radius:9px; padding:9px 12px;
+                display:flex; justify-content:space-between; align-items:center; cursor:pointer; }
+.lm-reftitle { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.8px; }
+.lm-refgrid { display:grid; grid-template-columns:1fr 1fr; gap:7px; padding:0 12px 12px; }
+.lm-refcard { border-radius:9px; padding:9px 11px; cursor:pointer; opacity:.75; transition:opacity .15s; }
+.lm-refcard:active { opacity:1; }
+.lm-refname { font-size:12px; font-weight:700; }
+.lm-refcnt { font-size:10px; margin-top:2px; }
+
+/* Items list */
+.lm-itemlist { padding:8px 12px; display:flex; flex-direction:column; gap:5px; }
+.lm-icard { border-radius:9px; padding:9px 11px; display:flex; align-items:center;
+            gap:8px; cursor:pointer; transition:border-color .15s; }
+.lm-badge { font-size:9px; font-weight:700; padding:2px 5px; border-radius:4px; flex-shrink:0; }
+.lm-iname { font-size:13px; font-weight:700; flex:1; }
+.lm-isub { font-size:11px; margin-top:1px; }
+.lm-iarrow { font-size:14px; flex-shrink:0; }
+.lm-no-results { text-align:center; padding:32px 16px; font-size:13px; line-height:1.7; }
+
+/* Detail */
+.lm-detail { padding:14px; overflow-y:auto; flex:1; }
+.lm-dsrc { display:inline-block; font-size:9px; font-weight:700; padding:2px 7px;
+           border-radius:5px; margin-bottom:6px; }
+.lm-dname { font-size:18px; font-weight:700; margin-bottom:3px; }
+.lm-dtype { font-size:12px; }
+.lm-hr { border:none; margin:10px 0; }
+.lm-dlabel { font-size:9px; font-weight:700; text-transform:uppercase;
+             letter-spacing:.8px; margin-bottom:5px; }
+.lm-ddesc { font-size:13px; line-height:1.65; }
+.lm-statrow { display:flex; gap:6px; margin-bottom:11px; }
+.lm-sbox { border-radius:7px; padding:8px; flex:1; text-align:center; }
+.lm-sval { font-size:16px; font-weight:700; }
+.lm-slbl { font-size:9px; text-transform:uppercase; letter-spacing:.5px; margin-top:2px; }
+.lm-applybtn { width:100%; color:#fff; border:none; border-radius:11px;
+               padding:12px; font-size:13px; font-weight:700; cursor:pointer; margin-top:8px; }
+.lm-brewrow { display:flex; gap:7px; margin-top:10px; }
+.lm-editbtn, .lm-delbtn { flex:1; border-radius:9px; padding:9px;
+                           font-size:12px; font-weight:700; cursor:pointer; }
+.lm-brewbtn { width:100%; border-radius:10px; padding:10px; font-size:12px;
+              font-weight:700; cursor:pointer; margin-bottom:4px; }
+.lm-brewfooter { padding:12px; }
+
+/* Filter panel */
+.lm-filtoverlay { position:absolute; inset:0; background:rgba(0,0,0,.5);
+                  z-index:20; display:flex; justify-content:flex-end; }
+.lm-filtpanel { width:80%; max-width:280px; height:100%; overflow-y:auto;
+                padding:14px; display:flex; flex-direction:column; }
+.lm-fhandle { width:34px; height:3px; border-radius:2px; margin:0 auto 14px; }
+.lm-fsec { margin-bottom:14px; }
+.lm-fsectitle { font-size:10px; font-weight:700; text-transform:uppercase;
+                letter-spacing:.8px; margin-bottom:7px; }
+.lm-fopts { display:flex; flex-wrap:wrap; gap:5px; }
+.lm-fopt { border-radius:20px; padding:4px 11px; font-size:12px; cursor:pointer; transition:all .15s; }
+.lm-factns { display:flex; gap:7px; padding-top:10px; margin-top:auto; }
+.lm-fclear { border-radius:9px; padding:10px; font-size:12px; cursor:pointer; flex:1; }
+.lm-fapply { border:none; border-radius:9px; padding:10px; font-size:12px;
+             font-weight:700; cursor:pointer; flex:2; }
+
+/* Form */
+.lm-form-wrap { border-radius:12px; padding:14px; margin:12px; }
+.lm-form-row { margin-bottom:10px; }
+.lm-form-label { display:block; font-size:11px; font-weight:700;
+                 text-transform:uppercase; letter-spacing:.6px; margin-bottom:4px; }
+.lm-form-input { width:100%; border-radius:8px; padding:8px 11px;
+                 font-size:13px; outline:none; }
+textarea.lm-form-input { resize:vertical; min-height:80px; }
+.lm-form-actions { display:flex; gap:8px; margin-top:12px; }
+.lm-form-save { flex:2; color:#fff; border:none;
+                border-radius:9px; padding:10px; font-size:13px; font-weight:700; cursor:pointer; }
+.lm-form-cancel { flex:1; background:transparent; border-radius:9px;
+                  padding:10px; font-size:13px; cursor:pointer; }
+
+/* Toast */
+.lm-toast { position:absolute; bottom:16px; left:50%; transform:translateX(-50%);
+            border-radius:9px; padding:8px 16px; font-size:12px; font-weight:700;
+            white-space:nowrap; z-index:30; opacity:0; transition:opacity .25s; pointer-events:none; }
+.lm-toast.show { opacity:1; }
+
+/* Loading */
+.lm-loading { display:flex; flex-direction:column; align-items:center;
+              justify-content:center; height:200px; gap:12px; }
+.lm-spinner { width:32px; height:32px; border:3px solid;
+              border-radius:50%; animation:lm-spin .7s linear infinite; }
+@keyframes lm-spin { to { transform:rotate(360deg); } }
+/* ============================================================
+   CSS ADICIONAL PARA FORMULARIOS DINÁMICOS — v14.8
+   Pega esto AL FINAL de tu libraryManager.css existente.
+   ============================================================ */
+
+/* Selector dropdown — usa el mismo look que lm-form-input */
+select.lm-form-input {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%2394a3b8'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 11px center;
+    padding-right: 28px;
+}
+.lm-dark select.lm-form-input {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23a8a29e'/%3E%3C/svg%3E");
+}
+
+/* Multiselect — chips clickeables */
+.lm-form-multi {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+.lm-form-chip {
+    display: inline-block;
+    border-radius: 20px;
+    padding: 5px 11px;
+    font-size: 12px;
+    cursor: pointer;
+    user-select: none;
+    transition: all .15s;
+    border: 1px solid;
+}
+.lm-light .lm-form-chip {
+    background: #f1f5f9;
+    color: #334155;
+    border-color: #e2e8f0;
+}
+.lm-light .lm-form-chip.on {
+    background: #1e40af;
+    color: #fff;
+    border-color: #1e40af;
+}
+.lm-dark .lm-form-chip {
+    background: #44403c;
+    color: #d6d3d1;
+    border-color: #57534e;
+}
+.lm-dark .lm-form-chip.on {
+    background: #92400e;
+    color: #fff;
+    border-color: #d97706;
+}
+
+/* Checkbox inline */
+.lm-form-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-size: 13px;
+    padding: 6px 0;
+}
+.lm-form-checkbox input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    margin: 0;
+}
+
+/* Botón colapsable "Más detalles" */
+.lm-form-toggle {
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    border: none;
+    padding: 8px 0;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .6px;
+    cursor: pointer;
+    transition: opacity .15s;
+}
+.lm-form-toggle:hover { opacity: .75; }
+.lm-light .lm-form-toggle { color: #1e40af; }
+.lm-dark  .lm-form-toggle { color: #d97706; }
+
+/* Label de tipo fijo (cuando el formulario viene de una categoría) */
+.lm-form-typelabel {
+    font-size: 13px;
+    font-weight: 700;
+    padding: 8px 12px;
+    border-radius: 8px;
+    margin-bottom: 14px;
+    text-align: center;
+    letter-spacing: .5px;
+}
+.lm-light .lm-form-typelabel {
+    background: #eff6ff;
+    color: #1e40af;
+    border: 1px solid #bfdbfe;
+}
+.lm-dark .lm-form-typelabel {
+    background: #1e3a8a;
+    color: #bfdbfe;
+    border: 1px solid #1e40af;
+}
+
+/* Mensaje vacío del formulario (cuando no se seleccionó tipo) */
+.lm-form-empty {
+    text-align: center;
+    padding: 28px 14px;
+    opacity: .55;
+    font-size: 13px;
+    font-style: italic;
+}
+
+/* Nota debajo de un campo (texto pequeño explicativo) */
+.lm-form-note {
+    font-size: 10px;
+    margin-top: 4px;
+    opacity: .65;
+    line-height: 1.4;
+}
+
+/* Select deshabilitado (al editar — el tipo no se puede cambiar) */
+select.lm-form-input:disabled {
+    opacity: .55;
+    cursor: not-allowed;
+}
+/* ============================================================
+   CSS ADICIONAL — Paso 5 (Multiselect Agrupado para trasfondos)
+   Pega esto AL FINAL de tu libraryManager.css existente.
+   ============================================================ */
+
+/* Contenedor del multiselect agrupado */
+.lm-form-grouped {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+/* Cada grupo es un acordeón */
+.lm-group {
+    border-radius: 8px;
+    padding: 0;
+    overflow: hidden;
+}
+
+/* Header clickeable del grupo */
+.lm-group-header {
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    border: 1px solid;
+    padding: 8px 11px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 8px;
+    transition: all .15s;
+}
+.lm-light .lm-group-header {
+    background: #f8fafc;
+    color: #334155;
+    border-color: #e2e8f0;
+}
+.lm-light .lm-group-header:hover { background: #f1f5f9; }
+.lm-dark .lm-group-header {
+    background: #292524;
+    color: #d6d3d1;
+    border-color: #44403c;
+}
+.lm-dark .lm-group-header:hover { background: #44403c; }
+
+/* Badge de contador (cuántos seleccionados del grupo) */
+.lm-group-count {
+    display: inline-block;
+    min-width: 22px;
+    height: 18px;
+    padding: 0 6px;
+    border-radius: 9px;
+    font-size: 10px;
+    font-weight: 700;
+    text-align: center;
+    line-height: 18px;
+    color: #fff;
+}
+.lm-light .lm-group-count { background: #1e40af; }
+.lm-dark  .lm-group-count { background: #d97706; }
+/* ============================================================
+   FIX RÁPIDO — Flecha del select en modo oscuro
+   Reemplaza el bloque "select.lm-form-input" de tu CSS por esto,
+   O simplemente pega esto al final de libraryManager.css
+   ============================================================ */
+
+/* Flecha del select — usa especificidad fuerte para que no sea sobrescrita */
+.lm-wrap select.lm-form-input,
+.lm-light select.lm-form-input {
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: #f1f5f9;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%2394a3b8' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 11px center;
+    background-size: 12px 8px;
+    padding-right: 32px;
+}
+
+.lm-wrap.lm-dark select.lm-form-input {
+    background-color: #44403c;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%23a8a29e' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+}

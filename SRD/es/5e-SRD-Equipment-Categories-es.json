@@ -1,0 +1,3027 @@
+[
+  {
+    "index": "adventuring-gear",
+    "name": "Equipo de aventuras",
+    "equipment": [
+      {
+        "index": "acid",
+        "name": "Ácido",
+        "url": "/api/2024/equipment/acid"
+      },
+      {
+        "index": "alchemists-fire",
+        "name": "Fuego de alquimista",
+        "url": "/api/2024/equipment/alchemists-fire"
+      },
+      {
+        "index": "amulet",
+        "name": "Amuleto",
+        "url": "/api/2024/equipment/amulet"
+      },
+      {
+        "index": "antitoxin",
+        "name": "Antitoxina",
+        "url": "/api/2024/equipment/antitoxin"
+      },
+      {
+        "index": "backpack",
+        "name": "Mochila",
+        "url": "/api/2024/equipment/backpack"
+      },
+      {
+        "index": "ball-bearings",
+        "name": "Rodamientos de bolas",
+        "url": "/api/2024/equipment/ball-bearings"
+      },
+      {
+        "index": "barrel",
+        "name": "Barril",
+        "url": "/api/2024/equipment/barrel"
+      },
+      {
+        "index": "basket",
+        "name": "Cesta",
+        "url": "/api/2024/equipment/basket"
+      },
+      {
+        "index": "bedroll",
+        "name": "Saco de dormir",
+        "url": "/api/2024/equipment/bedroll"
+      },
+      {
+        "index": "bell",
+        "name": "Campana",
+        "url": "/api/2024/equipment/bell"
+      },
+      {
+        "index": "blanket",
+        "name": "Manta",
+        "url": "/api/2024/equipment/blanket"
+      },
+      {
+        "index": "block-and-tackle",
+        "name": "Polipasto",
+        "url": "/api/2024/equipment/block-and-tackle"
+      },
+      {
+        "index": "book",
+        "name": "Libro",
+        "url": "/api/2024/equipment/book"
+      },
+      {
+        "index": "bottle-glass",
+        "name": "Botella de vidrio",
+        "url": "/api/2024/equipment/bottle-glass"
+      },
+      {
+        "index": "bucket",
+        "name": "Cubeta",
+        "url": "/api/2024/equipment/bucket"
+      },
+      {
+        "index": "burglars-pack",
+        "name": "Paquete de ladrón",
+        "url": "/api/2024/equipment/burglars-pack"
+      },
+      {
+        "index": "caltrops",
+        "name": "Abrojos",
+        "url": "/api/2024/equipment/caltrops"
+      },
+      {
+        "index": "candle",
+        "name": "Vela",
+        "url": "/api/2024/equipment/candle"
+      },
+      {
+        "index": "case-crossbow-bolt",
+        "name": "Estuche para virotes de ballesta",
+        "url": "/api/2024/equipment/case-crossbow-bolt"
+      },
+      {
+        "index": "case-map-or-scroll",
+        "name": "Estuche para mapa o pergamino",
+        "url": "/api/2024/equipment/case-map-or-scroll"
+      },
+      {
+        "index": "chain",
+        "name": "Cadena",
+        "url": "/api/2024/equipment/chain"
+      },
+      {
+        "index": "chest",
+        "name": "Cofre",
+        "url": "/api/2024/equipment/chest"
+      },
+      {
+        "index": "climbers-kit",
+        "name": "Kit de escalador",
+        "url": "/api/2024/equipment/climbers-kit"
+      },
+      {
+        "index": "clothes-fine",
+        "name": "Ropa fina",
+        "url": "/api/2024/equipment/clothes-fine"
+      },
+      {
+        "index": "clothes-travelers",
+        "name": "Ropa de viajero",
+        "url": "/api/2024/equipment/clothes-travelers"
+      },
+      {
+        "index": "component-pouch",
+        "name": "Saquito de componentes",
+        "url": "/api/2024/equipment/component-pouch"
+      },
+      {
+        "index": "costume",
+        "name": "Disfraz",
+        "url": "/api/2024/equipment/costume"
+      },
+      {
+        "index": "crowbar",
+        "name": "Palanca",
+        "url": "/api/2024/equipment/crowbar"
+      },
+      {
+        "index": "crystal",
+        "name": "Cristal",
+        "url": "/api/2024/equipment/crystal"
+      },
+      {
+        "index": "diplomat-pack",
+        "name": "Paquete de diplomático",
+        "url": "/api/2024/equipment/diplomat-pack"
+      },
+      {
+        "index": "dungeoneer-pack",
+        "name": "Paquete de explorador de mazmorras",
+        "url": "/api/2024/equipment/dungeoneer-pack"
+      },
+      {
+        "index": "emblem",
+        "name": "Emblema",
+        "url": "/api/2024/equipment/emblem"
+      },
+      {
+        "index": "flask",
+        "name": "Frasco",
+        "url": "/api/2024/equipment/flask"
+      },
+      {
+        "index": "grappling-hook",
+        "name": "Garfio",
+        "url": "/api/2024/equipment/grappling-hook"
+      },
+      {
+        "index": "healers-kit",
+        "name": "Kit de sanador",
+        "url": "/api/2024/equipment/healers-kit"
+      },
+      {
+        "index": "holy-water",
+        "name": "Agua bendita",
+        "url": "/api/2024/equipment/holy-water"
+      },
+      {
+        "index": "hunting-trap",
+        "name": "Trampa de caza",
+        "url": "/api/2024/equipment/hunting-trap"
+      },
+      {
+        "index": "ink",
+        "name": "Tinta",
+        "url": "/api/2024/equipment/ink"
+      },
+      {
+        "index": "ink-pen",
+        "name": "Pluma de tinta",
+        "url": "/api/2024/equipment/ink-pen"
+      },
+      {
+        "index": "jug",
+        "name": "Jarra",
+        "url": "/api/2024/equipment/jug"
+      },
+      {
+        "index": "ladder",
+        "name": "Escalera",
+        "url": "/api/2024/equipment/ladder"
+      },
+      {
+        "index": "lamp",
+        "name": "Lámpara",
+        "url": "/api/2024/equipment/lamp"
+      },
+      {
+        "index": "lantern-bullseye",
+        "name": "Linterna sorda",
+        "url": "/api/2024/equipment/lantern-bullseye"
+      },
+      {
+        "index": "lantern-hooded",
+        "name": "Linterna encapuchada",
+        "url": "/api/2024/equipment/lantern-hooded"
+      },
+      {
+        "index": "lock",
+        "name": "Candado",
+        "url": "/api/2024/equipment/lock"
+      },
+      {
+        "index": "magnifying-glass",
+        "name": "Lupa",
+        "url": "/api/2024/equipment/magnifying-glass"
+      },
+      {
+        "index": "manacles",
+        "name": "Grilletes",
+        "url": "/api/2024/equipment/manacles"
+      },
+      {
+        "index": "map",
+        "name": "Mapa",
+        "url": "/api/2024/equipment/map"
+      },
+      {
+        "index": "mirror",
+        "name": "Espejo",
+        "url": "/api/2024/equipment/mirror"
+      },
+      {
+        "index": "net",
+        "name": "Red",
+        "url": "/api/2024/equipment/net"
+      },
+      {
+        "index": "oil",
+        "name": "Aceite",
+        "url": "/api/2024/equipment/oil"
+      },
+      {
+        "index": "orb",
+        "name": "Orbe",
+        "url": "/api/2024/equipment/orb"
+      },
+      {
+        "index": "paper",
+        "name": "Papel",
+        "url": "/api/2024/equipment/paper"
+      },
+      {
+        "index": "parchment",
+        "name": "Pergamino",
+        "url": "/api/2024/equipment/parchment"
+      },
+      {
+        "index": "perfume",
+        "name": "Perfume",
+        "url": "/api/2024/equipment/perfume"
+      },
+      {
+        "index": "poison-basic",
+        "name": "Veneno básico",
+        "url": "/api/2024/equipment/poison-basic"
+      },
+      {
+        "index": "pouch",
+        "name": "Bolsa",
+        "url": "/api/2024/equipment/pouch"
+      },
+      {
+        "index": "pole",
+        "name": "Pértiga",
+        "url": "/api/2024/equipment/pole"
+      },
+      {
+        "index": "pot-iron",
+        "name": "Olla de hierro",
+        "url": "/api/2024/equipment/pot-iron"
+      },
+      {
+        "index": "potion-of-healing",
+        "name": "Poción de curación",
+        "url": "/api/2024/equipment/potion-of-healing"
+      },
+      {
+        "index": "priests-pack",
+        "name": "Paquete de sacerdote",
+        "url": "/api/2024/equipment/priests-pack"
+      },
+      {
+        "index": "quiver",
+        "name": "Carcaj",
+        "url": "/api/2024/equipment/quiver"
+      },
+      {
+        "index": "ram-portable",
+        "name": "Ariete portátil",
+        "url": "/api/2024/equipment/ram-portable"
+      },
+      {
+        "index": "rations",
+        "name": "Raciones",
+        "url": "/api/2024/equipment/rations"
+      },
+      {
+        "index": "reliquary",
+        "name": "Relicario",
+        "url": "/api/2024/equipment/reliquary"
+      },
+      {
+        "index": "robe",
+        "name": "Túnica",
+        "url": "/api/2024/equipment/robe"
+      },
+      {
+        "index": "rod",
+        "name": "Vara",
+        "url": "/api/2024/equipment/rod"
+      },
+      {
+        "index": "rope",
+        "name": "Cuerda",
+        "url": "/api/2024/equipment/rope"
+      },
+      {
+        "index": "sack",
+        "name": "Saco",
+        "url": "/api/2024/equipment/sack"
+      },
+      {
+        "index": "scholars-pack",
+        "name": "Paquete de erudito",
+        "url": "/api/2024/equipment/scholars-pack"
+      },
+      {
+        "index": "shovel",
+        "name": "Pala",
+        "url": "/api/2024/equipment/shovel"
+      },
+      {
+        "index": "signal-whistle",
+        "name": "Silbato de señales",
+        "url": "/api/2024/equipment/signal-whistle"
+      },
+      {
+        "index": "spell-scroll-cantrip",
+        "name": "Pergamino de conjuro, truco",
+        "url": "/api/2024/equipment/spell-scroll-cantrip"
+      },
+      {
+        "index": "spell-scroll-level-1",
+        "name": "Pergamino de conjuro, nivel 1",
+        "url": "/api/2024/equipment/spell-scroll-level-1"
+      },
+      {
+        "index": "spikes-iron",
+        "name": "Pitones de hierro",
+        "url": "/api/2024/equipment/spikes-iron"
+      },
+      {
+        "index": "sprig-of-mistletoe",
+        "name": "Ramita de muérdago",
+        "url": "/api/2024/equipment/sprig-of-mistletoe"
+      },
+      {
+        "index": "spyglass",
+        "name": "Catalejo",
+        "url": "/api/2024/equipment/spyglass"
+      },
+      {
+        "index": "staff",
+        "name": "Bastón",
+        "url": "/api/2024/equipment/staff"
+      },
+      {
+        "index": "string",
+        "name": "Hilo",
+        "url": "/api/2024/equipment/string"
+      },
+      {
+        "index": "tent",
+        "name": "Tienda de campaña",
+        "url": "/api/2024/equipment/tent"
+      },
+      {
+        "index": "tinderbox",
+        "name": "Yesquero",
+        "url": "/api/2024/equipment/tinderbox"
+      },
+      {
+        "index": "torch",
+        "name": "Antorcha",
+        "url": "/api/2024/equipment/torch"
+      },
+      {
+        "index": "vial",
+        "name": "Vial",
+        "url": "/api/2024/equipment/vial"
+      },
+      {
+        "index": "wand",
+        "name": "Varita",
+        "url": "/api/2024/equipment/wand"
+      },
+      {
+        "index": "waterskin",
+        "name": "Odre",
+        "url": "/api/2024/equipment/waterskin"
+      },
+      {
+        "index": "yew-wand",
+        "name": "Varita de tejo",
+        "url": "/api/2024/equipment/yew-wand"
+      }
+    ],
+    "url": "/api/2024/equipment-categories/adventuring-gear"
+  },
+  {
+    "index": "ammunition",
+    "name": "Munición",
+    "equipment": [
+      {
+        "index": "arrows",
+        "name": "Flechas",
+        "url": "/api/2024/equipment/arrows"
+      },
+      {
+        "index": "bolts",
+        "name": "Virotes",
+        "url": "/api/2024/equipment/bolts"
+      },
+      {
+        "index": "bullets-firearm",
+        "name": "Balas para arma de fuego",
+        "url": "/api/2024/equipment/bullets-firearm"
+      },
+      {
+        "index": "bullets-sling",
+        "name": "Balas para honda",
+        "url": "/api/2024/equipment/bullets-sling"
+      },
+      {
+        "index": "needles",
+        "name": "Agujas",
+        "url": "/api/2024/equipment/needles"
+      }
+    ],
+    "url": "/api/2024/equipment-categories/ammunition"
+  },
+  {
+    "index": "arcane-foci",
+    "name": "Focos arcanos",
+    "equipment": [
+      {
+        "index": "crystal",
+        "name": "Cristal",
+        "url": "/api/2024/equipment/crystal"
+      },
+      {
+        "index": "orb",
+        "name": "Orbe",
+        "url": "/api/2024/equipment/orb"
+      },
+      {
+        "index": "quarterstaff",
+        "name": "Bastón",
+        "url": "/api/2024/equipment/quarterstaff"
+      },
+      {
+        "index": "rod",
+        "name": "Vara",
+        "url": "/api/2024/equipment/rod"
+      },
+      {
+        "index": "staff",
+        "name": "Bastón mágico",
+        "url": "/api/2024/equipment/staff"
+      },
+      {
+        "index": "wand",
+        "name": "Varita",
+        "url": "/api/2024/equipment/wand"
+      }
+    ],
+    "url": "/api/2024/equipment-categories/arcane-foci"
+  },
+  {
+    "index": "armor",
+    "name": "Armadura",
+    "equipment": [
+      {
+        "index": "breastplate",
+        "name": "Coraza",
+        "url": "/api/2024/equipment/breastplate"
+      },
+      {
+        "index": "chain-mail",
+        "name": "Cota de malla",
+        "url": "/api/2024/equipment/chain-mail"
+      },
+      {
+        "index": "chain-shirt",
+        "name": "Camisa de malla",
+        "url": "/api/2024/equipment/chain-shirt"
+      },
+      {
+        "index": "half-plate-armor",
+        "name": "Armadura de medias placas",
+        "url": "/api/2024/equipment/half-plate-armor"
+      },
+      {
+        "index": "hide-armor",
+        "name": "Armadura de pieles",
+        "url": "/api/2024/equipment/hide-armor"
+      },
+      {
+        "index": "leather-armor",
+        "name": "Armadura de cuero",
+        "url": "/api/2024/equipment/leather-armor"
+      },
+      {
+        "index": "padded-armor",
+        "name": "Armadura acolchada",
+        "url": "/api/2024/equipment/padded-armor"
+      },
+      {
+        "index": "plate-armor",
+        "name": "Armadura de placas",
+        "url": "/api/2024/equipment/plate-armor"
+      },
+      {
+        "index": "ring-mail",
+        "name": "Cota de anillos",
+        "url": "/api/2024/equipment/ring-mail"
+      },
+      {
+        "index": "scale-mail",
+        "name": "Cota de escamas",
+        "url": "/api/2024/equipment/scale-mail"
+      },
+      {
+        "index": "shield",
+        "name": "Escudo",
+        "url": "/api/2024/equipment/shield"
+      },
+      {
+        "index": "splint-armor",
+        "name": "Armadura de bandas",
+        "url": "/api/2024/equipment/splint-armor"
+      },
+      {
+        "index": "studded-leather-armor",
+        "name": "Armadura de cuero tachonado",
+        "url": "/api/2024/equipment/studded-leather-armor"
+      }
+    ],
+    "url": "/api/2024/equipment-categories/armor"
+  },
+  {
+    "index": "artisans-tools",
+    "name": "Herramientas de artesano",
+    "equipment": [
+      {
+        "index": "alchemists-supplies",
+        "name": "Suministros de alquimista",
+        "url": "/api/2024/equipment/alchemists-supplies"
+      },
+      {
+        "index": "brewers-supplies",
+        "name": "Suministros de cervecero",
+        "url": "/api/2024/equipment/brewers-supplies"
+      },
+      {
+        "index": "calligraphers-supplies",
+        "name": "Suministros de calígrafo",
+        "url": "/api/2024/equipment/calligraphers-supplies"
+      },
+      {
+        "index": "carpenters-tools",
+        "name": "Herramientas de carpintero",
+        "url": "/api/2024/equipment/carpenters-tools"
+      },
+      {
+        "index": "cartographer-tools",
+        "name": "Herramientas de cartógrafo",
+        "url": "/api/2024/equipment/cartographer-tools"
+      },
+      {
+        "index": "cobblers-tools",
+        "name": "Herramientas de zapatero",
+        "url": "/api/2024/equipment/cobblers-tools"
+      },
+      {
+        "index": "cooks-utensils",
+        "name": "Utensilios de cocinero",
+        "url": "/api/2024/equipment/cooks-utensils"
+      },
+      {
+        "index": "glassblowers-tools",
+        "name": "Herramientas de soplador de vidrio",
+        "url": "/api/2024/equipment/glassblowers-tools"
+      },
+      {
+        "index": "jewelers-tools",
+        "name": "Herramientas de joyero",
+        "url": "/api/2024/equipment/jewelers-tools"
+      },
+      {
+        "index": "leatherworkers-tools",
+        "name": "Herramientas de peletero",
+        "url": "/api/2024/equipment/leatherworkers-tools"
+      },
+      {
+        "index": "masons-tools",
+        "name": "Herramientas de albañil",
+        "url": "/api/2024/equipment/masons-tools"
+      },
+      {
+        "index": "painters-supplies",
+        "name": "Suministros de pintor",
+        "url": "/api/2024/equipment/painters-supplies"
+      },
+      {
+        "index": "potters-tools",
+        "name": "Herramientas de alfarero",
+        "url": "/api/2024/equipment/potters-tools"
+      },
+      {
+        "index": "smiths-tools",
+        "name": "Herramientas de herrero",
+        "url": "/api/2024/equipment/smiths-tools"
+      },
+      {
+        "index": "tinkers-tools",
+        "name": "Herramientas de hojalatero",
+        "url": "/api/2024/equipment/tinkers-tools"
+      },
+      {
+        "index": "weavers-tools",
+        "name": "Herramientas de tejedor",
+        "url": "/api/2024/equipment/weavers-tools"
+      },
+      {
+        "index": "woodcarvers-tools",
+        "name": "Herramientas de tallador de madera",
+        "url": "/api/2024/equipment/woodcarvers-tools"
+      }
+    ],
+    "url": "/api/2024/equipment-categories/artisans-tools"
+  },
+  {
+    "index": "druidic-foci",
+    "name": "Focos druídicos",
+    "equipment": [
+      {
+        "index": "quarterstaff",
+        "name": "Bastón",
+        "url": "/api/2024/equipment/quarterstaff"
+      },
+      {
+        "index": "sprig-of-mistletoe",
+        "name": "Ramita de muérdago",
+        "url": "/api/2024/equipment/sprig-of-mistletoe"
+      },
+      {
+        "index": "staff",
+        "name": "Bastón",
+        "url": "/api/2024/equipment/staff"
+      },
+      {
+        "index": "yew-wand",
+        "name": "Varita de tejo",
+        "url": "/api/2024/equipment/yew-wand"
+      }
+    ],
+    "url": "/api/2024/equipment-categories/druidic-foci"
+  },
+  {
+    "index": "equipment-packs",
+    "name": "Paquetes de equipo",
+    "equipment": [
+      {
+        "index": "burglars-pack",
+        "name": "Paquete de ladrón",
+        "url": "/api/2024/equipment/burglars-pack"
+      },
+      {
+        "index": "diplomat-pack",
+        "name": "Paquete de diplomático",
+        "url": "/api/2024/equipment/diplomat-pack"
+      },
+      {
+        "index": "explorers-pack",
+        "name": "Paquete de explorador",
+        "url": "/api/2024/equipment/explorers-pack"
+      },
+      {
+        "index": "dungeoneer-pack",
+        "name": "Paquete de explorador de mazmorras",
+        "url": "/api/2024/equipment/dungeoneer-pack"
+      },
+      {
+        "index": "priests-pack",
+        "name": "Paquete de sacerdote",
+        "url": "/api/2024/equipment/priests-pack"
+      },
+      {
+        "index": "scholars-pack",
+        "name": "Paquete de erudito",
+        "url": "/api/2024/equipment/scholars-pack"
+      }
+    ],
+    "url": "/api/2024/equipment-categories/equipment-packs"
+  },
+  {
+    "index": "gaming-sets",
+    "name": "Sets de juego",
+    "equipment": [
+      {
+        "index": "dice",
+        "name": "Dados",
+        "url": "/api/2024/equipment/dice"
+      },
+      {
+        "index": "dragonchess",
+        "name": "Ajedrez de dragón",
+        "url": "/api/2024/equipment/dragonchess"
+      },
+      {
+        "index": "playing-cards",
+        "name": "Baraja de cartas",
+        "url": "/api/2024/equipment/playing-cards"
+      },
+      {
+        "index": "three-dragon-ante",
+        "name": "Apuesta de los Tres Dragones",
+        "url": "/api/2024/equipment/three-dragon-ante"
+      }
+    ],
+    "url": "/api/2024/equipment-categories/gaming-sets"
+  },
+  {
+    "index": "heavy-armor",
+    "name": "Armadura pesada",
+    "equipment": [
+      {
+        "index": "chain-mail",
+        "name": "Cota de malla",
+        "url": "/api/2024/equipment/chain-mail"
+      },
+      {
+        "index": "plate-armor",
+        "name": "Armadura de placas",
+        "url": "/api/2024/equipment/plate-armor"
+      },
+      {
+        "index": "ring-mail",
+        "name": "Cota de anillos",
+        "url": "/api/2024/equipment/ring-mail"
+      },
+      {
+        "index": "splint-armor",
+        "name": "Armadura de bandas",
+        "url": "/api/2024/equipment/splint-armor"
+      }
+    ],
+    "url": "/api/2024/equipment-categories/heavy-armor"
+  },
+  {
+    "index": "holy-symbols",
+    "name": "Símbolos sagrados",
+    "equipment": [
+      {
+        "index": "amulet",
+        "name": "Amuleto",
+        "url": "/api/2024/equipment/amulet"
+      },
+      {
+        "index": "emblem",
+        "name": "Emblema",
+        "url": "/api/2024/equipment/emblem"
+      },
+      {
+        "index": "reliquary",
+        "name": "Relicario",
+        "url": "/api/2024/equipment/reliquary"
+      }
+    ],
+    "url": "/api/2024/equipment-categories/holy-symbols"
+  },
+  {
+    "index": "light-armor",
+    "name": "Armadura ligera",
+    "equipment": [
+      {
+        "index": "leather-armor",
+        "name": "Armadura de cuero",
+        "url": "/api/2024/equipment/leather-armor"
+      },
+      {
+        "index": "padded-armor",
+        "name": "Armadura acolchada",
+        "url": "/api/2024/equipment/padded-armor"
+      },
+      {
+        "index": "studded-leather-armor",
+        "name": "Armadura de cuero tachonado",
+        "url": "/api/2024/equipment/studded-leather-armor"
+      }
+    ],
+    "url": "/api/2024/equipment-categories/light-armor"
+  },
+  {
+    "index": "martial-weapons",
+    "name": "Armas marciales",
+    "equipment": [
+      {
+        "index": "battleaxe",
+        "name": "Hacha de batalla",
+        "url": "/api/2024/equipment/battleaxe"
+      },
+      {
+        "index": "blowgun",
+        "name": "Cerbatana",
+        "url": "/api/2024/equipment/blowgun"
+      },
+      {
+        "index": "flail",
+        "name": "Mayal",
+        "url": "/api/2024/equipment/flail"
+      },
+      {
+        "index": "glaive",
+        "name": "Guja",
+        "url": "/api/2024/equipment/glaive"
+      },
+      {
+        "index": "greataxe",
+        "name": "Gran hacha",
+        "url": "/api/2024/equipment/greataxe"
+      },
+      {
+        "index": "greatsword",
+        "name": "Espadón",
+        "url": "/api/2024/equipment/greatsword"
+      },
+      {
+        "index": "hand-crossbow",
+        "name": "Ballesta de mano",
+        "url": "/api/2024/equipment/hand-crossbow"
+      },
+      {
+        "index": "halberd",
+        "name": "Alabarda",
+        "url": "/api/2024/equipment/halberd"
+      },
+      {
+        "index": "heavy-crossbow",
+        "name": "Ballesta pesada",
+        "url": "/api/2024/equipment/heavy-crossbow"
+      },
+      {
+        "index": "lance",
+        "name": "Lanza de caballería",
+        "url": "/api/2024/equipment/lance"
+      },
+      {
+        "index": "longbow",
+        "name": "Arco largo",
+        "url": "/api/2024/equipment/longbow"
+      },
+      {
+        "index": "longsword",
+        "name": "Espada larga",
+        "url": "/api/2024/equipment/longsword"
+      },
+      {
+        "index": "maul",
+        "name": "Mazo",
+        "url": "/api/2024/equipment/maul"
+      },
+      {
+        "index": "morningstar",
+        "name": "Lucero del alba",
+        "url": "/api/2024/equipment/morningstar"
+      },
+      {
+        "index": "musket",
+        "name": "Mosquete",
+        "url": "/api/2024/equipment/musket"
+      },
+      {
+        "index": "pike",
+        "name": "Pica",
+        "url": "/api/2024/equipment/pike"
+      },
+      {
+        "index": "pistol",
+        "name": "Pistola",
+        "url": "/api/2024/equipment/pistol"
+      },
+      {
+        "index": "rapier",
+        "name": "Estoque",
+        "url": "/api/2024/equipment/rapier"
+      },
+      {
+        "index": "scimitar",
+        "name": "Cimitarra",
+        "url": "/api/2024/equipment/scimitar"
+      },
+      {
+        "index": "shortsword",
+        "name": "Espada corta",
+        "url": "/api/2024/equipment/shortsword"
+      },
+      {
+        "index": "trident",
+        "name": "Tridente",
+        "url": "/api/2024/equipment/trident"
+      },
+      {
+        "index": "warhammer",
+        "name": "Martillo de guerra",
+        "url": "/api/2024/equipment/warhammer"
+      },
+      {
+        "index": "war-pick",
+        "name": "Pico de guerra",
+        "url": "/api/2024/equipment/war-pick"
+      },
+      {
+        "index": "whip",
+        "name": "Látigo",
+        "url": "/api/2024/equipment/whip"
+      }
+    ],
+    "url": "/api/2024/equipment-categories/martial-weapons"
+  },
+  {
+    "index": "martial-melee-weapons",
+    "name": "Armas marciales cuerpo a cuerpo",
+    "equipment": [
+      {
+        "index": "battleaxe",
+        "name": "Hacha de batalla",
+        "url": "/api/2024/equipment/battleaxe"
+      },
+      {
+        "index": "flail",
+        "name": "Mayal",
+        "url": "/api/2024/equipment/flail"
+      },
+      {
+        "index": "glaive",
+        "name": "Guja",
+        "url": "/api/2024/equipment/glaive"
+      },
+      {
+        "index": "greataxe",
+        "name": "Gran hacha",
+        "url": "/api/2024/equipment/greataxe"
+      },
+      {
+        "index": "greatsword",
+        "name": "Espadón",
+        "url": "/api/2024/equipment/greatsword"
+      },
+      {
+        "index": "halberd",
+        "name": "Alabarda",
+        "url": "/api/2024/equipment/halberd"
+      },
+      {
+        "index": "lance",
+        "name": "Lanza de caballería",
+        "url": "/api/2024/equipment/lance"
+      },
+      {
+        "index": "maul",
+        "name": "Mazo",
+        "url": "/api/2024/equipment/maul"
+      },
+      {
+        "index": "morningstar",
+        "name": "Lucero del alba",
+        "url": "/api/2024/equipment/morningstar"
+      },
+      {
+        "index": "pike",
+        "name": "Pica",
+        "url": "/api/2024/equipment/pike"
+      },
+      {
+        "index": "rapier",
+        "name": "Estoque",
+        "url": "/api/2024/equipment/rapier"
+      },
+      {
+        "index": "scimitar",
+        "name": "Cimitarra",
+        "url": "/api/2024/equipment/scimitar"
+      },
+      {
+        "index": "shortsword",
+        "name": "Espada corta",
+        "url": "/api/2024/equipment/shortsword"
+      },
+      {
+        "index": "trident",
+        "name": "Tridente",
+        "url": "/api/2024/equipment/trident"
+      },
+      {
+        "index": "warhammer",
+        "name": "Martillo de guerra",
+        "url": "/api/2024/equipment/warhammer"
+      },
+      {
+        "index": "war-pick",
+        "name": "Pico de guerra",
+        "url": "/api/2024/equipment/war-pick"
+      },
+      {
+        "index": "whip",
+        "name": "Látigo",
+        "url": "/api/2024/equipment/whip"
+      }
+    ],
+    "url": "/api/2024/equipment-categories/martial-melee-weapons"
+  },
+  {
+    "index": "martial-ranged-weapons",
+    "name": "Armas marciales a distancia",
+    "equipment": [
+      {
+        "index": "blowgun",
+        "name": "Cerbatana",
+        "url": "/api/2024/equipment/blowgun"
+      },
+      {
+        "index": "hand-crossbow",
+        "name": "Ballesta de mano",
+        "url": "/api/2024/equipment/hand-crossbow"
+      },
+      {
+        "index": "heavy-crossbow",
+        "name": "Ballesta pesada",
+        "url": "/api/2024/equipment/heavy-crossbow"
+      },
+      {
+        "index": "longbow",
+        "name": "Arco largo",
+        "url": "/api/2024/equipment/longbow"
+      },
+      {
+        "index": "musket",
+        "name": "Mosquete",
+        "url": "/api/2024/equipment/musket"
+      },
+      {
+        "index": "pistol",
+        "name": "Pistola",
+        "url": "/api/2024/equipment/pistol"
+      }
+    ],
+    "url": "/api/2024/equipment-categories/martial-ranged-weapons"
+  },
+  {
+    "index": "medium-armor",
+    "name": "Armadura media",
+    "equipment": [
+      {
+        "index": "breastplate",
+        "name": "Coraza",
+        "url": "/api/2024/equipment/breastplate"
+      },
+      {
+        "index": "chain-shirt",
+        "name": "Camisa de malla",
+        "url": "/api/2024/equipment/chain-shirt"
+      },
+      {
+        "index": "half-plate-armor",
+        "name": "Armadura de medias placas",
+        "url": "/api/2024/equipment/half-plate-armor"
+      },
+      {
+        "index": "hide-armor",
+        "name": "Armadura de pieles",
+        "url": "/api/2024/equipment/hide-armor"
+      },
+      {
+        "index": "scale-mail",
+        "name": "Cota de escamas",
+        "url": "/api/2024/equipment/scale-mail"
+      }
+    ],
+    "url": "/api/2024/equipment-categories/medium-armor"
+  },
+  {
+    "index": "melee-weapons",
+    "name": "Armas cuerpo a cuerpo",
+    "equipment": [
+      {
+        "index": "battleaxe",
+        "name": "Hacha de batalla",
+        "url": "/api/2024/equipment/battleaxe"
+      },
+      {
+        "index": "club",
+        "name": "Garrote",
+        "url": "/api/2024/equipment/club"
+      },
+      {
+        "index": "dagger",
+        "name": "Daga",
+        "url": "/api/2024/equipment/dagger"
+      },
+      {
+        "index": "flail",
+        "name": "Mayal",
+        "url": "/api/2024/equipment/flail"
+      },
+      {
+        "index": "glaive",
+        "name": "Guja",
+        "url": "/api/2024/equipment/glaive"
+      },
+      {
+        "index": "greataxe",
+        "name": "Gran hacha",
+        "url": "/api/2024/equipment/greataxe"
+      },
+      {
+        "index": "greatclub",
+        "name": "Gran garrote",
+        "url": "/api/2024/equipment/greatclub"
+      },
+      {
+        "index": "greatsword",
+        "name": "Espadón",
+        "url": "/api/2024/equipment/greatsword"
+      },
+      {
+        "index": "halberd",
+        "name": "Alabarda",
+        "url": "/api/2024/equipment/halberd"
+      },
+      {
+        "index": "handaxe",
+        "name": "Hacha de mano",
+        "url": "/api/2024/equipment/handaxe"
+      },
+      {
+        "index": "javelin",
+        "name": "Jabalina",
+        "url": "/api/2024/equipment/javelin"
+      },
+      {
+        "index": "lance",
+        "name": "Lanza de caballería",
+        "url": "/api/2024/equipment/lance"
+      },
+      {
+        "index": "light-hammer",
+        "name": "Martillo ligero",
+        "url": "/api/2024/equipment/light-hammer"
+      },
+      {
+        "index": "longsword",
+        "name": "Espada larga",
+        "url": "/api/2024/equipment/longsword"
+      },
+      {
+        "index": "mace",
+        "name": "Maza",
+        "url": "/api/2024/equipment/mace"
+      },
+      {
+        "index": "maul",
+        "name": "Mazo",
+        "url": "/api/2024/equipment/maul"
+      },
+      {
+        "index": "morningstar",
+        "name": "Lucero del alba",
+        "url": "/api/2024/equipment/morningstar"
+      },
+      {
+        "index": "pike",
+        "name": "Pica",
+        "url": "/api/2024/equipment/pike"
+      },
+      {
+        "index": "quarterstaff",
+        "name": "Bastón",
+        "url": "/api/2024/equipment/quarterstaff"
+      },
+      {
+        "index": "rapier",
+        "name": "Estoque",
+        "url": "/api/2024/equipment/rapier"
+      },
+      {
+        "index": "scimitar",
+        "name": "Cimitarra",
+        "url": "/api/2024/equipment/scimitar"
+      },
+      {
+        "index": "shortsword",
+        "name": "Espada corta",
+        "url": "/api/2024/equipment/shortsword"
+      },
+      {
+        "index": "sickle",
+        "name": "Hoz",
+        "url": "/api/2024/equipment/sickle"
+      },
+      {
+        "index": "spear",
+        "name": "Lanza",
+        "url": "/api/2024/equipment/spear"
+      },
+      {
+        "index": "trident",
+        "name": "Tridente",
+        "url": "/api/2024/equipment/trident"
+      },
+      {
+        "index": "warhammer",
+        "name": "Martillo de guerra",
+        "url": "/api/2024/equipment/warhammer"
+      },
+      {
+        "index": "war-pick",
+        "name": "Pico de guerra",
+        "url": "/api/2024/equipment/war-pick"
+      },
+      {
+        "index": "whip",
+        "name": "Látigo",
+        "url": "/api/2024/equipment/whip"
+      }
+    ],
+    "url": "/api/2024/equipment-categories/melee-weapons"
+  },
+  {
+    "index": "musical-instruments",
+    "name": "Instrumentos musicales",
+    "equipment": [
+      {
+        "index": "bagpipes",
+        "name": "Gaita",
+        "url": "/api/2024/equipment/bagpipes"
+      },
+      {
+        "index": "drum",
+        "name": "Tambor",
+        "url": "/api/2024/equipment/drum"
+      },
+      {
+        "index": "dulcimer",
+        "name": "Dulcémele",
+        "url": "/api/2024/equipment/dulcimer"
+      },
+      {
+        "index": "flute",
+        "name": "Flauta",
+        "url": "/api/2024/equipment/flute"
+      },
+      {
+        "index": "horn",
+        "name": "Cuerno",
+        "url": "/api/2024/equipment/horn"
+      },
+      {
+        "index": "lute",
+        "name": "Laúd",
+        "url": "/api/2024/equipment/lute"
+      },
+      {
+        "index": "lyre",
+        "name": "Lira",
+        "url": "/api/2024/equipment/lyre"
+      },
+      {
+        "index": "pan-flute",
+        "name": "Flauta de pan",
+        "url": "/api/2024/equipment/pan-flute"
+      },
+      {
+        "index": "shawm",
+        "name": "Chirimía",
+        "url": "/api/2024/equipment/shawm"
+      },
+      {
+        "index": "viol",
+        "name": "Viola",
+        "url": "/api/2024/equipment/viol"
+      }
+    ],
+    "url": "/api/2024/equipment-categories/musical-instruments"
+  },
+  {
+    "index": "other-tools",
+    "name": "Otras herramientas",
+    "equipment": [
+      {
+        "index": "disguise-kit",
+        "name": "Kit de disfraz",
+        "url": "/api/2024/equipment/disguise-kit"
+      },
+      {
+        "index": "forgery-kit",
+        "name": "Kit de falsificación",
+        "url": "/api/2024/equipment/forgery-kit"
+      },
+      {
+        "index": "herbalism-kit",
+        "name": "Kit de herboristería",
+        "url": "/api/2024/equipment/herbalism-kit"
+      },
+      {
+        "index": "navigators-tools",
+        "name": "Herramientas de navegante",
+        "url": "/api/2024/equipment/navigators-tools"
+      },
+      {
+        "index": "poisoners-kit",
+        "name": "Kit de envenenador",
+        "url": "/api/2024/equipment/poisoners-kit"
+      },
+      {
+        "index": "thieves-tools",
+        "name": "Herramientas de ladrón",
+        "url": "/api/2024/equipment/thieves-tools"
+      }
+    ],
+    "url": "/api/2024/equipment-categories/other-tools"
+  },
+  {
+    "name": "Pociones",
+    "index": "potions",
+    "equipment": [
+      {
+        "index": "oil-of-etherealness",
+        "name": "Aceite de etereidad",
+        "url": "/api/2024/magic-items/oil-of-etherealness"
+      },
+      {
+        "index": "oil-of-sharpness",
+        "name": "Aceite de afiladura",
+        "url": "/api/2024/magic-items/oil-of-sharpness"
+      },
+      {
+        "index": "oil-of-slipperiness",
+        "name": "Aceite de escurrimiento",
+        "url": "/api/2024/magic-items/oil-of-slipperiness"
+      },
+      {
+        "index": "philter-of-love",
+        "name": "Filtro de amor",
+        "url": "/api/2024/magic-items/philter-of-love"
+      },
+      {
+        "index": "potion-of-animal-friendship",
+        "name": "Poción de amistad animal",
+        "url": "/api/2024/magic-items/potion-of-animal-friendship"
+      },
+      {
+        "index": "potion-of-clairvoyance",
+        "name": "Poción de clarividencia",
+        "url": "/api/2024/magic-items/potion-of-clairvoyance"
+      },
+      {
+        "index": "potion-of-climbing",
+        "name": "Poción de escalada",
+        "url": "/api/2024/magic-items/potion-of-climbing"
+      },
+      {
+        "index": "potion-of-diminution",
+        "name": "Poción de disminución",
+        "url": "/api/2024/magic-items/potion-of-diminution"
+      },
+      {
+        "index": "potion-of-flying",
+        "name": "Poción de vuelo",
+        "url": "/api/2024/magic-items/potion-of-flying"
+      },
+      {
+        "index": "potion-of-growth",
+        "name": "Poción de crecimiento",
+        "url": "/api/2024/magic-items/potion-of-growth"
+      },
+      {
+        "index": "potions-of-healing",
+        "name": "Pociones de curación",
+        "url": "/api/2024/magic-items/potions-of-healing"
+      },
+      {
+        "index": "potion-of-gaseous-form",
+        "name": "Poción de forma gaseosa",
+        "url": "/api/2024/magic-items/potion-of-gaseous-form"
+      },
+      {
+        "index": "potion-of-heroism",
+        "name": "Poción de heroísmo",
+        "url": "/api/2024/magic-items/potion-of-heroism"
+      },
+      {
+        "index": "potion-of-giant-strength",
+        "name": "Poción de fuerza de gigante",
+        "url": "/api/2024/magic-items/potion-of-giant-strength"
+      },
+      {
+        "index": "potion-of-invisibility",
+        "name": "Poción de invisibilidad",
+        "url": "/api/2024/magic-items/potion-of-invisibility"
+      },
+      {
+        "index": "potion-of-mind-reading",
+        "name": "Poción de lectura mental",
+        "url": "/api/2024/magic-items/potion-of-mind-reading"
+      },
+      {
+        "index": "potion-of-poison",
+        "name": "Poción de veneno",
+        "url": "/api/2024/magic-items/potion-of-poison"
+      },
+      {
+        "index": "potion-of-resistance",
+        "name": "Poción de resistencia",
+        "url": "/api/2024/magic-items/potion-of-resistance"
+      },
+      {
+        "index": "potion-of-speed",
+        "name": "Poción de velocidad",
+        "url": "/api/2024/magic-items/potion-of-speed"
+      },
+      {
+        "index": "potion-of-water-breathing",
+        "name": "Poción de respiración acuática",
+        "url": "/api/2024/magic-items/potion-of-water-breathing"
+      }
+    ],
+    "url": "/api/2024/equipment-categories/potions"
+  },
+  {
+    "index": "ranged-weapons",
+    "name": "Armas a distancia",
+    "equipment": [
+      {
+        "index": "blowgun",
+        "name": "Cerbatana",
+        "url": "/api/2024/equipment/blowgun"
+      },
+      {
+        "index": "dart",
+        "name": "Dardo",
+        "url": "/api/2024/equipment/dart"
+      },
+      {
+        "index": "hand-crossbow",
+        "name": "Ballesta de mano",
+        "url": "/api/2024/equipment/hand-crossbow"
+      },
+      {
+        "index": "heavy-crossbow",
+        "name": "Ballesta pesada",
+        "url": "/api/2024/equipment/heavy-crossbow"
+      },
+      {
+        "index": "light-crossbow",
+        "name": "Ballesta ligera",
+        "url": "/api/2024/equipment/light-crossbow"
+      },
+      {
+        "index": "longbow",
+        "name": "Arco largo",
+        "url": "/api/2024/equipment/longbow"
+      },
+      {
+        "index": "musket",
+        "name": "Mosquete",
+        "url": "/api/2024/equipment/musket"
+      },
+      {
+        "index": "pistol",
+        "name": "Pistola",
+        "url": "/api/2024/equipment/pistol"
+      },
+      {
+        "index": "shortbow",
+        "name": "Arco corto",
+        "url": "/api/2024/equipment/shortbow"
+      },
+      {
+        "index": "sling",
+        "name": "Honda",
+        "url": "/api/2024/equipment/sling"
+      }
+    ],
+    "url": "/api/2024/equipment-categories/ranged-weapons"
+  },
+  {
+    "name": "Anillos",
+    "index": "rings",
+    "equipment": [
+      {
+        "index": "ring-of-animal-influence",
+        "name": "Anillo de influencia animal",
+        "url": "/api/2024/magic-items/ring-of-animal-influence"
+      },
+      {
+        "index": "ring-of-djinni-summoning",
+        "name": "Anillo de invocación de djinni",
+        "url": "/api/2024/magic-items/ring-of-djinni-summoning"
+      },
+      {
+        "index": "ring-of-elemental-command",
+        "name": "Anillo de comando elemental",
+        "url": "/api/2024/magic-items/ring-of-elemental-command"
+      },
+      {
+        "index": "ring-of-evasion",
+        "name": "Anillo de evasión",
+        "url": "/api/2024/magic-items/ring-of-evasion"
+      },
+      {
+        "index": "ring-of-feather-falling",
+        "name": "Anillo de caída de pluma",
+        "url": "/api/2024/magic-items/ring-of-feather-falling"
+      },
+      {
+        "index": "ring-of-free-action",
+        "name": "Anillo de acción libre",
+        "url": "/api/2024/magic-items/ring-of-free-action"
+      },
+      {
+        "index": "ring-of-invisibility",
+        "name": "Anillo de invisibilidad",
+        "url": "/api/2024/magic-items/ring-of-invisibility"
+      },
+      {
+        "index": "ring-of-jumping",
+        "name": "Anillo de salto",
+        "url": "/api/2024/magic-items/ring-of-jumping"
+      },
+      {
+        "index": "ring-of-mind-shielding",
+        "name": "Anillo de escudo mental",
+        "url": "/api/2024/magic-items/ring-of-mind-shielding"
+      },
+      {
+        "index": "ring-of-protection",
+        "name": "Anillo de protección",
+        "url": "/api/2024/magic-items/ring-of-protection"
+      },
+      {
+        "index": "ring-of-regeneration",
+        "name": "Anillo de regeneración",
+        "url": "/api/2024/magic-items/ring-of-regeneration"
+      },
+      {
+        "index": "ring-of-resistance",
+        "name": "Anillo de resistencia",
+        "url": "/api/2024/magic-items/ring-of-resistance"
+      },
+      {
+        "index": "ring-of-shooting-stars",
+        "name": "Anillo de estrellas fugaces",
+        "url": "/api/2024/magic-items/ring-of-shooting-stars"
+      },
+      {
+        "index": "ring-of-spell-storing",
+        "name": "Anillo de almacenamiento de conjuros",
+        "url": "/api/2024/magic-items/ring-of-spell-storing"
+      },
+      {
+        "index": "ring-of-spell-turning",
+        "name": "Anillo de retorno de conjuros",
+        "url": "/api/2024/magic-items/ring-of-spell-turning"
+      },
+      {
+        "index": "ring-of-swimming",
+        "name": "Anillo de natación",
+        "url": "/api/2024/magic-items/ring-of-swimming"
+      },
+      {
+        "index": "ring-of-telekinesis",
+        "name": "Anillo de telequinesis",
+        "url": "/api/2024/magic-items/ring-of-telekinesis"
+      },
+      {
+        "index": "ring-of-the-ram",
+        "name": "Anillo del carnero",
+        "url": "/api/2024/magic-items/ring-of-the-ram"
+      },
+      {
+        "index": "ring-of-three-wishes",
+        "name": "Anillo de tres deseos",
+        "url": "/api/2024/magic-items/ring-of-three-wishes"
+      },
+      {
+        "index": "ring-of-warmth",
+        "name": "Anillo de calidez",
+        "url": "/api/2024/magic-items/ring-of-warmth"
+      },
+      {
+        "index": "ring-of-water-walking",
+        "name": "Anillo de caminar por el agua",
+        "url": "/api/2024/magic-items/ring-of-water-walking"
+      },
+      {
+        "index": "ring-of-x-ray-vision",
+        "name": "Anillo de visión de rayos X",
+        "url": "/api/2024/magic-items/ring-of-x-ray-vision"
+      }
+    ],
+    "url": "/api/2024/equipment-categories/rings"
+  },
+  {
+    "index": "shields",
+    "name": "Escudos",
+    "equipment": [
+      {
+        "index": "shield",
+        "name": "Escudo",
+        "url": "/api/2024/equipment/shield"
+      }
+    ],
+    "url": "/api/2024/equipment-categories/shields"
+  },
+  {
+    "index": "simple-melee-weapons",
+    "name": "Armas simples cuerpo a cuerpo",
+    "equipment": [
+      {
+        "index": "club",
+        "name": "Garrote",
+        "url": "/api/2024/equipment/club"
+      },
+      {
+        "index": "dagger",
+        "name": "Daga",
+        "url": "/api/2024/equipment/dagger"
+      },
+      {
+        "index": "greatclub",
+        "name": "Gran garrote",
+        "url": "/api/2024/equipment/greatclub"
+      },
+      {
+        "index": "handaxe",
+        "name": "Hacha de mano",
+        "url": "/api/2024/equipment/handaxe"
+      },
+      {
+        "index": "javelin",
+        "name": "Jabalina",
+        "url": "/api/2024/equipment/javelin"
+      },
+      {
+        "index": "light-hammer",
+        "name": "Martillo ligero",
+        "url": "/api/2024/equipment/light-hammer"
+      },
+      {
+        "index": "mace",
+        "name": "Maza",
+        "url": "/api/2024/equipment/mace"
+      },
+      {
+        "index": "quarterstaff",
+        "name": "Bastón",
+        "url": "/api/2024/equipment/quarterstaff"
+      },
+      {
+        "index": "sickle",
+        "name": "Hoz",
+        "url": "/api/2024/equipment/sickle"
+      },
+      {
+        "index": "spear",
+        "name": "Lanza",
+        "url": "/api/2024/equipment/spear"
+      }
+    ],
+    "url": "/api/2024/equipment-categories/simple-melee-weapons"
+  },
+  {
+    "index": "simple-ranged-weapons",
+    "name": "Armas simples a distancia",
+    "equipment": [
+      {
+        "index": "dart",
+        "name": "Dardo",
+        "url": "/api/2024/equipment/dart"
+      },
+      {
+        "index": "light-crossbow",
+        "name": "Ballesta ligera",
+        "url": "/api/2024/equipment/light-crossbow"
+      },
+      {
+        "index": "shortbow",
+        "name": "Arco corto",
+        "url": "/api/2024/equipment/shortbow"
+      },
+      {
+        "index": "sling",
+        "name": "Honda",
+        "url": "/api/2024/equipment/sling"
+      }
+    ],
+    "url": "/api/2024/equipment-categories/simple-ranged-weapons"
+  },
+  {
+    "index": "simple-weapons",
+    "name": "Armas simples",
+    "equipment": [
+      {
+        "index": "club",
+        "name": "Garrote",
+        "url": "/api/2024/equipment/club"
+      },
+      {
+        "index": "dagger",
+        "name": "Daga",
+        "url": "/api/2024/equipment/dagger"
+      },
+      {
+        "index": "dart",
+        "name": "Dardo",
+        "url": "/api/2024/equipment/dart"
+      },
+      {
+        "index": "greatclub",
+        "name": "Gran garrote",
+        "url": "/api/2024/equipment/greatclub"
+      },
+      {
+        "index": "handaxe",
+        "name": "Hacha de mano",
+        "url": "/api/2024/equipment/handaxe"
+      },
+      {
+        "index": "javelin",
+        "name": "Jabalina",
+        "url": "/api/2024/equipment/javelin"
+      },
+      {
+        "index": "light-crossbow",
+        "name": "Ballesta ligera",
+        "url": "/api/2024/equipment/light-crossbow"
+      },
+      {
+        "index": "light-hammer",
+        "name": "Martillo ligero",
+        "url": "/api/2024/equipment/light-hammer"
+      },
+      {
+        "index": "mace",
+        "name": "Maza",
+        "url": "/api/2024/equipment/mace"
+      },
+      {
+        "index": "quarterstaff",
+        "name": "Bastón",
+        "url": "/api/2024/equipment/quarterstaff"
+      },
+      {
+        "index": "shortbow",
+        "name": "Arco corto",
+        "url": "/api/2024/equipment/shortbow"
+      },
+      {
+        "index": "sickle",
+        "name": "Hoz",
+        "url": "/api/2024/equipment/sickle"
+      },
+      {
+        "index": "sling",
+        "name": "Honda",
+        "url": "/api/2024/equipment/sling"
+      },
+      {
+        "index": "spear",
+        "name": "Lanza",
+        "url": "/api/2024/equipment/spear"
+      }
+    ],
+    "url": "/api/2024/equipment-categories/simple-weapons"
+  },
+  {
+    "name": "Bastones",
+    "index": "staffs",
+    "equipment": [
+      {
+        "index": "staff-of-charming",
+        "name": "Bastón de encantamiento",
+        "url": "/api/2024/magic-items/staff-of-charming"
+      },
+      {
+        "index": "staff-of-fire",
+        "name": "Bastón de fuego",
+        "url": "/api/2024/magic-items/staff-of-fire"
+      },
+      {
+        "index": "staff-of-frost",
+        "name": "Bastón de escarcha",
+        "url": "/api/2024/magic-items/staff-of-frost"
+      },
+      {
+        "index": "staff-of-healing",
+        "name": "Bastón de curación",
+        "url": "/api/2024/magic-items/staff-of-healing"
+      },
+      {
+        "index": "staff-of-power",
+        "name": "Bastón de poder",
+        "url": "/api/2024/magic-items/staff-of-power"
+      },
+      {
+        "index": "staff-of-striking",
+        "name": "Bastón de golpeo",
+        "url": "/api/2024/magic-items/staff-of-striking"
+      },
+      {
+        "index": "staff-of-swarming-insects",
+        "name": "Bastón de enjambre de insectos",
+        "url": "/api/2024/magic-items/staff-of-swarming-insects"
+      },
+      {
+        "index": "staff-of-the-magi",
+        "name": "Bastón de los magos",
+        "url": "/api/2024/magic-items/staff-of-the-magi"
+      },
+      {
+        "index": "staff-of-the-python",
+        "name": "Bastón de la pitón",
+        "url": "/api/2024/magic-items/staff-of-the-python"
+      },
+      {
+        "index": "staff-of-the-woodlands",
+        "name": "Bastón de los bosques",
+        "url": "/api/2024/magic-items/staff-of-the-woodlands"
+      },
+      {
+        "index": "staff-of-thunder-and-lightning",
+        "name": "Bastón de trueno y relámpago",
+        "url": "/api/2024/magic-items/staff-of-thunder-and-lightning"
+      },
+      {
+        "index": "staff-of-withering",
+        "name": "Bastón de marchitamiento",
+        "url": "/api/2024/magic-items/staff-of-withering"
+      }
+    ],
+    "url": "/api/2024/equipment-categories/staffs"
+  },
+  {
+    "index": "tools",
+    "name": "Herramientas",
+    "equipment": [
+      {
+        "index": "alchemists-supplies",
+        "name": "Suministros de alquimista",
+        "url": "/api/2024/equipment/alchemists-supplies"
+      },
+      {
+        "index": "bagpipes",
+        "name": "Gaita",
+        "url": "/api/2024/equipment/bagpipes"
+      },
+      {
+        "index": "brewers-supplies",
+        "name": "Suministros de cervecero",
+        "url": "/api/2024/equipment/brewers-supplies"
+      },
+      {
+        "index": "calligraphers-supplies",
+        "name": "Suministros de calígrafo",
+        "url": "/api/2024/equipment/calligraphers-supplies"
+      },
+      {
+        "index": "carpenters-tools",
+        "name": "Herramientas de carpintero",
+        "url": "/api/2024/equipment/carpenters-tools"
+      },
+      {
+        "index": "cartographer-tools",
+        "name": "Herramientas de cartógrafo",
+        "url": "/api/2024/equipment/cartographer-tools"
+      },
+      {
+        "index": "cobblers-tools",
+        "name": "Herramientas de zapatero",
+        "url": "/api/2024/equipment/cobblers-tools"
+      },
+      {
+        "index": "cooks-utensils",
+        "name": "Utensilios de cocinero",
+        "url": "/api/2024/equipment/cooks-utensils"
+      },
+      {
+        "index": "dice",
+        "name": "Dados",
+        "url": "/api/2024/equipment/dice"
+      },
+      {
+        "index": "disguise-kit",
+        "name": "Kit de disfraz",
+        "url": "/api/2024/equipment/disguise-kit"
+      },
+      {
+        "index": "dragonchess",
+        "name": "Ajedrez de dragón",
+        "url": "/api/2024/equipment/dragonchess"
+      },
+      {
+        "index": "drum",
+        "name": "Tambor",
+        "url": "/api/2024/equipment/drum"
+      },
+      {
+        "index": "dulcimer",
+        "name": "Dulcémele",
+        "url": "/api/2024/equipment/dulcimer"
+      },
+      {
+        "index": "flute",
+        "name": "Flauta",
+        "url": "/api/2024/equipment/flute"
+      },
+      {
+        "index": "glassblowers-tools",
+        "name": "Herramientas de soplador de vidrio",
+        "url": "/api/2024/equipment/glassblowers-tools"
+      },
+      {
+        "index": "herbalism-kit",
+        "name": "Kit de herboristería",
+        "url": "/api/2024/equipment/herbalism-kit"
+      },
+      {
+        "index": "horn",
+        "name": "Cuerno",
+        "url": "/api/2024/equipment/horn"
+      },
+      {
+        "index": "jewelers-tools",
+        "name": "Herramientas de joyero",
+        "url": "/api/2024/equipment/jewelers-tools"
+      },
+      {
+        "index": "leatherworkers-tools",
+        "name": "Herramientas de peletero",
+        "url": "/api/2024/equipment/leatherworkers-tools"
+      },
+      {
+        "index": "lute",
+        "name": "Laúd",
+        "url": "/api/2024/equipment/lute"
+      },
+      {
+        "index": "lyre",
+        "name": "Lira",
+        "url": "/api/2024/equipment/lyre"
+      },
+      {
+        "index": "masons-tools",
+        "name": "Herramientas de albañil",
+        "url": "/api/2024/equipment/masons-tools"
+      },
+      {
+        "index": "navigators-tools",
+        "name": "Herramientas de navegante",
+        "url": "/api/2024/equipment/navigators-tools"
+      },
+      {
+        "index": "painters-supplies",
+        "name": "Suministros de pintor",
+        "url": "/api/2024/equipment/painters-supplies"
+      },
+      {
+        "index": "pan-flute",
+        "name": "Flauta de pan",
+        "url": "/api/2024/equipment/pan-flute"
+      },
+      {
+        "index": "playing-cards",
+        "name": "Baraja de cartas",
+        "url": "/api/2024/equipment/playing-cards"
+      },
+      {
+        "index": "poisoners-kit",
+        "name": "Kit de envenenador",
+        "url": "/api/2024/equipment/poisoners-kit"
+      },
+      {
+        "index": "potters-tools",
+        "name": "Herramientas de alfarero",
+        "url": "/api/2024/equipment/potters-tools"
+      },
+      {
+        "index": "shawm",
+        "name": "Chirimía",
+        "url": "/api/2024/equipment/shawm"
+      },
+      {
+        "index": "smiths-tools",
+        "name": "Herramientas de herrero",
+        "url": "/api/2024/equipment/smiths-tools"
+      },
+      {
+        "index": "thieves-tools",
+        "name": "Herramientas de ladrón",
+        "url": "/api/2024/equipment/thieves-tools"
+      },
+      {
+        "index": "three-dragon-ante",
+        "name": "Apuesta de los Tres Dragones",
+        "url": "/api/2024/equipment/three-dragon-ante"
+      },
+      {
+        "index": "tinkers-tools",
+        "name": "Herramientas de hojalatero",
+        "url": "/api/2024/equipment/tinkers-tools"
+      },
+      {
+        "index": "viol",
+        "name": "Viola",
+        "url": "/api/2024/equipment/viol"
+      },
+      {
+        "index": "weavers-tools",
+        "name": "Herramientas de tejedor",
+        "url": "/api/2024/equipment/weavers-tools"
+      },
+      {
+        "index": "woodcarvers-tools",
+        "name": "Herramientas de tallador de madera",
+        "url": "/api/2024/equipment/woodcarvers-tools"
+      }
+    ],
+    "url": "/api/2024/equipment-categories/tools"
+  },
+  {
+    "name": "Varitas",
+    "index": "wands",
+    "equipment": [
+      {
+        "index": "wand-of-binding",
+        "name": "Varita de atadura",
+        "url": "/api/2024/magic-items/wand-of-binding"
+      },
+      {
+        "index": "wand-of-enemy-detection",
+        "name": "Varita de detección de enemigos",
+        "url": "/api/2024/magic-items/wand-of-enemy-detection"
+      },
+      {
+        "index": "wand-of-fear",
+        "name": "Varita de miedo",
+        "url": "/api/2024/magic-items/wand-of-fear"
+      },
+      {
+        "index": "wand-of-fireballs",
+        "name": "Varita de bolas de fuego",
+        "url": "/api/2024/magic-items/wand-of-fireballs"
+      },
+      {
+        "index": "wand-of-lightning-bolts",
+        "name": "Varita de relámpagos",
+        "url": "/api/2024/magic-items/wand-of-lightning-bolts"
+      },
+      {
+        "index": "wand-of-magic-detection",
+        "name": "Varita de detección de magia",
+        "url": "/api/2024/magic-items/wand-of-magic-detection"
+      },
+      {
+        "index": "wand-of-magic-missiles",
+        "name": "Varita de proyectiles mágicos",
+        "url": "/api/2024/magic-items/wand-of-magic-missiles"
+      },
+      {
+        "index": "wand-of-paralysis",
+        "name": "Varita de parálisis",
+        "url": "/api/2024/magic-items/wand-of-paralysis"
+      },
+      {
+        "index": "wand-of-polymorph",
+        "name": "Varita de polimorfismo",
+        "url": "/api/2024/magic-items/wand-of-polymorph"
+      },
+      {
+        "index": "wand-of-secrets",
+        "name": "Varita de secretos",
+        "url": "/api/2024/magic-items/wand-of-secrets"
+      },
+      {
+        "index": "wand-of-the-war-mage",
+        "name": "Varita del mago de guerra",
+        "url": "/api/2024/magic-items/wand-of-the-war-mage"
+      },
+      {
+        "index": "wand-of-the-war-mage-1",
+        "name": "Varita del mago de guerra +1",
+        "url": "/api/2024/magic-items/wand-of-the-war-mage-1"
+      },
+      {
+        "index": "wand-of-the-war-mage-2",
+        "name": "Varita del mago de guerra +2",
+        "url": "/api/2024/magic-items/wand-of-the-war-mage-2"
+      },
+      {
+        "index": "wand-of-the-war-mage-3",
+        "name": "Varita del mago de guerra +3",
+        "url": "/api/2024/magic-items/wand-of-the-war-mage-3"
+      },
+      {
+        "index": "wand-of-web",
+        "name": "Varita de telaraña",
+        "url": "/api/2024/magic-items/wand-of-web"
+      },
+      {
+        "index": "wand-of-wonder",
+        "name": "Varita de las maravillas",
+        "url": "/api/2024/magic-items/wand-of-wonder"
+      }
+    ],
+    "url": "/api/2024/equipment-categories/wands"
+  },
+  {
+    "index": "weapons",
+    "name": "Armas",
+    "equipment": [
+      {
+        "index": "battleaxe",
+        "name": "Hacha de batalla",
+        "url": "/api/2024/equipment/battleaxe"
+      },
+      {
+        "index": "blowgun",
+        "name": "Cerbatana",
+        "url": "/api/2024/equipment/blowgun"
+      },
+      {
+        "index": "club",
+        "name": "Garrote",
+        "url": "/api/2024/equipment/club"
+      },
+      {
+        "index": "dagger",
+        "name": "Daga",
+        "url": "/api/2024/equipment/dagger"
+      },
+      {
+        "index": "dart",
+        "name": "Dardo",
+        "url": "/api/2024/equipment/dart"
+      },
+      {
+        "index": "flail",
+        "name": "Mayal",
+        "url": "/api/2024/equipment/flail"
+      },
+      {
+        "index": "glaive",
+        "name": "Guja",
+        "url": "/api/2024/equipment/glaive"
+      },
+      {
+        "index": "greataxe",
+        "name": "Gran hacha",
+        "url": "/api/2024/equipment/greataxe"
+      },
+      {
+        "index": "greatclub",
+        "name": "Gran garrote",
+        "url": "/api/2024/equipment/greatclub"
+      },
+      {
+        "index": "greatsword",
+        "name": "Espadón",
+        "url": "/api/2024/equipment/greatsword"
+      },
+      {
+        "index": "halberd",
+        "name": "Alabarda",
+        "url": "/api/2024/equipment/halberd"
+      },
+      {
+        "index": "hand-crossbow",
+        "name": "Ballesta de mano",
+        "url": "/api/2024/equipment/hand-crossbow"
+      },
+      {
+        "index": "handaxe",
+        "name": "Hacha de mano",
+        "url": "/api/2024/equipment/handaxe"
+      },
+      {
+        "index": "heavy-crossbow",
+        "name": "Ballesta pesada",
+        "url": "/api/2024/equipment/heavy-crossbow"
+      },
+      {
+        "index": "javelin",
+        "name": "Jabalina",
+        "url": "/api/2024/equipment/javelin"
+      },
+      {
+        "index": "lance",
+        "name": "Lanza de caballería",
+        "url": "/api/2024/equipment/lance"
+      },
+      {
+        "index": "light-crossbow",
+        "name": "Ballesta ligera",
+        "url": "/api/2024/equipment/light-crossbow"
+      },
+      {
+        "index": "light-hammer",
+        "name": "Martillo ligero",
+        "url": "/api/2024/equipment/light-hammer"
+      },
+      {
+        "index": "longbow",
+        "name": "Arco largo",
+        "url": "/api/2024/equipment/longbow"
+      },
+      {
+        "index": "longsword",
+        "name": "Espada larga",
+        "url": "/api/2024/equipment/longsword"
+      },
+      {
+        "index": "mace",
+        "name": "Maza",
+        "url": "/api/2024/equipment/mace"
+      },
+      {
+        "index": "maul",
+        "name": "Mazo",
+        "url": "/api/2024/equipment/maul"
+      },
+      {
+        "index": "morningstar",
+        "name": "Lucero del alba",
+        "url": "/api/2024/equipment/morningstar"
+      },
+      {
+        "index": "musket",
+        "name": "Mosquete",
+        "url": "/api/2024/equipment/musket"
+      },
+      {
+        "index": "pike",
+        "name": "Pica",
+        "url": "/api/2024/equipment/pike"
+      },
+      {
+        "index": "pistol",
+        "name": "Pistola",
+        "url": "/api/2024/equipment/pistol"
+      },
+      {
+        "index": "quarterstaff",
+        "name": "Bastón",
+        "url": "/api/2024/equipment/quarterstaff"
+      },
+      {
+        "index": "rapier",
+        "name": "Estoque",
+        "url": "/api/2024/equipment/rapier"
+      },
+      {
+        "index": "scimitar",
+        "name": "Cimitarra",
+        "url": "/api/2024/equipment/scimitar"
+      },
+      {
+        "index": "shortbow",
+        "name": "Arco corto",
+        "url": "/api/2024/equipment/shortbow"
+      },
+      {
+        "index": "shortsword",
+        "name": "Espada corta",
+        "url": "/api/2024/equipment/shortsword"
+      },
+      {
+        "index": "sickle",
+        "name": "Hoz",
+        "url": "/api/2024/equipment/sickle"
+      },
+      {
+        "index": "sling",
+        "name": "Honda",
+        "url": "/api/2024/equipment/sling"
+      },
+      {
+        "index": "spear",
+        "name": "Lanza",
+        "url": "/api/2024/equipment/spear"
+      },
+      {
+        "index": "trident",
+        "name": "Tridente",
+        "url": "/api/2024/equipment/trident"
+      },
+      {
+        "index": "warhammer",
+        "name": "Martillo de guerra",
+        "url": "/api/2024/equipment/warhammer"
+      },
+      {
+        "index": "war-pick",
+        "name": "Pico de guerra",
+        "url": "/api/2024/equipment/war-pick"
+      },
+      {
+        "index": "whip",
+        "name": "Látigo",
+        "url": "/api/2024/equipment/whip"
+      }
+    ],
+    "url": "/api/2024/equipment-categories/weapons"
+  },
+  {
+    "name": "Objetos maravillosos",
+    "index": "wondrous-items",
+    "equipment": [
+      {
+        "index": "amulet-of-health",
+        "name": "Amuleto de salud",
+        "url": "/api/2024/magic-items/amulet-of-health"
+      },
+      {
+        "index": "amulet-of-proof-against-detection-and-location",
+        "name": "Amuleto de prueba contra detección y localización",
+        "url": "/api/2024/magic-items/amulet-of-proof-against-detection-and-location"
+      },
+      {
+        "index": "amulet-of-the-planes",
+        "name": "Amuleto de los planos",
+        "url": "/api/2024/magic-items/amulet-of-the-planes"
+      },
+      {
+        "index": "apparatus-of-the-crab",
+        "name": "Aparato del cangrejo",
+        "url": "/api/2024/magic-items/apparatus-of-the-crab"
+      },
+      {
+        "index": "bag-of-beans",
+        "name": "Bolsa de frijoles",
+        "url": "/api/2024/magic-items/bag-of-beans"
+      },
+      {
+        "index": "bag-of-devouring",
+        "name": "Bolsa devoradora",
+        "url": "/api/2024/magic-items/bag-of-devouring"
+      },
+      {
+        "index": "bag-of-holding",
+        "name": "Bolsa de contención",
+        "url": "/api/2024/magic-items/bag-of-holding"
+      },
+      {
+        "index": "bag-of-tricks",
+        "name": "Bolsa de trucos",
+        "url": "/api/2024/magic-items/bag-of-tricks"
+      },
+      {
+        "index": "bead-of-force",
+        "name": "Cuenta de fuerza",
+        "url": "/api/2024/magic-items/bead-of-force"
+      },
+      {
+        "index": "belt-of-dwarvenkind",
+        "name": "Cinturón de estirpe enana",
+        "url": "/api/2024/magic-items/belt-of-dwarvenkind"
+      },
+      {
+        "index": "belt-of-giant-strength",
+        "name": "Cinturón de fuerza de gigante",
+        "url": "/api/2024/magic-items/belt-of-giant-strength"
+      },
+      {
+        "index": "boots-of-elvenkind",
+        "name": "Botas de estirpe élfica",
+        "url": "/api/2024/magic-items/boots-of-elvenkind"
+      },
+      {
+        "index": "boots-of-levitation",
+        "name": "Botas de levitación",
+        "url": "/api/2024/magic-items/boots-of-levitation"
+      },
+      {
+        "index": "boots-of-speed",
+        "name": "Botas de velocidad",
+        "url": "/api/2024/magic-items/boots-of-speed"
+      },
+      {
+        "index": "boots-of-striding-and-springing",
+        "name": "Botas de zancada y salto",
+        "url": "/api/2024/magic-items/boots-of-striding-and-springing"
+      },
+      {
+        "index": "boots-of-the-winterlands",
+        "name": "Botas de las tierras invernales",
+        "url": "/api/2024/magic-items/boots-of-the-winterlands"
+      },
+      {
+        "index": "bowl-of-commanding-water-elementals",
+        "name": "Cuenco de comando de elementales de agua",
+        "url": "/api/2024/magic-items/bowl-of-commanding-water-elementals"
+      },
+      {
+        "index": "bracers-of-archery",
+        "name": "Brazales de arquería",
+        "url": "/api/2024/magic-items/bracers-of-archery"
+      },
+      {
+        "index": "bracers-of-defense",
+        "name": "Brazales de defensa",
+        "url": "/api/2024/magic-items/bracers-of-defense"
+      },
+      {
+        "index": "brazier-of-commanding-fire-elementals",
+        "name": "Brasero de comando de elementales de fuego",
+        "url": "/api/2024/magic-items/brazier-of-commanding-fire-elementals"
+      },
+      {
+        "index": "brooch-of-shielding",
+        "name": "Broche de escudo",
+        "url": "/api/2024/magic-items/brooch-of-shielding"
+      },
+      {
+        "index": "broom-of-flying",
+        "name": "Escoba voladora",
+        "url": "/api/2024/magic-items/broom-of-flying"
+      },
+      {
+        "index": "candle-of-invocation",
+        "name": "Vela de invocación",
+        "url": "/api/2024/magic-items/candle-of-invocation"
+      },
+      {
+        "index": "cape-of-the-mountebank",
+        "name": "Capa del saltimbanqui",
+        "url": "/api/2024/magic-items/cape-of-the-mountebank"
+      },
+      {
+        "index": "carpet-of-flying",
+        "name": "Alfombra voladora",
+        "url": "/api/2024/magic-items/carpet-of-flying"
+      },
+      {
+        "index": "censer-of-controlling-air-elementals",
+        "name": "Incensario de control de elementales de aire",
+        "url": "/api/2024/magic-items/censer-of-controlling-air-elementals"
+      },
+      {
+        "index": "chime-of-opening",
+        "name": "Campana de apertura",
+        "url": "/api/2024/magic-items/chime-of-opening"
+      },
+      {
+        "index": "circlet-of-blasting",
+        "name": "Diadema de explosión",
+        "url": "/api/2024/magic-items/circlet-of-blasting"
+      },
+      {
+        "index": "cloak-of-arachnida",
+        "name": "Capa de arácnido",
+        "url": "/api/2024/magic-items/cloak-of-arachnida"
+      },
+      {
+        "index": "cloak-of-displacement",
+        "name": "Capa de desplazamiento",
+        "url": "/api/2024/magic-items/cloak-of-displacement"
+      },
+      {
+        "index": "cloak-of-elvenkind",
+        "name": "Capa de estirpe élfica",
+        "url": "/api/2024/magic-items/cloak-of-elvenkind"
+      },
+      {
+        "index": "cloak-of-protection",
+        "name": "Capa de protección",
+        "url": "/api/2024/magic-items/cloak-of-protection"
+      },
+      {
+        "index": "cloak-of-the-bat",
+        "name": "Capa del murciélago",
+        "url": "/api/2024/magic-items/cloak-of-the-bat"
+      },
+      {
+        "index": "cloak-of-the-manta-ray",
+        "name": "Capa de la mantarraya",
+        "url": "/api/2024/magic-items/cloak-of-the-manta-ray"
+      },
+      {
+        "index": "crystal-ball",
+        "name": "Bola de cristal",
+        "url": "/api/2024/magic-items/crystal-ball"
+      },
+      {
+        "index": "crystal-ball-of-mind-reading",
+        "name": "Bola de cristal de lectura mental",
+        "url": "/api/2024/magic-items/crystal-ball-of-mind-reading"
+      },
+      {
+        "index": "crystal-ball-of-telepathy",
+        "name": "Bola de cristal de telepatía",
+        "url": "/api/2024/magic-items/crystal-ball-of-telepathy"
+      },
+      {
+        "index": "crystal-ball-of-true-seeing",
+        "name": "Bola de cristal de visión verdadera",
+        "url": "/api/2024/magic-items/crystal-ball-of-true-seeing"
+      },
+      {
+        "index": "cube-of-force",
+        "name": "Cubo de fuerza",
+        "url": "/api/2024/magic-items/cube-of-force"
+      },
+      {
+        "index": "cubic-gate",
+        "name": "Puerta cúbica",
+        "url": "/api/2024/magic-items/cubic-gate"
+      },
+      {
+        "index": "decanter-of-endless-water",
+        "name": "Decantador de agua infinita",
+        "url": "/api/2024/magic-items/decanter-of-endless-water"
+      },
+      {
+        "index": "deck-of-illusions",
+        "name": "Baraja de ilusiones",
+        "url": "/api/2024/magic-items/deck-of-illusions"
+      },
+      {
+        "index": "dimensional-shackles",
+        "name": "Grilletes dimensionales",
+        "url": "/api/2024/magic-items/dimensional-shackles"
+      },
+      {
+        "index": "dragon-orb",
+        "name": "Orbe del dragón",
+        "url": "/api/2024/magic-items/dragon-orb"
+      },
+      {
+        "index": "dust-of-disappearance",
+        "name": "Polvo de desaparición",
+        "url": "/api/2024/magic-items/dust-of-disappearance"
+      },
+      {
+        "index": "dust-of-dryness",
+        "name": "Polvo de sequedad",
+        "url": "/api/2024/magic-items/dust-of-dryness"
+      },
+      {
+        "index": "dust-of-sneezing-and-choking",
+        "name": "Polvo de estornudo y asfixia",
+        "url": "/api/2024/magic-items/dust-of-sneezing-and-choking"
+      },
+      {
+        "index": "efficient-quiver",
+        "name": "Carcaj eficiente",
+        "url": "/api/2024/magic-items/efficient-quiver"
+      },
+      {
+        "index": "efreeti-bottle",
+        "name": "Botella de efreeti",
+        "url": "/api/2024/magic-items/efreeti-bottle"
+      },
+      {
+        "index": "elemental-gem",
+        "name": "Gema elemental",
+        "url": "/api/2024/magic-items/elemental-gem"
+      },
+      {
+        "index": "eversmoking-bottle",
+        "name": "Botella de humo eterno",
+        "url": "/api/2024/magic-items/eversmoking-bottle"
+      },
+      {
+        "index": "eyes-of-charming",
+        "name": "Ojos de encantamiento",
+        "url": "/api/2024/magic-items/eyes-of-charming"
+      },
+      {
+        "index": "eyes-of-minute-seeing",
+        "name": "Ojos de visión minuciosa",
+        "url": "/api/2024/magic-items/eyes-of-minute-seeing"
+      },
+      {
+        "index": "eyes-of-the-eagle",
+        "name": "Ojos del águila",
+        "url": "/api/2024/magic-items/eyes-of-the-eagle"
+      },
+      {
+        "index": "feather-token",
+        "name": "Ficha de pluma",
+        "url": "/api/2024/magic-items/feather-token"
+      },
+      {
+        "index": "figurine-of-wondrous-power",
+        "name": "Figurilla de poder maravilloso",
+        "url": "/api/2024/magic-items/figurine-of-wondrous-power"
+      },
+      {
+        "index": "folding-boat",
+        "name": "Bote plegable",
+        "url": "/api/2024/magic-items/folding-boat"
+      },
+      {
+        "index": "gauntlets-of-ogre-power",
+        "name": "Guanteletes de poder de ogro",
+        "url": "/api/2024/magic-items/gauntlets-of-ogre-power"
+      },
+      {
+        "index": "gem-of-brightness",
+        "name": "Gema de brillantez",
+        "url": "/api/2024/magic-items/gem-of-brightness"
+      },
+      {
+        "index": "gem-of-seeing",
+        "name": "Gema de visión",
+        "url": "/api/2024/magic-items/gem-of-seeing"
+      },
+      {
+        "index": "gloves-of-missile-snaring",
+        "name": "Guantes de atrapar misiles",
+        "url": "/api/2024/magic-items/gloves-of-missile-snaring"
+      },
+      {
+        "index": "gloves-of-swimming-and-climbing",
+        "name": "Guantes de natación y escalada",
+        "url": "/api/2024/magic-items/gloves-of-swimming-and-climbing"
+      },
+      {
+        "index": "goggles-of-night",
+        "name": "Gafas de noche",
+        "url": "/api/2024/magic-items/goggles-of-night"
+      },
+      {
+        "index": "handy-haversack",
+        "name": "Morral práctico",
+        "url": "/api/2024/magic-items/handy-haversack"
+      },
+      {
+        "index": "hat-of-disguise",
+        "name": "Sombrero de disfraz",
+        "url": "/api/2024/magic-items/hat-of-disguise"
+      },
+      {
+        "index": "headband-of-intellect",
+        "name": "Diadema de intelecto",
+        "url": "/api/2024/magic-items/headband-of-intellect"
+      },
+      {
+        "index": "helm-of-brilliance",
+        "name": "Yelmo de brillantez",
+        "url": "/api/2024/magic-items/helm-of-brilliance"
+      },
+      {
+        "index": "helm-of-comprehending-languages",
+        "name": "Yelmo de comprensión de idiomas",
+        "url": "/api/2024/magic-items/helm-of-comprehending-languages"
+      },
+      {
+        "index": "helm-of-telepathy",
+        "name": "Yelmo de telepatía",
+        "url": "/api/2024/magic-items/helm-of-telepathy"
+      },
+      {
+        "index": "helm-of-teleportation",
+        "name": "Yelmo de teletransporte",
+        "url": "/api/2024/magic-items/helm-of-teleportation"
+      },
+      {
+        "index": "horn-of-blasting",
+        "name": "Cuerno de explosión",
+        "url": "/api/2024/magic-items/horn-of-blasting"
+      },
+      {
+        "index": "horn-of-valhalla",
+        "name": "Cuerno de Valhalla",
+        "url": "/api/2024/magic-items/horn-of-valhalla"
+      },
+      {
+        "index": "horn-of-valhalla-1",
+        "name": "Cuerno de Valhalla de plata",
+        "url": "/api/2024/magic-items/horn-of-valhalla-1"
+      },
+      {
+        "index": "horn-of-valhalla-2",
+        "name": "Cuerno de Valhalla de latón",
+        "url": "/api/2024/magic-items/horn-of-valhalla-2"
+      },
+      {
+        "index": "horn-of-valhalla-3",
+        "name": "Cuerno de Valhalla de bronce",
+        "url": "/api/2024/magic-items/horn-of-valhalla-3"
+      },
+      {
+        "index": "horn-of-valhalla-4",
+        "name": "Cuerno de Valhalla de hierro",
+        "url": "/api/2024/magic-items/horn-of-valhalla-4"
+      },
+      {
+        "index": "horseshoes-of-a-zephyr",
+        "name": "Herraduras de un céfiro",
+        "url": "/api/2024/magic-items/horseshoes-of-a-zephyr"
+      },
+      {
+        "index": "horseshoes-of-speed",
+        "name": "Herraduras de velocidad",
+        "url": "/api/2024/magic-items/horseshoes-of-speed"
+      },
+      {
+        "index": "immovable-rod",
+        "name": "Vara inamovible",
+        "url": "/api/2024/magic-items/immovable-rod"
+      },
+      {
+        "index": "instant-fortress",
+        "name": "Fortaleza instantánea",
+        "url": "/api/2024/magic-items/instant-fortress"
+      },
+      {
+        "index": "ioun-stone",
+        "name": "Piedra Ioun",
+        "url": "/api/2024/magic-items/ioun-stone"
+      },
+      {
+        "index": "iron-bands",
+        "name": "Bandas de hierro",
+        "url": "/api/2024/magic-items/iron-bands"
+      },
+      {
+        "index": "iron-flask",
+        "name": "Frasco de hierro",
+        "url": "/api/2024/magic-items/iron-flask"
+      },
+      {
+        "index": "lantern-of-revealing",
+        "name": "Linterna de revelación",
+        "url": "/api/2024/magic-items/lantern-of-revealing"
+      },
+      {
+        "index": "mantle-of-spell-resistance",
+        "name": "Manto de resistencia a conjuros",
+        "url": "/api/2024/magic-items/mantle-of-spell-resistance"
+      },
+      {
+        "index": "manual-of-bodily-health",
+        "name": "Manual de salud corporal",
+        "url": "/api/2024/magic-items/manual-of-bodily-health"
+      },
+      {
+        "index": "manual-of-gainful-exercise",
+        "name": "Manual de ejercicio provechoso",
+        "url": "/api/2024/magic-items/manual-of-gainful-exercise"
+      },
+      {
+        "index": "manual-of-golems",
+        "name": "Manual de gólems",
+        "url": "/api/2024/magic-items/manual-of-golems"
+      },
+      {
+        "index": "manual-of-quickness-of-action",
+        "name": "Manual de rapidez de acción",
+        "url": "/api/2024/magic-items/manual-of-quickness-of-action"
+      },
+      {
+        "index": "marvelous-pigments",
+        "name": "Pigmentos maravillosos",
+        "url": "/api/2024/magic-items/marvelous-pigments"
+      },
+      {
+        "index": "medallion-of-thoughts",
+        "name": "Medallón de pensamientos",
+        "url": "/api/2024/magic-items/medallion-of-thoughts"
+      },
+      {
+        "index": "mirror-of-life-trapping",
+        "name": "Espejo atrapavidas",
+        "url": "/api/2024/magic-items/mirror-of-life-trapping"
+      },
+      {
+        "index": "mysterious-deck",
+        "name": "Baraja misteriosa",
+        "url": "/api/2024/magic-items/mysterious-deck"
+      },
+      {
+        "index": "necklace-of-adaptation",
+        "name": "Collar de adaptación",
+        "url": "/api/2024/magic-items/necklace-of-adaptation"
+      },
+      {
+        "index": "necklace-of-fireballs",
+        "name": "Collar de bolas de fuego",
+        "url": "/api/2024/magic-items/necklace-of-fireballs"
+      },
+      {
+        "index": "necklace-of-prayer-beads",
+        "name": "Collar de cuentas de oración",
+        "url": "/api/2024/magic-items/necklace-of-prayer-beads"
+      },
+      {
+        "index": "pearl-of-power",
+        "name": "Perla de poder",
+        "url": "/api/2024/magic-items/pearl-of-power"
+      },
+      {
+        "index": "periapt-of-health",
+        "name": "Periapto de salud",
+        "url": "/api/2024/magic-items/periapt-of-health"
+      },
+      {
+        "index": "periapt-of-proof-against-poison",
+        "name": "Periapto de prueba contra veneno",
+        "url": "/api/2024/magic-items/periapt-of-proof-against-poison"
+      },
+      {
+        "index": "periapt-of-wound-closure",
+        "name": "Periapto de cierre de heridas",
+        "url": "/api/2024/magic-items/periapt-of-wound-closure"
+      },
+      {
+        "index": "pipes-of-haunting",
+        "name": "Gaitas de embrujo",
+        "url": "/api/2024/magic-items/pipes-of-haunting"
+      },
+      {
+        "index": "pipes-of-the-sewers",
+        "name": "Gaitas de las alcantarillas",
+        "url": "/api/2024/magic-items/pipes-of-the-sewers"
+      },
+      {
+        "index": "portable-hole",
+        "name": "Agujero portátil",
+        "url": "/api/2024/magic-items/portable-hole"
+      },
+      {
+        "index": "robe-of-eyes",
+        "name": "Túnica de ojos",
+        "url": "/api/2024/magic-items/robe-of-eyes"
+      },
+      {
+        "index": "robe-of-scintillating-colors",
+        "name": "Túnica de colores centelleantes",
+        "url": "/api/2024/magic-items/robe-of-scintillating-colors"
+      },
+      {
+        "index": "robe-of-stars",
+        "name": "Túnica de estrellas",
+        "url": "/api/2024/magic-items/robe-of-stars"
+      },
+      {
+        "index": "robe-of-the-archmagi",
+        "name": "Túnica del archimago",
+        "url": "/api/2024/magic-items/robe-of-the-archmagi"
+      },
+      {
+        "index": "robe-of-useful-items",
+        "name": "Túnica de objetos útiles",
+        "url": "/api/2024/magic-items/robe-of-useful-items"
+      },
+      {
+        "index": "rod-of-absorption",
+        "name": "Vara de absorción",
+        "url": "/api/2024/magic-items/rod-of-absorption"
+      },
+      {
+        "index": "rod-of-alertness",
+        "name": "Vara de alerta",
+        "url": "/api/2024/magic-items/rod-of-alertness"
+      },
+      {
+        "index": "rod-of-lordly-might",
+        "name": "Vara de poder señorial",
+        "url": "/api/2024/magic-items/rod-of-lordly-might"
+      },
+      {
+        "index": "rod-of-rulership",
+        "name": "Vara de soberanía",
+        "url": "/api/2024/magic-items/rod-of-rulership"
+      },
+      {
+        "index": "rod-of-security",
+        "name": "Vara de seguridad",
+        "url": "/api/2024/magic-items/rod-of-security"
+      },
+      {
+        "index": "rope-of-climbing",
+        "name": "Cuerda de escalada",
+        "url": "/api/2024/magic-items/rope-of-climbing"
+      },
+      {
+        "index": "rope-of-entanglement",
+        "name": "Cuerda de enredo",
+        "url": "/api/2024/magic-items/rope-of-entanglement"
+      },
+      {
+        "index": "scarab-of-protection",
+        "name": "Escarabajo de protección",
+        "url": "/api/2024/magic-items/scarab-of-protection"
+      },
+      {
+        "index": "slippers-of-spider-climbing",
+        "name": "Pantuflas de escalada de araña",
+        "url": "/api/2024/magic-items/slippers-of-spider-climbing"
+      },
+      {
+        "index": "sovereign-glue",
+        "name": "Pegamento soberano",
+        "url": "/api/2024/magic-items/sovereign-glue"
+      },
+      {
+        "index": "spell-scroll",
+        "name": "Pergamino de conjuro",
+        "url": "/api/2024/magic-items/spell-scroll"
+      },
+      {
+        "index": "sphere-of-annihilation",
+        "name": "Esfera de aniquilación",
+        "url": "/api/2024/magic-items/sphere-of-annihilation"
+      },
+      {
+        "index": "stone-of-controlling-earth-elementals",
+        "name": "Piedra de control de elementales de tierra",
+        "url": "/api/2024/magic-items/stone-of-controlling-earth-elementals"
+      },
+      {
+        "index": "stone-of-good-luck-(luckstone)",
+        "name": "Piedra de buena suerte (Piedra de la suerte)",
+        "url": "/api/2024/magic-items/stone-of-good-luck-(luckstone)"
+      },
+      {
+        "index": "talisman-of-pure-good",
+        "name": "Talismán del bien puro",
+        "url": "/api/2024/magic-items/talisman-of-pure-good"
+      },
+      {
+        "index": "talisman-of-the-sphere",
+        "name": "Talismán de la esfera",
+        "url": "/api/2024/magic-items/talisman-of-the-sphere"
+      },
+      {
+        "index": "talisman-of-ultimate-evil",
+        "name": "Talismán del mal supremo",
+        "url": "/api/2024/magic-items/talisman-of-ultimate-evil"
+      },
+      {
+        "index": "tome-of-clear-thought",
+        "name": "Tomo de pensamiento claro",
+        "url": "/api/2024/magic-items/tome-of-clear-thought"
+      },
+      {
+        "index": "tome-of-leadership-and-influence",
+        "name": "Tomo de liderazgo e influencia",
+        "url": "/api/2024/magic-items/tome-of-leadership-and-influence"
+      },
+      {
+        "index": "tome-of-understanding",
+        "name": "Tomo de entendimiento",
+        "url": "/api/2024/magic-items/tome-of-understanding"
+      },
+      {
+        "index": "universal-solvent",
+        "name": "Disolvente universal",
+        "url": "/api/2024/magic-items/universal-solvent"
+      },
+      {
+        "index": "well-of-many-worlds",
+        "name": "Pozo de muchos mundos",
+        "url": "/api/2024/magic-items/well-of-many-worlds"
+      },
+      {
+        "index": "wind-fan",
+        "name": "Abanico de viento",
+        "url": "/api/2024/magic-items/wind-fan"
+      },
+      {
+        "index": "winged-boots",
+        "name": "Botas aladas",
+        "url": "/api/2024/magic-items/winged-boots"
+      },
+      {
+        "index": "wings-of-flying",
+        "name": "Alas de vuelo",
+        "url": "/api/2024/magic-items/wings-of-flying"
+      }
+    ],
+    "url": "/api/2024/equipment-categories/wondrous-items"
+  }
+]

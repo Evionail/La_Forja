@@ -1,0 +1,200 @@
+[
+  {
+    "index": "acrobatics",
+    "name": "Acrobacias",
+    "description": "Mantente en pie en una situación difícil o realiza una acrobacia.",
+    "ability_score": {
+      "index": "dex",
+      "name": "DES",
+      "url": "/api/2024/ability-scores/dex"
+    },
+    "url": "/api/2024/skills/acrobatics"
+  },
+  {
+    "index": "animal-handling",
+    "name": "Trato con animales",
+    "description": "Calma o entrena a un animal, o haz que un animal se comporte de cierta manera.",
+    "ability_score": {
+      "index": "wis",
+      "name": "SAB",
+      "url": "/api/2024/ability-scores/wis"
+    },
+    "url": "/api/2024/skills/animal-handling"
+  },
+  {
+    "index": "arcana",
+    "name": "Arcano",
+    "description": "Recuerda conocimientos sobre conjuros, objetos mágicos y los planos de existencia.",
+    "ability_score": {
+      "index": "int",
+      "name": "INT",
+      "url": "/api/2024/ability-scores/int"
+    },
+    "url": "/api/2024/skills/arcana"
+  },
+  {
+    "index": "athletics",
+    "name": "Atletismo",
+    "description": "Salta más lejos de lo normal, mantente a flote en aguas turbulentas o rompe algo.",
+    "ability_score": {
+      "index": "str",
+      "name": "FUE",
+      "url": "/api/2024/ability-scores/str"
+    },
+    "url": "/api/2024/skills/athletics"
+  },
+  {
+    "index": "deception",
+    "name": "Engaño",
+    "description": "Di una mentira convincente o lleva un disfraz de forma convincente.",
+    "ability_score": {
+      "index": "cha",
+      "name": "CAR",
+      "url": "/api/2024/ability-scores/cha"
+    },
+    "url": "/api/2024/skills/deception"
+  },
+  {
+    "index": "history",
+    "name": "Historia",
+    "description": "Recuerda conocimientos sobre eventos históricos, personas, naciones y culturas.",
+    "ability_score": {
+      "index": "int",
+      "name": "INT",
+      "url": "/api/2024/ability-scores/int"
+    },
+    "url": "/api/2024/skills/history"
+  },
+  {
+    "index": "insight",
+    "name": "Perspicacia",
+    "description": "Discierne el estado de ánimo y las intenciones de una persona.",
+    "ability_score": {
+      "index": "wis",
+      "name": "SAB",
+      "url": "/api/2024/ability-scores/wis"
+    },
+    "url": "/api/2024/skills/insight"
+  },
+  {
+    "index": "intimidation",
+    "name": "Intimidación",
+    "description": "Asombra o amenaza a alguien para que haga lo que quieres.",
+    "ability_score": {
+      "index": "cha",
+      "name": "CAR",
+      "url": "/api/2024/ability-scores/cha"
+    },
+    "url": "/api/2024/skills/intimidation"
+  },
+  {
+    "index": "investigation",
+    "name": "Investigación",
+    "description": "Encuentra información oculta en libros o deduce cómo funciona algo.",
+    "ability_score": {
+      "index": "int",
+      "name": "INT",
+      "url": "/api/2024/ability-scores/int"
+    },
+    "url": "/api/2024/skills/investigation"
+  },
+  {
+    "index": "medicine",
+    "name": "Medicina",
+    "description": "Diagnostica una enfermedad o determina qué mató a los recién fallecidos.",
+    "ability_score": {
+      "index": "wis",
+      "name": "SAB",
+      "url": "/api/2024/ability-scores/wis"
+    },
+    "url": "/api/2024/skills/medicine"
+  },
+  {
+    "index": "nature",
+    "name": "Naturaleza",
+    "description": "Recuerda conocimientos sobre terreno, plantas, animales y el clima.",
+    "ability_score": {
+      "index": "int",
+      "name": "INT",
+      "url": "/api/2024/ability-scores/int"
+    },
+    "url": "/api/2024/skills/nature"
+  },
+  {
+    "index": "perception",
+    "name": "Percepción",
+    "description": "Usando una combinación de sentidos, nota algo que es fácil pasar por alto.",
+    "ability_score": {
+      "index": "wis",
+      "name": "SAB",
+      "url": "/api/2024/ability-scores/wis"
+    },
+    "url": "/api/2024/skills/perception"
+  },
+  {
+    "index": "performance",
+    "name": "Interpretación",
+    "description": "Actúa, cuenta una historia, interpreta música o baila.",
+    "ability_score": {
+      "index": "cha",
+      "name": "CAR",
+      "url": "/api/2024/ability-scores/cha"
+    },
+    "url": "/api/2024/skills/performance"
+  },
+  {
+    "index": "persuasion",
+    "name": "Persuasión",
+    "description": "Convence a alguien de algo de forma honesta y amable.",
+    "ability_score": {
+      "index": "cha",
+      "name": "CAR",
+      "url": "/api/2024/ability-scores/cha"
+    },
+    "url": "/api/2024/skills/persuasion"
+  },
+  {
+    "index": "religion",
+    "name": "Religión",
+    "description": "Recuerda conocimientos sobre dioses, rituales religiosos y símbolos sagrados.",
+    "ability_score": {
+      "index": "int",
+      "name": "INT",
+      "url": "/api/2024/ability-scores/int"
+    },
+    "url": "/api/2024/skills/religion"
+  },
+  {
+    "index": "sleight-of-hand",
+    "name": "Juego de manos",
+    "description": "Roba un bolsillo, oculta un objeto de mano o realiza prestidigitación.",
+    "ability_score": {
+      "index": "dex",
+      "name": "DES",
+      "url": "/api/2024/ability-scores/dex"
+    },
+    "url": "/api/2024/skills/sleight-of-hand"
+  },
+  {
+    "index": "stealth",
+    "name": "Sigilo",
+    "description": "Pasa desapercibido moviéndote en silencio y escondiéndote detrás de cosas.",
+    "ability_score": {
+      "index": "dex",
+      "name": "DES",
+      "url": "/api/2024/ability-scores/dex"
+    },
+    "url": "/api/2024/skills/stealth"
+  },
+  {
+    "index": "survival",
+    "name": "Supervivencia",
+    "description": "Sigue rastros, recolecta comida, encuentra un sendero o evita peligros naturales.",
+    "ability_score": {
+      "index": "wis",
+      "name": "SAB",
+      "url": "/api/2024/ability-scores/wis"
+    },
+    "url": "/api/2024/skills/survival"
+  }
+]

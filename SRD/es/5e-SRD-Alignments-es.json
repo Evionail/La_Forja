@@ -1,0 +1,72 @@
+[
+  {
+      "index": "lawful-good",
+      "name": "Legal Bueno",
+      "abbreviation": "LB",
+      "description": "Las criaturas Legales Buenas se esfuerzan por hacer lo correcto según lo que espera la sociedad. Alguien que lucha contra la injusticia y protege a los inocentes sin dudarlo es probablemente Legal Bueno.",
+      "url": "/api/2024/alignments/lawful-good"
+  },
+  {
+      "index": "neutral-good",
+      "name": "Neutral Bueno",
+      "abbreviation": "NB",
+      "description": "Las criaturas Neutrales Buenas hacen lo mejor que pueden, trabajando dentro de las reglas pero sin sentirse atadas a ellas. Una persona amable que ayuda a los demás de acuerdo a sus necesidades es probablemente Neutral Bueno.",
+      "url": "/api/2024/alignments/neutral-good"
+  },
+  {
+      "index": "chaotic-good",
+      "name": "Caótico Bueno",
+      "abbreviation": "CB",
+      "description": "Las criaturas Caóticas Buenas actúan como les dicta su conciencia con poca consideración por lo que los demás esperan. Un rebelde que asalta a los recaudadores de impuestos de un barón cruel y usa el dinero robado para ayudar a los pobres es probablemente Caótico Bueno.",
+      "url": "/api/2024/alignments/chaotic-good"
+  },
+  {
+      "index": "lawful-neutral",
+      "name": "Legal Neutral",
+      "abbreviation": "LN",
+      "description": "Los individuos Legales Neutrales actúan de acuerdo con la ley, la tradición o sus códigos personales. Alguien que sigue una regla de vida disciplinada, y no se deja llevar ni por las demandas de los necesitados ni por las tentaciones del mal, es probablemente Legal Neutral.",
+      "url": "/api/2024/alignments/lawful-neutral"
+  },
+  {
+      "index": "neutral",
+      "name": "Neutral",
+      "abbreviation": "N",
+      "description": "Neutral es el alineamiento de aquellos que prefieren evitar las cuestiones morales y no toman partido, haciendo lo que parece mejor en cada momento. Alguien a quien le aburre el debate moral es probablemente Neutral.",
+      "url": "/api/2024/alignments/neutral"
+  },
+  {
+      "index": "chaotic-neutral",
+      "name": "Caótico Neutral",
+      "abbreviation": "CN",
+      "description": "Las criaturas Caóticas Neutrales siguen sus caprichos, valorando su libertad personal por encima de todo. Un sinvergüenza que vaga por la tierra viviendo de su ingenio es probablemente Caótico Neutral.",
+      "url": "/api/2024/alignments/chaotic-neutral"
+  },
+  {
+      "index": "lawful-evil",
+      "name": "Legal Maligno",
+      "abbreviation": "LM",
+      "description": "Las criaturas Legales Malignas toman metódicamente lo que quieren dentro de los límites de un código de tradición, lealtad u orden. Un aristócrata que explota a los ciudadanos mientras conspira por el poder es probablemente Legal Maligno.",
+      "url": "/api/2024/alignments/lawful-evil"
+  },
+  {
+      "index": "neutral-evil",
+      "name": "Neutral Maligno",
+      "abbreviation": "NM",
+      "description": "Neutral Maligno es el alineamiento de aquellos que no se preocupan por el daño que causan mientras persiguen sus deseos. Un criminal que roba y asesina a su antojo es probablemente Neutral Maligno.",
+      "url": "/api/2024/alignments/neutral-evil"
+  },
+  {
+      "index": "chaotic-evil",
+      "name": "Caótico Maligno",
+      "abbreviation": "CM",
+      "description": "Las criaturas Caóticas Malignas actúan con violencia arbitraria, impulsadas por su odio o sed de sangre. Un villano que persigue planes de venganza y estragos es probablemente Caótico Maligno.",
+      "url": "/api/2024/alignments/chaotic-evil"
+  },
+  {
+    "index": "unaligned",
+    "name": "No alineado",
+    "abbreviation": "NA",
+    "description": "La mayoría de las criaturas que carecen de la capacidad de pensamiento racional no tienen alineamiento; son no alineadas. Los tiburones son depredadores salvajes, por ejemplo, pero no son malvados; son no alineados.",
+    "url": "/api/2024/alignments/unaligned"
+  }
+]

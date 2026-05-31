@@ -1,0 +1,62 @@
+[
+  {
+    "index": "ammunition",
+    "name": "Munición",
+    "description": "Puedes usar un arma que tenga la propiedad Munición para realizar un ataque a distancia solo si tienes munición para disparar con ella. El tipo de munición requerida se especifica con la distancia del arma. Cada ataque gasta una pieza de munición. Sacar la munición es parte del ataque (necesitas una mano libre para cargar un arma de una mano). Después de una pelea, puedes dedicar 1 minuto a recuperar la mitad de la munición (redondeando hacia abajo) que usaste en la pelea; el resto se pierde.",
+    "url": "/api/2024/weapon-properties/ammunition"
+  },
+  {
+    "index": "finesse",
+    "name": "Sutil",
+    "description": "Al realizar un ataque con un arma Sutil, usas tu elección de tu modificador de Fuerza o Destreza para las tiradas de ataque y daño. Debes usar el mismo modificador para ambas tiradas.",
+    "url": "/api/2024/weapon-properties/finesse"
+  },
+  {
+    "index": "heavy",
+    "name": "Pesada",
+    "description": "Tienes Desventaja en las tiradas de ataque con un arma Pesada si es un arma cuerpo a cuerpo y tu puntuación de Fuerza no es al menos 13, o si es un arma a distancia y tu puntuación de Destreza no es al menos 13.",
+    "url": "/api/2024/weapon-properties/heavy"
+  },
+  {
+    "index": "light",
+    "name": "Ligera",
+    "description": "Cuando realizas la acción de Atacar en tu turno y atacas con un arma Ligera, puedes hacer un ataque adicional como Acción adicional más adelante en el mismo turno. Ese ataque adicional debe hacerse con un arma Ligera diferente, y no sumas tu modificador de característica al daño del ataque adicional a menos que ese modificador sea negativo. Por ejemplo, puedes atacar con una Espada corta en una mano y una Daga en la otra usando la acción de Atacar y una Acción adicional, pero no sumas tu modificador de Fuerza o Destreza a la tirada de daño de la Acción adicional a menos que ese modificador sea negativo.",
+    "url": "/api/2024/weapon-properties/light"
+  },
+  {
+    "index": "loading",
+    "name": "Recarga",
+    "description": "Solo puedes disparar una pieza de munición de un arma con Recarga cuando usas una acción, una Acción adicional o una Reacción para dispararla, independientemente del número de ataques que normalmente puedas hacer.",
+    "url": "/api/2024/weapon-properties/loading"
+  },
+  {
+    "index": "range",
+    "name": "Distancia",
+    "description": "Un arma a Distancia tiene un alcance entre paréntesis después de la propiedad Munición o Arrojadiza. El alcance enumera dos números. El primero es la distancia normal del arma en pies, y el segundo es la distancia larga del arma. Al atacar a un objetivo más allá de la distancia normal, tienes Desventaja en la tirada de ataque. No puedes atacar a un objetivo más allá de la distancia larga.",
+    "url": "/api/2024/weapon-properties/range"
+  },
+  {
+    "index": "reach",
+    "name": "Alcance",
+    "description": "Un arma con Alcance añade 5 pies a tu alcance cuando atacas con ella, así como cuando determinas tu alcance para Ataques de oportunidad con ella.",
+    "url": "/api/2024/weapon-properties/reach"
+  },
+  {
+    "index": "thrown",
+    "name": "Arrojadiza",
+    "description": "Si un arma tiene la propiedad Arrojadiza, puedes lanzar el arma para hacer un ataque a distancia, y puedes desenvainar esa arma como parte del ataque. Si el arma es un arma cuerpo a cuerpo, usa el mismo modificador de característica para las tiradas de ataque y daño que usarías para un ataque cuerpo a cuerpo con esa arma.",
+    "url": "/api/2024/weapon-properties/thrown"
+  },
+  {
+    "index": "two-handed",
+    "name": "A dos manos",
+    "description": "Un arma A dos manos requiere dos manos cuando atacas con ella.",
+    "url": "/api/2024/weapon-properties/two-handed"
+  },
+  {
+    "index": "versatile",
+    "name": "Versátil",
+    "description": "Un arma Versátil se puede usar con una o dos manos. Un valor de daño entre paréntesis aparece con la propiedad. El arma inflige ese daño cuando se usa con dos manos para hacer un ataque cuerpo a cuerpo.",
+    "url": "/api/2024/weapon-properties/versatile"
+  }
+]
