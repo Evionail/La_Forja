@@ -53,9 +53,15 @@ self.addEventListener('activate', event => {
     );
 });
 
+self.addEventListener('message', event => {
+    if (event.data && event.data.type === 'SKIP_WAITING') self.skipWaiting();
+});
+
 self.addEventListener('fetch', event => {
     if (event.request.method !== 'GET') return;
     if (!event.request.url.startsWith('http')) return;
+    // version.json nunca se sirve desde caché para que el checker siempre vea la versión real
+    if (event.request.url.includes('version.json')) return;
     event.respondWith(
         caches.match(event.request).then(cached => {
             if (cached) return cached;
